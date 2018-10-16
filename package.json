@@ -11,7 +11,10 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "react-redux": "latest",
+    "redux": "latest",
+    "redux-thunk": "latest"
   },
   "devDependencies": {
     "@types/jest": "^23.1.5",
