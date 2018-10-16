@@ -9,3 +9,6 @@ $ npm install
 $ npm start run
 ```
 
+### Team members
+- [422437](https://github.com/astaruch) 
+- [456175](https://github.com/njuro)
