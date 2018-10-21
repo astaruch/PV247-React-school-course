@@ -1,23 +1,13 @@
 import * as React from 'react';
-// import { Provider } from 'react-redux';
-// import { applyMiddleware, compose, createStore } from 'redux';
-// import thunk from 'redux-thunk';
-// import './common/common.less';
-// import { Navigation } from './common/components/Navigation';
-// import { rootReducer } from './common/rootReducer';
-// import { TodoAppContainer } from './todoApp/containers/TodoApp';
-
-// const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const middleware = [thunk];
-//
-// const store = createStore(rootReducer, composeEnhancers(
-//     applyMiddleware(...middleware)
-// ));
+import {MessageApp} from './components/MessageApp';
 
 export class App extends React.PureComponent {
-    render() {
+    render(): JSX.Element {
+        const nick = 'Pussy Reaper 123';
+        const message = 'New message!';
+        const messages = [ 'Old message1', 'Old message2'];
         return (
-            <h1>Hello world!</h1>
+            <MessageApp nick={nick} message={message} messages={messages}/>
         );
     }
 }
