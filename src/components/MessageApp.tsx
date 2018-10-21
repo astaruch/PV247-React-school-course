@@ -4,6 +4,7 @@ import * as PropTypes from 'prop-types';
 import {ChannelList} from './ChannelList';
 import {IChannelItem} from './ChannelItem';
 import {Login} from './Login';
+import {Profile} from './Profile';
 
 interface IMessageAppProps {
     message: string;
@@ -53,6 +54,7 @@ export class MessageApp extends React.PureComponent<IMessageAppProps, IMessageAp
             return (
                 <div className="MessageApp">
                     Message App. Logged in as {this.state.nick}
+                    <Profile nick={this.state.nick}/>
                     <ChannelList channels={channels}/>
                 </div>
             );

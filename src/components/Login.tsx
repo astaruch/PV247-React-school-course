@@ -66,7 +66,7 @@ export class Login extends React.PureComponent<ILoginProps, ILoginState> {
     };
 
 
-    render() {
+    render(): JSX.Element {
         return (
             <div className="Login">
                 {this.state.result}
