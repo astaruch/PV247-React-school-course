@@ -3,11 +3,20 @@ import * as PropTypes from 'prop-types';
 
 import {ChannelList} from './ChannelList';
 import {IChannelItem} from './ChannelItem';
+import {MessageAppHeader} from './MessageAppHeader';
+import {ChatWindow} from './ChatWindow';
+
+
+interface IMessage {
+    readonly id: string;
+    readonly from: string;
+    readonly text: string;
+}
 
 interface IMessageApp {
     nick: string;
     message: string;
-    messages: any[];
+    messages: IMessage[];
 }
 
 export class MessageApp extends React.PureComponent<IMessageApp> {
@@ -27,11 +36,16 @@ export class MessageApp extends React.PureComponent<IMessageApp> {
 
     public render(): JSX.Element {
         const channels = this.getChannels();
-
+        const user = this.props.nick;
+        const message = this.props.message;
+        const messages = this.props.messages;
+        const selectedChannel = channels[0];
         return (
             <div className="MessageApp">
+                <MessageAppHeader user={user}/>
                 Message App
                 <ChannelList channels={channels}/>
+                <ChatWindow nick={user} message={message} messages={messages} selectedChannel={selectedChannel}/>
             </div>
         );
     }
