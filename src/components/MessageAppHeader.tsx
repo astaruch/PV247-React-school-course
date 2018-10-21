@@ -14,8 +14,14 @@ export class MessageAppHeader extends React.PureComponent<IMessageAppHeader> {
     public render(): JSX.Element {
         return (
             <div className="MessageAppHeader">
-                Header
-                <UserThumbnail user={this.props.user}/>
+                <div className="navbar navbar-default" role="navigation">
+                    <div className="navbar-header">
+                        <div className="navbar-right">
+                            a
+                            <UserThumbnail user={this.props.user}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
