@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface IMessage {
+export interface IMessageItem {
     readonly id: string;
     readonly from: string;
     readonly text: string;
 }
 
-export class Message extends React.Component<IMessage> {
+export class MessageItem extends React.Component<IMessageItem> {
     static propTypes = {
         id: PropTypes.string.isRequired,
         from: PropTypes.string.isRequired,

@@ -5,11 +5,11 @@ import {ChannelList} from './ChannelList';
 import {IChannelItem} from './ChannelItem';
 import {MessageAppHeader} from './MessageAppHeader';
 import {ChatWindow} from './ChatWindow';
-import {IMessage} from './Message';
+import {IMessageItem} from './MessageItem';
 
 interface IMessageApp {
     nick: string;
-    messages: IMessage[];
+    messages: IMessageItem[];
     channels: IChannelItem[];
 }
 

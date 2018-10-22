@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {IMessage, Message} from './Message';
+import {IMessageItem, MessageItem} from './MessageItem';
 
 
 interface IMessageListProps {
-    readonly messages: IMessage[];
+    readonly messages: IMessageItem[];
 }
 
 export class MessageList extends React.Component<IMessageListProps> {
@@ -20,7 +20,7 @@ export class MessageList extends React.Component<IMessageListProps> {
         return (
             <div className="message-list">
                 {this.props.messages && this.props.messages.map(message => (
-                    <Message id={message.id} from={message.from} text={message.text}/>
+                    <MessageItem id={message.id} from={message.from} text={message.text}/>
                 ))}
             </div>
         );

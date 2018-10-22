@@ -4,12 +4,12 @@ import * as PropTypes from 'prop-types';
 import { MessageList} from './MessageList';
 import { MessageForm } from './MessageForm';
 import { IChannelItem } from './ChannelItem';
-import {IMessage} from './Message';
+import {IMessageItem} from './MessageItem';
 
 
 interface IChat {
     nick: string;
-    messages: IMessage[];
+    messages: IMessageItem[];
     selectedChannel: IChannelItem;
 }
 

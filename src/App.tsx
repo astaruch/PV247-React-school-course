@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {MessageApp} from './components/MessageApp';
 import {IChannelItem} from './components/ChannelItem';
-import {IMessage} from './components/Message';
+import {IMessageItem} from './components/MessageItem';
 
 export class App extends React.PureComponent {
-    private getMessages(): IMessage[] {
-        const message1: IMessage = { id: '1', from: 'User 2', text: 'Ahoj' };
-        const message2: IMessage = { id: '2', from: 'User 3', text: 'Nazdar' };
+    private getMessages(): IMessageItem[] {
+        const message1: IMessageItem = { id: '1', from: 'User 2', text: 'Ahoj' };
+        const message2: IMessageItem = { id: '2', from: 'User 3', text: 'Nazdar' };
         return [message1, message2];
     }
 
