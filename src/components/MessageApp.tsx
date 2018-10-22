@@ -9,6 +9,7 @@ import {IMessageItem} from './MessageItem';
 
 interface IMessageApp {
     nick: string;
+    selectedChannel: number;
     messages: IMessageItem[];
     channels: IChannelItem[];
 }
@@ -16,6 +17,7 @@ interface IMessageApp {
 export class MessageApp extends React.PureComponent<IMessageApp> {
     static propTypes = {
         nick: PropTypes.string.isRequired,
+        selectedChannel: PropTypes.number.isRequired,
         messages: PropTypes.arrayOf(PropTypes.shape({
             id: PropTypes.string.isRequired,
             from: PropTypes.string.isRequired,
@@ -31,7 +33,7 @@ export class MessageApp extends React.PureComponent<IMessageApp> {
         const channels = this.props.channels;
         const user = this.props.nick;
         const messages = this.props.messages;
-        const selectedChannel = channels[0];
+        const selectedChannel = this.props.selectedChannel;
         return (
             <div className="message-app border-css">
                 <div className={'row'}>

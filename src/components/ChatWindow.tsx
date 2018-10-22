@@ -3,14 +3,13 @@ import * as PropTypes from 'prop-types';
 
 import { MessageList} from './MessageList';
 import { MessageForm } from './MessageForm';
-import { IChannelItem } from './ChannelItem';
 import {IMessageItem} from './MessageItem';
 
 
 interface IChat {
     nick: string;
     messages: IMessageItem[];
-    selectedChannel: IChannelItem;
+    selectedChannel: number;
 }
 
 export class ChatWindow extends React.PureComponent<IChat> {
@@ -21,10 +20,7 @@ export class ChatWindow extends React.PureComponent<IChat> {
             from: PropTypes.string.isRequired,
             text: PropTypes.string.isRequired,
         })),
-        selectedChannel: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            numberOfNewMessages: PropTypes.number.isRequired,
-        })
+        selectedChannel: PropTypes.number.isRequired,
     };
 
     public render(): JSX.Element {

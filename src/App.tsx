@@ -11,9 +11,9 @@ export class App extends React.PureComponent {
     }
 
     private getChannels(): IChannelItem[] {
-        const channel1: IChannelItem = { name: 'General', numberOfNewMessages: 10 };
-        const channel2: IChannelItem = { name: 'Back office', numberOfNewMessages: 0};
-        const channel3: IChannelItem = { name: 'Spam', numberOfNewMessages: 1337 };
+        const channel1: IChannelItem = { idx: 0, name: 'General', numberOfNewMessages: 10, selectedChannel: 0 };
+        const channel2: IChannelItem = { idx: 1, name: 'Back office', numberOfNewMessages: 0};
+        const channel3: IChannelItem = { idx: 2, name: 'Spam', numberOfNewMessages: 1337};
         return [channel1, channel2, channel3];
     }
 
@@ -22,9 +22,10 @@ export class App extends React.PureComponent {
         const nick = 'Pussy Reaper 123';
         const messages = this.getMessages();
         const channels = this.getChannels();
+        const selectedChannel = 0;
         return (
          <div className="container-fluid body">
-            <MessageApp nick={nick} messages={messages} channels={channels}/>
+            <MessageApp nick={nick} messages={messages} channels={channels} selectedChannel={selectedChannel}/>
           </div>
         );
     }
