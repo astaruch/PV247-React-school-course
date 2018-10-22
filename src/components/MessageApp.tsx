@@ -6,8 +6,6 @@ import {IChannelItem} from './ChannelItem';
 import {MessageAppHeader} from './MessageAppHeader';
 import {ChatWindow} from './ChatWindow';
 import {IMessageItem} from './MessageItem';
-import {Login} from './Login';
-import {Profile} from './Profile';
 
 interface IMessageApp {
     nick: string;
@@ -16,13 +14,7 @@ interface IMessageApp {
     channels: IChannelItem[];
 }
 
-interface IMessageAppState {
-    logged: boolean;
-    nick: string;
-}
-
-export class MessageApp extends React.PureComponent<IMessageApp, IMessageAppState> {
-
+export class MessageApp extends React.PureComponent<IMessageApp> {
     static propTypes = {
         nick: PropTypes.string.isRequired,
         selectedChannel: PropTypes.number.isRequired,
@@ -36,28 +28,6 @@ export class MessageApp extends React.PureComponent<IMessageApp, IMessageAppStat
             numberOfNewMessages: PropTypes.number.isRequired,
         })),
     };
-
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            logged: false,
-            nick: ''
-        };
-    }
-
-    onLogin = (loggedNick: string) => {
-        this.setState(() => ({
-            logged: true,
-            nick: loggedNick
-        }));
-    };
-
-    private getChannels(): IChannelItem[] {
-        const channel1: IChannelItem = {name: 'General', numberOfNewMessages: 10};
-        const channel2: IChannelItem = {name: 'Back office', numberOfNewMessages: 0};
-        const channel3: IChannelItem = {name: 'Spam', numberOfNewMessages: 1337};
-        return [channel1, channel2, channel3];
-    }
 
     public render(): JSX.Element {
         const channels = this.props.channels;
@@ -80,20 +50,6 @@ export class MessageApp extends React.PureComponent<IMessageApp, IMessageAppStat
                     </div>
                 </div>
             </div>
-        const channels = this.getChannels();
-
-        if (this.state.logged) {
-            return (
-                <div className="MessageApp">
-                    Message App. Logged in as {this.state.nick}
-                    <Profile nick={this.state.nick}/>
-                    <ChannelList channels={channels}/>
-                </div>
-            );
-        }
-
-        return (
-            <Login onLogin={this.onLogin}/>
         );
     }
 }
