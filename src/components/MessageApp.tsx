@@ -41,7 +41,7 @@ export class MessageApp extends React.PureComponent<IMessageApp> {
                 </div>
                 <div className={'row'}>
                     <div className={'col-md-3 col-lg-2'}>
-                        <ChannelList channels={channels}/>
+                        <ChannelList channels={channels} selectedChannel={selectedChannel}/>
                     </div>
                     <div className={'col-md-9 col-lg-10'}>
                         <ChatWindow nick={user} messages={messages} selectedChannel={selectedChannel}/>
