@@ -7,17 +7,21 @@ body {
     color: #444444;
 }
 
+.border-css {
+    border:1px solid black;
+}
 
-.ChatWindow {
+
+.chat-window {
     max-width: 1000px;
     margin: auto;
 }
 
-.MessageAppHeader {
+.message-app-header {
 
 }
 
-.UserThumbnail {
+.user-thumbnail {
     float: right!important;
     margin-right: -15px;
 }

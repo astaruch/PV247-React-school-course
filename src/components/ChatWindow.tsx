@@ -38,7 +38,7 @@ export class ChatWindow extends React.PureComponent<IChat> {
         const nick = this.props.nick;
         const message = this.props.message;
         return (
-            <div className="ChatWindow">
+            <div className="chat-window border-css">
                 <MessageList messages={messages} />
                 <MessageForm
                     nick={nick}

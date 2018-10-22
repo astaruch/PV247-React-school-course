@@ -14,9 +14,9 @@ export class ChannelItem extends React.PureComponent<IChannelItem> {
 
     public render(): JSX.Element {
         return (
-            <div className="ChannelItem">
-                <span className="ChannelItem__name">{this.props.name}</span>
-                <span className="ChannelItem__numberOfNewMessages">{this.props.numberOfNewMessages}</span>
+            <div className="channel-item border-css">
+                <span className="channel-item__name">{this.props.name}</span>
+                <span className="channel-item__numberOfNewMessages">{this.props.numberOfNewMessages}</span>
             </div>
         );
     }

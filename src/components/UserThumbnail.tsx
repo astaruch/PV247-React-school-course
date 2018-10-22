@@ -12,7 +12,7 @@ export class UserThumbnail extends React.PureComponent<IUserThumbnail> {
 
     public render(): JSX.Element {
         return (
-            <div className="UserThumbnail">
+            <div className="user-thumbnail">
                 {this.props.user}
             </div>
         );

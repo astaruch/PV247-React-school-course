@@ -15,28 +15,28 @@ export class MessageForm extends React.Component<IMessageForm> {
     render(): JSX.Element {
         return (
             <form
-                className="MessageForm"
+                className="message-form channel-item"
             >
                 <label
                     htmlFor="nick"
-                    className="MessageForm__nick-label"
+                    className="message-form__nick-label"
                 >
                     Nick:
                 </label>
                 <input
-                    className="MessageForm__nick-input"
+                    className="message-form__nick-input"
                     id="nick"
                     value={this.props.nick}
                 />
                 <label
-                    className="MessageForm__message-label"
+                    className="message-form__message-label"
                     htmlFor="message"
                 >
                     Message:
                 </label>
                 <input
                     id="message"
-                    className="MessageForm__message-input"
+                    className="message-form__message-input"
                     value={this.props.message}
                 />
                 <button type="submit">Send</button>

@@ -16,7 +16,7 @@ export class ChannelList extends React.PureComponent<IChannelList> {
 
     public render(): JSX.Element {
         return (
-            <div className="ChannelList">
+            <div className="channel-list border-css">
                 <h2>Channels</h2>
                 {this.props.channels && this.props.channels.map((channel, index) => (
                     <ChannelItem name={channel.name}
