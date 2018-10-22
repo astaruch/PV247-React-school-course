@@ -23,7 +23,7 @@ body {
 
 .user-thumbnail {
     float: right!important;
-    margin-right: -15px;
+    margin-right: 0px;
 }
 
 .message:nth-child(2n) {

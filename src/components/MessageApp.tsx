@@ -42,9 +42,19 @@ export class MessageApp extends React.PureComponent<IMessageApp> {
         const selectedChannel = channels[0];
         return (
             <div className="message-app border-css">
-                <MessageAppHeader user={user}/>
-                <ChannelList channels={channels}/>
-                <ChatWindow nick={user} message={message} messages={messages} selectedChannel={selectedChannel}/>
+                <div className={'row'}>
+                    <div className={'col-md-12'}>
+                        <MessageAppHeader user={user}/>
+                    </div>
+                </div>
+                <div className={'row'}>
+                    <div className={'col-md-3 col-lg-2'}>
+                        <ChannelList channels={channels}/>
+                    </div>
+                    <div className={'col-md-9 col-lg-10'}>
+                        <ChatWindow nick={user} message={message} messages={messages} selectedChannel={selectedChannel}/>
+                    </div>
+                </div>
             </div>
         );
     }

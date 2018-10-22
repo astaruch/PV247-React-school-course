@@ -19,7 +19,9 @@ export class App extends React.PureComponent {
         const message = 'New message!';
         const messages = this.getMessages();
         return (
+         <div className="container-fluid body">
             <MessageApp nick={nick} message={message} messages={messages}/>
+          </div>
         );
     }
 }
