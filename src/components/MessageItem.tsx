@@ -16,10 +16,10 @@ export class MessageItem extends React.Component<IMessageItem> {
 
     render(): JSX.Element {
         return (
-            <div className="message border-css" key={this.props.id}>
-                <div className="message__message-from">
-                    {this.props.from}
-                </div>
+            <div className="message list-item border-css" key={this.props.id}>
+                <label className="message__message-from">
+                    {this.props.from}:
+                </label>
                 <div className="message__message-text">
                     {this.props.text}
                 </div>

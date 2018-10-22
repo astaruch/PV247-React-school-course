@@ -18,7 +18,7 @@ export class MessageList extends React.Component<IMessageListProps> {
 
     render(): JSX.Element {
         return (
-            <div className="message-list">
+            <div className="message-list list-group">
                 {this.props.messages && this.props.messages.map(message => (
                     <MessageItem id={message.id} from={message.from} text={message.text}/>
                 ))}
