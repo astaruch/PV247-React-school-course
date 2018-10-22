@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-interface IMessage {
+export interface IMessage {
     readonly id: string;
     readonly from: string;
     readonly text: string;
