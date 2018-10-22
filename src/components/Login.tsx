@@ -68,14 +68,19 @@ export class Login extends React.PureComponent<ILoginProps, ILoginState> {
 
     render(): JSX.Element {
         return (
-            <div className="Login">
-                {this.state.result}
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" onChange={this.setUsername} value={this.state.nick}/>
-                    <input type="password" onChange={this.setPassword} value={this.state.password}/>
-                    <input type="submit" value="Login"/>
+            <div className="container">
+                <form className="form-signin" onSubmit={this.handleSubmit}>
+                    <h2 className="form-signin-heading">Log In</h2>
+                    <label htmlFor="inputNick" className="sr-only">Email address</label>
+                    <input type="text" id="inputNick" className="form-control" placeholder="Nickname"
+                           onChange={this.setUsername} value={this.state.nick} required autoFocus/>
+                    <label htmlFor="inputPassword" className="sr-only">Password</label>
+                    <input type="password" id="inputPassword" className="form-control" placeholder="Password"
+                           onChange={this.setPassword} value={this.state.password} required/>
+                    <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 </form>
-                Hint: Username = admin, Password = pass
+                User: admin, Password: pass
+                {this.state.result}
             </div>
         );
     }
