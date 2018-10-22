@@ -65,22 +65,59 @@ export class Login extends React.PureComponent<ILoginProps, ILoginState> {
         }
     };
 
-
     render(): JSX.Element {
         return (
-            <div className="container">
-                <form className="form-signin" onSubmit={this.handleSubmit}>
-                    <h2 className="form-signin-heading">Log In</h2>
-                    <label htmlFor="inputNick" className="sr-only">Email address</label>
-                    <input type="text" id="inputNick" className="form-control" placeholder="Nickname"
-                           onChange={this.setUsername} value={this.state.nick} required autoFocus/>
-                    <label htmlFor="inputPassword" className="sr-only">Password</label>
-                    <input type="password" id="inputPassword" className="form-control" placeholder="Password"
-                           onChange={this.setPassword} value={this.state.password} required/>
-                    <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                </form>
-                User: admin, Password: pass
-                {this.state.result}
+            <div className="login row">
+                <div className="col-md-6 col-md-offset-3">
+                    <div className="panel panel-login">
+                        <div className="panel-heading">
+                            <div className="row">
+                                <div className="col-xs-6">
+                                    <a href="#" className="active" id="login-form-link">Login</a>
+                                </div>
+                                <div className="col-xs-6">
+                                    <a href="#" id="register-form-link">Register</a>
+                                </div>
+                            </div>
+                            <hr/>
+                        </div>
+                        <div className="panel-body">
+                            <div className="col-lg-12">
+                                <form id="login-form" onSubmit={this.handleSubmit}>
+                                    <div className="form-group">
+                                        <input type="text" onChange={this.setUsername} value={this.state.nick}/>
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="password" onChange={this.setPassword} value={this.state.password}/>
+                                    </div>
+                                    <div className="form-group text-center">
+                                        <input type="checkbox" className="" name="remember" id="remember"/>
+                                        <label htmlFor="remember">Remember me</label>
+                                    </div>
+                                    <div className="form-group">
+                                        <div className="row">
+                                            <div className="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="login-submit" id="login-submit" className="form-control btn btn-login" value="Login"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <div className="row">
+                                            <div className="col-lg-12">
+                                                <div className="text-center">
+                                                    <a href="#" className="forgot-password">Forgot Password?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                                </form>
+                                <div className="row">
+                                    Hint: Username = admin, Password = pass
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

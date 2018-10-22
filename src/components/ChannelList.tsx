@@ -4,10 +4,12 @@ import { ChannelItem, IChannelItem } from './ChannelItem';
 
 export interface IChannelList {
     channels: IChannelItem[];
+    selectedChannel?: number;
 }
 
 export class ChannelList extends React.PureComponent<IChannelList> {
     static propTypes = {
+        selectedChannel: PropTypes.number,
         channels: PropTypes.arrayOf(PropTypes.shape({
             name: PropTypes.string.isRequired,
             numberOfNewMessages: PropTypes.number.isRequired,
@@ -16,13 +18,17 @@ export class ChannelList extends React.PureComponent<IChannelList> {
 
     public render(): JSX.Element {
         return (
-            <div className="ChannelList">
+            <div className="channel-list border-css">
                 <h2>Channels</h2>
+                <ul className="list-group">
                 {this.props.channels && this.props.channels.map((channel, index) => (
                     <ChannelItem name={channel.name}
                                  numberOfNewMessages={channel.numberOfNewMessages}
-                                 key={index}/>
+                                 key={index}
+                                 selectedChannel={channel.selectedChannel}
+                                 idx={index}/>
                 ))}
+                </ul>
             </div>
         );
     }
