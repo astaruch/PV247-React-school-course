@@ -16,7 +16,7 @@ export class ChannelItem extends React.PureComponent<IChannelItem> {
         return (
             <div className="channel-item border-css">
                 <span className="channel-item__name">{this.props.name}</span>
-                <span className="channel-item__numberOfNewMessages">{this.props.numberOfNewMessages}</span>
+                <span className="channel-item__number-of-new-messages">{this.props.numberOfNewMessages}</span>
             </div>
         );
     }

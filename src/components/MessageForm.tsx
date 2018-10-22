@@ -18,17 +18,6 @@ export class MessageForm extends React.Component<IMessageForm> {
                 className="message-form channel-item"
             >
                 <label
-                    htmlFor="nick"
-                    className="message-form__nick-label"
-                >
-                    Nick:
-                </label>
-                <input
-                    className="message-form__nick-input"
-                    id="nick"
-                    value={this.props.nick}
-                />
-                <label
                     className="message-form__message-label"
                     htmlFor="message"
                 >

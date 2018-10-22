@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-import { MessageList, IMessage } from './MessageList';
+import { MessageList} from './MessageList';
 import { MessageForm } from './MessageForm';
 import { IChannelItem } from './ChannelItem';
+import {IMessage} from './Message';
 
 
 interface IChat {
@@ -28,7 +29,7 @@ export class ChatWindow extends React.PureComponent<IChat> {
 
     public render(): JSX.Element {
         const messages = this.props.messages;
-        const message = ''
+        const message = '';
         const nick = this.props.nick;
         return (
             <div className="chat-window border-css">

@@ -5,7 +5,7 @@ import {ChannelList} from './ChannelList';
 import {IChannelItem} from './ChannelItem';
 import {MessageAppHeader} from './MessageAppHeader';
 import {ChatWindow} from './ChatWindow';
-import {IMessage} from './MessageList';
+import {IMessage} from './Message';
 
 interface IMessageApp {
     nick: string;

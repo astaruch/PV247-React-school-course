@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {MessageApp} from './components/MessageApp';
 import {IChannelItem} from './components/ChannelItem';
-import {IMessage} from './components/MessageList';
+import {IMessage} from './components/Message';
 
 export class App extends React.PureComponent {
     private getMessages(): IMessage[] {
