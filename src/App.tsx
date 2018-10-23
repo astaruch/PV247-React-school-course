@@ -48,15 +48,11 @@ export class App extends React.PureComponent<{}, IAppState> {
 
         if (!this.state.logged) {
             return (
-                <div className={'container'}>
-                    <Login onLogin={this.onLogin}/>
-                </div>
+                <Login onLogin={this.onLogin}/>
             );
         } else {
             return (
-                <div className="container-fluid body">
-                    <MessageApp nick={this.state.nick} messages={messages} channels={channels} />
-                </div>
+                <MessageApp nick={this.state.nick} messages={messages} channels={channels} />
             );
         }
     }

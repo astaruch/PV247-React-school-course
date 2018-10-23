@@ -56,22 +56,26 @@ export class MessageApp extends React.PureComponent<IMessageApp, IMessageState> 
         const user = this.props.nick;
         const messages = this.props.messages;
         return (
-            <div className="message-app border-css">
-                <div className={'row'}>
-                    <div className={'col-md-12'}>
-                        <MessageAppHeader user={user}/>
+            <div className="container-fluid border-css">
+                <div className="message-app border-css">
+                    <div className={'row'}>
+                        <div className={'col-md-12'}>
+                            <MessageAppHeader user={user}/>
+                        </div>
                     </div>
-                </div>
-                <div className={'row'}>
-                    <div className={'col-md-3 col-lg-2'}>
-                        <ChannelList channels={channels} onChannelChange={this.onChannelChange} selectedChannel={this.state.selectedChannel}/>
+                    <div className={'row'}>
+                        <div className={'col-md-3 col-lg-2'}>
+                            <ChannelList channels={channels} onChannelChange={this.onChannelChange} selectedChannel={this.state.selectedChannel}/>
+                        </div>
+                        <div className={'col-md-9 col-lg-10'}>
+                            <ChatWindow nick={user} messages={messages} selectedChannel={this.state.selectedChannel}/>
+                        </div>
                     </div>
-                    <div className={'col-md-9 col-lg-10'}>
-                        <ChatWindow nick={user} messages={messages} selectedChannel={this.state.selectedChannel}/>
+                    <div className={'row'}>
+                        <div className={'col-md-3 col-lg-2'}>
+                            <Profile nick={user}/>
+                        </div>
                     </div>
-                </div>
-                <div className={'row'}>
-                    <Profile nick={user}/>
                 </div>
             </div>
         );
