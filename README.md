@@ -1,4 +1,4 @@
-# PV248 - Modern development of user's interfaces (_school course_)
+# PV248 - Modern development of user's interfaces (_school course_) [![Build Status](https://travis-ci.com/astaruch/PV247-react-school-course.svg?branch=master)](https://travis-ci.com/astaruch/PV247-react-school-course)
 
 
 ### Quick startup of this project
