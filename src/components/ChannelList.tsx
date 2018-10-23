@@ -4,7 +4,7 @@ import {ChannelItem, IChannelItem} from './ChannelItem';
 
 export interface IChannelList {
     channels: IChannelItem[];
-    onChannelChange: ((id: number) => any);
+    onChannelChange: ((id: number) => void);
     selectedChannel: number;
 }
 
