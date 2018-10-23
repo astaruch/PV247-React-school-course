@@ -26,15 +26,18 @@ export class App extends React.PureComponent<{}, IAppState> {
     };
 
     private getMessages(): IMessageItem[] {
-        const message1: IMessageItem = { id: '1', from: 'User 2', text: 'Ahoj' };
-        const message2: IMessageItem = { id: '2', from: 'User 3', text: 'Nazdar' };
-        return [message1, message2];
+        const message1: IMessageItem = { id: 0, channelId: 0, from: 'User 2', text: 'Ahoj' };
+        const message2: IMessageItem = { id: 1, channelId: 0, from: 'User 3', text: 'Nazdar' };
+        const message3: IMessageItem = { id: 2, channelId: 1, from: 'User 2', text: 'Hello' };
+        const message4: IMessageItem = { id: 3, channelId: 1, from: 'User 3', text: 'Hey' };
+
+        return [message1, message2, message3, message4];
     }
 
     private getChannels(): IChannelItem[] {
-        const channel1: IChannelItem = { idx: 0, name: 'General', numberOfNewMessages: 10, selectedChannel: 0 };
-        const channel2: IChannelItem = { idx: 1, name: 'Back office', numberOfNewMessages: 0};
-        const channel3: IChannelItem = { idx: 2, name: 'Spam', numberOfNewMessages: 1337};
+        const channel1: IChannelItem = { id: 0, name: 'General', numberOfNewMessages: 10};
+        const channel2: IChannelItem = { id: 1, name: 'Back office', numberOfNewMessages: 0};
+        const channel3: IChannelItem = { id: 2, name: 'Spam', numberOfNewMessages: 1337};
         return [channel1, channel2, channel3];
     }
 
@@ -42,7 +45,6 @@ export class App extends React.PureComponent<{}, IAppState> {
     render(): JSX.Element {
         const messages = this.getMessages();
         const channels = this.getChannels();
-        const selectedChannel = 0;
 
         if (!this.state.logged) {
             return (
@@ -53,7 +55,7 @@ export class App extends React.PureComponent<{}, IAppState> {
         } else {
             return (
                 <div className="container-fluid body">
-                    <MessageApp nick={this.state.nick} messages={messages} channels={channels} selectedChannel={selectedChannel}/>
+                    <MessageApp nick={this.state.nick} messages={messages} channels={channels} />
                 </div>
             );
         }

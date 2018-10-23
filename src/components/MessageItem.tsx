@@ -2,14 +2,16 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface IMessageItem {
-    readonly id: string;
+    readonly id: number;
+    readonly channelId: number;
     readonly from: string;
     readonly text: string;
 }
 
 export class MessageItem extends React.Component<IMessageItem> {
     static propTypes = {
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        channelId: PropTypes.number.isRequired,
         from: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
     };

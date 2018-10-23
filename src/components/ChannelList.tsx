@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { ChannelItem, IChannelItem } from './ChannelItem';
+import {ChannelItem, IChannelItem} from './ChannelItem';
 
 export interface IChannelList {
     channels: IChannelItem[];
-    selectedChannel?: number;
+    onChannelChange: ((id: number) => any);
+    selectedChannel: number;
 }
 
 export class ChannelList extends React.PureComponent<IChannelList> {
@@ -14,22 +15,25 @@ export class ChannelList extends React.PureComponent<IChannelList> {
             name: PropTypes.string.isRequired,
             numberOfNewMessages: PropTypes.number.isRequired,
         })),
+        onChannelChange: PropTypes.func.isRequired
     };
+
 
     public render(): JSX.Element {
         return (
             <div className="channel-list border-css">
                 <h2>Channels</h2>
                 <ul className="list-group">
-                {this.props.channels && this.props.channels.map((channel, index) => (
-                    <ChannelItem name={channel.name}
-                                 numberOfNewMessages={channel.numberOfNewMessages}
-                                 key={index}
-                                 selectedChannel={channel.selectedChannel}
-                                 idx={index}/>
-                ))}
-                </ul>
-            </div>
-        );
-    }
-}
+                    {this.props.channels && this.props.channels.map((channel, index) => (
+                        <ChannelItem name={channel.name}
+                                     numberOfNewMessages={channel.numberOfNewMessages}
+                                     key={index}
+                                     selected={channel.id === this.props.selectedChannel}
+                                     id={index}
+                                     onChannelChange={this.props.onChannelChange} />
+                        ))}
+                        </ul>
+                        </div>
+                        );
+                    }
+                    }

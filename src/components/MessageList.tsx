@@ -3,14 +3,15 @@ import * as PropTypes from 'prop-types';
 import {IMessageItem, MessageItem} from './MessageItem';
 
 
-interface IMessageListProps {
+interface IMessageList {
     readonly messages: IMessageItem[];
 }
 
-export class MessageList extends React.Component<IMessageListProps> {
+export class MessageList extends React.Component<IMessageList> {
     static propTypes = {
         messages: PropTypes.arrayOf(PropTypes.shape({
-            id: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            channelId: PropTypes.number.isRequired,
             from: PropTypes.string.isRequired,
             text: PropTypes.string.isRequired,
         })),
@@ -20,7 +21,7 @@ export class MessageList extends React.Component<IMessageListProps> {
         return (
             <div className="message-list list-group">
                 {this.props.messages && this.props.messages.map((message, index) => (
-                    <MessageItem id={message.id} from={message.from} text={message.text} key={index}/>
+                    <MessageItem id={message.id} channelId={message.channelId} from={message.from} text={message.text} key={index}/>
                 ))}
             </div>
         );

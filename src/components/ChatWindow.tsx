@@ -16,11 +16,12 @@ export class ChatWindow extends React.PureComponent<IChat> {
     static propTypes = {
         nick: PropTypes.string.isRequired,
         messages: PropTypes.arrayOf(PropTypes.shape({
-            id: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            channelId: PropTypes.number.isRequired,
             from: PropTypes.string.isRequired,
             text: PropTypes.string.isRequired,
         })),
-        selectedChannel: PropTypes.number.isRequired,
+        selectedChannel: PropTypes.number.isRequired
     };
 
     public render(): JSX.Element {
@@ -29,7 +30,7 @@ export class ChatWindow extends React.PureComponent<IChat> {
         const nick = this.props.nick;
         return (
             <div className="chat-window border-css">
-                <MessageList messages={messages} />
+                <MessageList messages={messages.filter((msg) => msg.channelId === this.props.selectedChannel)}/>
                 <MessageForm
                     nick={nick}
                     message={message}
