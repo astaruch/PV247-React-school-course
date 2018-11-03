@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import {Icon, Label, Menu} from 'semantic-ui-react';
 
 export interface IChannelItem {
     id: number;
@@ -22,15 +23,20 @@ export class ChannelItem extends React.PureComponent<IChannelItem> {
         if (this.props.onChannelChange) {
             this.props.onChannelChange(this.props.id);
         }
-    }
+    };
 
     public render(): JSX.Element {
-        const active = this.props.selected ? 'active' : '';
         return (
-            <li className={`channel-item list-group-item border-css ${active}`} onClick={this.onClick}>
+            <Menu.Item
+                name={this.props.name}
+                active={this.props.selected}
+                onClick={this.onClick}
+            >
+                <Label>
+                    <Icon name={'mail'}/>{this.props.numberOfNewMessages}
+                </Label>
                 {this.props.name}
-                <span className="channel-item__number-of-new-messages badge">{this.props.numberOfNewMessages}</span>
-            </li>
+            </Menu.Item>
         );
     }
 }

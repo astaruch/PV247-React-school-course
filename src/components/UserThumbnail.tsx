@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import {Icon} from 'semantic-ui-react';
 
 interface IUserThumbnail {
     user: string;
@@ -13,7 +14,7 @@ export class UserThumbnail extends React.PureComponent<IUserThumbnail> {
     public render(): JSX.Element {
         return (
             <div className="user-thumbnail">
-                {this.props.user}
+                <Icon inverted circular name={'user'}/>
             </div>
         );
     }

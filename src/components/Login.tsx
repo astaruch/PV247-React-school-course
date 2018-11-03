@@ -76,7 +76,8 @@ export class Login extends React.PureComponent<ILoginProps, ILoginState> {
       body > div > div > div.login-form {
         height: 100%;
       }
-    `}</style>
+    `}
+                </style>
                 <Grid textAlign="center" style={{height: '100%'}} verticalAlign="middle">
                     <Grid.Column style={{maxWidth: 450}}>
                         <Header as="h2" color="teal" textAlign="center">
@@ -116,11 +117,11 @@ export class Login extends React.PureComponent<ILoginProps, ILoginState> {
                         </Form>
                         <Message>
                             Not having an account? <Popup
-                                trigger={<a href={'#'}>Sign up!</a>}
-                                content="Not implemented yet"
-                                on="click"
-                                style={{height: 'auto'}}
-                            />
+                            trigger={<a href={'#'}>Sign up!</a>}
+                            content="Not implemented yet"
+                            on="click"
+                            style={{height: 'auto'}}
+                        />
                         </Message>
                     </Grid.Column>
                 </Grid>

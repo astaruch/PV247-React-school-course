@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {ChannelItem, IChannelItem} from './ChannelItem';
+import {Header, Menu, Segment} from 'semantic-ui-react';
 
 export interface IChannelList {
     channels: IChannelItem[];
@@ -21,19 +22,21 @@ export class ChannelList extends React.PureComponent<IChannelList> {
 
     public render(): JSX.Element {
         return (
-            <div className="channel-list border-css">
-                <h2>Channels</h2>
-                <ul className="list-group">
+            <Menu vertical>
+                <Header as={'h2'} attached={'top'}>
+                    Channels
+                </Header>
+                <Segment attached>
                     {this.props.channels && this.props.channels.map((channel, index) => (
                         <ChannelItem name={channel.name}
                                      numberOfNewMessages={channel.numberOfNewMessages}
                                      key={index}
                                      selected={channel.id === this.props.selectedChannel}
                                      id={index}
-                                     onChannelChange={this.props.onChannelChange} />
-                        ))}
-                        </ul>
-                        </div>
-                        );
-                    }
-                    }
+                                     onChannelChange={this.props.onChannelChange}/>
+                    ))}
+                </Segment>
+            </Menu>
+        );
+    }
+}
