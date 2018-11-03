@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {Redirect} from 'react-router-dom';
+import {Button, Form, Grid, Header, Message, Popup, Segment} from 'semantic-ui-react';
+
 
 export interface ILoginState {
     nick: string;
@@ -67,25 +69,61 @@ export class Login extends React.PureComponent<ILoginProps, ILoginState> {
 
     render(): JSX.Element {
         return (
-            <div className="container">
-                <div className="wrapper">
-                    <form action="" method="post" name="Login_Form" className="form-signin"
-                          onSubmit={this.handleSubmit}>
-                        <h3 className="form-signin-heading">Sign In</h3>
-                        <hr className="colorgraph"/>
-                        <br/>
-
-                        <input type="text" className="form-control" name="Username" placeholder="Username"
-                               value={this.state.nick} onChange={this.setUsername} required autoFocus/>
-                        <input type="password" className="form-control" name="Password" placeholder="Password"
-                               value={this.state.password} onChange={this.setPassword} required/>
-                        <div className="hint">(Username = admin, Password = pass)</div>
-                        <button className="btn btn-lg btn-primary btn-block" name="Submit" value="Login"
-                                type="Submit">Login
-                        </button>
-                        {this.state.result}
-                    </form>
-                </div>
+            <div className="login-form">
+                <style>{`
+      body > div,
+      body > div > div,
+      body > div > div > div.login-form {
+        height: 100%;
+      }
+    `}</style>
+                <Grid textAlign="center" style={{height: '100%'}} verticalAlign="middle">
+                    <Grid.Column style={{maxWidth: 450}}>
+                        <Header as="h2" color="teal" textAlign="center">
+                            Sign In
+                        </Header>
+                        <Form size="large" method={'post'} name={'Login_Form'} className={'form-signin'}
+                              onSubmit={this.handleSubmit}>
+                            <Segment stacked>
+                                <Form.Input
+                                    fluid
+                                    autoFocus
+                                    icon="user"
+                                    iconPosition="left"
+                                    placeholder="Username"
+                                    name="Username"
+                                    value={this.state.nick}
+                                    onChange={this.setUsername}
+                                />
+                                <Form.Input
+                                    fluid
+                                    icon="lock"
+                                    iconPosition="left"
+                                    placeholder="Password"
+                                    name="Password"
+                                    value={this.state.password}
+                                    onChange={this.setPassword}
+                                    type="password"
+                                />
+                                <Button color="teal" fluid size="large">
+                                    Login
+                                </Button>
+                                <Message
+                                    icon="question circle"
+                                    content="Username = admin, Password = pass"
+                                />
+                            </Segment>
+                        </Form>
+                        <Message>
+                            Not having an account? <Popup
+                                trigger={<a href={'#'}>Sign up!</a>}
+                                content="Not implemented yet"
+                                on="click"
+                                style={{height: 'auto'}}
+                            />
+                        </Message>
+                    </Grid.Column>
+                </Grid>
             </div>
         );
     }
