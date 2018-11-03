@@ -22,7 +22,7 @@ export class ChannelList extends React.PureComponent<IChannelList> {
 
     public render(): JSX.Element {
         return (
-            <Menu vertical>
+            <Menu vertical style={{height: '100%'}}>
                 <Header as={'h2'} attached={'top'}>
                     Channels
                 </Header>

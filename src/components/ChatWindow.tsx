@@ -4,6 +4,7 @@ import * as PropTypes from 'prop-types';
 import {MessageList} from './MessageList';
 import {MessageForm} from './MessageForm';
 import {IMessageItem} from './MessageItem';
+import {Grid} from 'semantic-ui-react';
 
 
 interface IChat {
@@ -34,13 +35,17 @@ export class ChatWindow extends React.PureComponent<IChat> {
         const messages = this.props.messages;
         const nick = this.props.nick;
         return (
-            <div className="chat-window border-css">
-                <MessageList messages={messages.filter((msg) => msg.channelId === this.props.selectedChannel)}/>
-                <MessageForm
-                    nick={nick}
-                    onNewMessage={this.onNewMessage}
-                />
-            </div>
+            <Grid divided={'vertically'} style={{width: '100%'}}>
+                <Grid.Row>
+                    <MessageList messages={messages.filter((msg) => msg.channelId === this.props.selectedChannel)}/>
+                </Grid.Row>
+                <Grid.Row>
+                    <MessageForm
+                        nick={nick}
+                        onNewMessage={this.onNewMessage}
+                    />
+                </Grid.Row>
+            </Grid>
         );
     }
 }

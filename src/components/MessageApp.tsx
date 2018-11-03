@@ -6,7 +6,7 @@ import {IChannelItem} from './ChannelItem';
 import {MessageAppHeader} from './MessageAppHeader';
 import {ChatWindow} from './ChatWindow';
 import {IMessageItem} from './MessageItem';
-import {Profile} from './Profile';
+import {Segment} from 'semantic-ui-react';
 
 interface IMessageApp {
     nick: string;
@@ -56,16 +56,13 @@ export class MessageApp extends React.PureComponent<IMessageApp, IMessageState> 
         const user = this.props.nick;
         const messages = this.props.messages;
         return (
-            <div className="message-app">
+            <Segment.Group style={{height: '100%'}}>
                 <MessageAppHeader user={user}/>
-                <ChannelList channels={channels} onChannelChange={this.onChannelChange} selectedChannel={this.state.selectedChannel}/>
-                <ChatWindow nick={user} messages={messages} selectedChannel={this.state.selectedChannel}/>
-                <div className={'row'}>
-                    <div className={'col-md-3 col-lg-2'}>
-                        <Profile nick={user}/>
-                    </div>
-                </div>
-            </div>
+                <Segment.Group horizontal style={{height: '100%'}}>
+                    <ChannelList channels={channels} onChannelChange={this.onChannelChange} selectedChannel={this.state.selectedChannel}/>
+                    <ChatWindow nick={user} messages={messages} selectedChannel={this.state.selectedChannel}/>
+                </Segment.Group>
+            </Segment.Group>
         );
     }
 }
