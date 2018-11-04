@@ -6,7 +6,8 @@
 $ git clone git@github.com:astaruch/PV247-react-school-course.git
 $ cd PV247-react-school-course
 $ npm install
-$ npm start run
+$ npm run start-dev # webpack-dev-server
+$ npm run start # express dev server
 ```
 
 ### Team members
