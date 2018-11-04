@@ -82,7 +82,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['build'])
   ],
-  devtool: mode === 'development' ? 'eval-source-map' : null,
+  devtool: mode === 'development' ? 'eval-source-map' : false,
   devServer: {
     contentBase: path.resolve(__dirname, './build'),
     port: 3000,
