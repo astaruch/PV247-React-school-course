@@ -7,8 +7,7 @@
     "start": "node server.js",
     "start-dev": "webpack-dev-server --mode=development",
     "production": "webpack -p",
-    "test": "jest --config=jest.config.js --no-cache",
-    "postinstall": "webpack -p"
+    "test": "jest --config=jest.config.js --no-cache"
   },
   "dependencies": {
     "clean": "^4.0.2",
