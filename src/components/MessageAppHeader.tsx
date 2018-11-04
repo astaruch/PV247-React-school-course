@@ -1,26 +1,52 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {UserThumbnail} from './UserThumbnail';
-import {Menu} from 'semantic-ui-react';
+import {Button, Menu} from 'semantic-ui-react';
+import {Profile} from './Profile';
 
 interface IMessageAppHeader {
     user: string;
 }
 
-export class MessageAppHeader extends React.PureComponent<IMessageAppHeader> {
+interface IMessageAppHeaderState {
+    modalOpened: boolean;
+}
+
+export class MessageAppHeader extends React.PureComponent<IMessageAppHeader, IMessageAppHeaderState> {
     static propTypes = {
         user: PropTypes.string.isRequired,
     };
 
+    state = {
+        modalOpened: false
+    };
+
+    showModal = () => {
+        console.log('Opening modal window with profile');
+        this.setState(() => ({
+                modalOpened: true
+            })
+        );
+    };
+
+    closeModal = () => {
+        console.log('Closing modal');
+        this.setState(() => ({
+                modalOpened: false
+            })
+        );
+    };
+
     public render(): JSX.Element {
+        const open = this.state.modalOpened;
         return (
             <Menu inverted>
                 <Menu.Item>
                     <img src="https://react.semantic-ui.com/logo.png"/>
                 </Menu.Item>
                 <Menu.Item position={'right'}>
-                    <UserThumbnail user={this.props.user}/>
+                    <Button inverted circular icon={'user'} onClick={this.showModal}/>
                 </Menu.Item>
+                <Profile nick={this.props.user} onClose={this.closeModal} open={open}/>
             </Menu>
         );
     }
