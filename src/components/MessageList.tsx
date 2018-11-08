@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {IMessageItem, MessageItem} from './MessageItem';
+import {List, Comment} from 'semantic-ui-react';
 
 
 interface IMessageList {
@@ -19,11 +20,13 @@ export class MessageList extends React.Component<IMessageList> {
 
     render(): JSX.Element {
         return (
-            <div className="message-list list-group">
-                {this.props.messages && this.props.messages.map((message, index) => (
-                    <MessageItem id={message.id} channelId={message.channelId} from={message.from} text={message.text} key={index}/>
-                ))}
-            </div>
+            <List>
+                <Comment.Group>
+                    {this.props.messages && this.props.messages.map((message, index) => (
+                        <MessageItem id={message.id} channelId={message.channelId} from={message.from} text={message.text} key={index}/>
+                    ))}
+                </Comment.Group>
+            </List>
         );
     }
 }

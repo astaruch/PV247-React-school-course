@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import {Comment} from 'semantic-ui-react';
 
 export interface IMessageItem {
     readonly id: number;
@@ -18,14 +19,18 @@ export class MessageItem extends React.Component<IMessageItem> {
 
     render(): JSX.Element {
         return (
-            <div className="message list-item border-css" key={this.props.id}>
-                <label className="message__message-from">
-                    {this.props.from}:
-                </label>
-                <div className="message__message-text">
-                    {this.props.text}
-                </div>
-            </div>
+            <Comment key={this.props.id}>
+                <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/matt.jpg"/>
+                <Comment.Content>
+                    <Comment.Author>{this.props.from}</Comment.Author>
+                    <Comment.Metadata>
+                        <div>Today at 13:37</div>
+                    </Comment.Metadata>
+                    <Comment.Text>
+                        {this.props.text}
+                    </Comment.Text>
+                </Comment.Content>
+            </Comment>
         );
     }
 }
