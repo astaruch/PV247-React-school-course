@@ -35,7 +35,7 @@ export class ChatWindow extends React.PureComponent<IChat> {
         const messages = this.props.messages;
         const nick = this.props.nick;
         return (
-            <Grid divided={'vertically'} style={{width: '100%'}}>
+            <Grid divided={'vertically'} style={{width: '90%'}}>
                 <Grid.Row>
                     <MessageList messages={messages.filter((msg) => msg.channelId === this.props.selectedChannel)}/>
                 </Grid.Row>
