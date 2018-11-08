@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import {Form} from 'semantic-ui-react';
 
 export interface IMessageForm {
     readonly nick: string;
@@ -38,28 +39,14 @@ export class MessageForm extends React.PureComponent<IMessageForm, IMessageFormS
         this.setState(() => ({
             message: msg
         }));
-    }
+    };
 
     render(): JSX.Element {
         return (
-            <form
-                className="message-form channel-item"
-                onSubmit={this.onSubmit}
-            >
-                <label
-                    className="message-form__message-label"
-                    htmlFor="message"
-                >
-                    Message:
-                </label>
-                <input
-                    id="message"
-                    className="message-form__message-input"
-                    value={this.state.message}
-                    onChange={this.setMessage}
-                />
-                <button type="submit">Send</button>
-            </form>
+            <Form style={{width: '90%'}} onSubmit={this.onSubmit}>
+                <Form.TextArea label={'Message'} placeholder={'Write your message...'} value={this.state.message} onChange={this.setMessage}/>
+                <Form.Button>Send</Form.Button>
+            </Form>
 
         );
     }
