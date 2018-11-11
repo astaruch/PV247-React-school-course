@@ -9,6 +9,6 @@ import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 
-import { App } from './App.tsx';
+import { AppWrapper } from './AppWrapper.tsx';
 
-ReactDOM.render(<App />, document.getElementById('app-root'));
+ReactDOM.render(<AppWrapper />, document.getElementById('app-root'));
