@@ -9,5 +9,4 @@ const mapDispatchToProps = (dispatch: Dispatch): any => {
     };
 };
 
-
 export const MessageAppContainer = connect(mapDispatchToProps)(MessageApp);
