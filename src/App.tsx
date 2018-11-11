@@ -3,6 +3,19 @@ import {MessageApp} from './components/MessageApp';
 import {IChannelItem} from './models/IChannelItem';
 import {IMessageItem} from './models/IMessageItem';
 import {Login} from './components/Login';
+import {createStore} from 'redux';
+import {rootReducer} from './common/rootReducer';
+
+
+const initialState = {
+    messageApp: {
+        selectedChannel: 1,
+    }
+};
+const store = createStore(rootReducer, initialState);
+
+console.log(store.getState());
+
 
 interface IAppState {
     logged: boolean;
