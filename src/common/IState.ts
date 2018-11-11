@@ -1,5 +1,5 @@
-import {IMessageApp} from '../models/IMessageApp';
+import {IMessageAppState} from '../models/IMessageApp';
 
 export interface IState {
-    messageApp: IMessageApp;
+    messageApp: IMessageAppState;
 };

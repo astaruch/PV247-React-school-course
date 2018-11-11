@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {applyMiddleware, createStore, compose} from 'redux';
-import {rootReducer} from './common/rootReducer';
+import {rootReducer} from './reducers/rootReducer';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import {AppContainer} from './containers/AppContainer';
