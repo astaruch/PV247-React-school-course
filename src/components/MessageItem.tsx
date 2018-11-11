@@ -1,27 +1,31 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import {Comment} from 'semantic-ui-react';
 import {IMessageItem} from '../models/IMessageItem';
+import {IUser} from '../models/IUser';
 
-export class MessageItem extends React.Component<IMessageItem> {
-    static propTypes = {
-        id: PropTypes.number.isRequired,
-        channelId: PropTypes.number.isRequired,
-        from: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired,
-    };
+export interface IMessageItemOwnProps {
+    readonly id: Uuid;
+}
 
+export interface IMessageItemStateProps {
+    readonly message: IMessageItem;
+    readonly author: IUser;
+}
+
+type IProps = IMessageItemOwnProps & IMessageItemStateProps;
+
+export class MessageItem extends React.PureComponent<IProps> {
     render(): JSX.Element {
         return (
             <Comment key={this.props.id}>
-                <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/matt.jpg"/>
+                <Comment.Avatar src={this.props.author.pictureUrl}/>
                 <Comment.Content>
-                    <Comment.Author>{this.props.from}</Comment.Author>
+                    <Comment.Author>{this.props.author.name}</Comment.Author>
                     <Comment.Metadata>
-                        <div>Today at 13:37</div>
+                        <div>{this.props.message.timestamp}</div>
                     </Comment.Metadata>
                     <Comment.Text>
-                        {this.props.text}
+                        {this.props.message.text}
                     </Comment.Text>
                 </Comment.Content>
             </Comment>

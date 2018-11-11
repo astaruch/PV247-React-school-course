@@ -1,34 +1,36 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import {Icon, Label, Menu} from 'semantic-ui-react';
 import {IChannelItem} from '../models/IChannelItem';
 
-export class ChannelItem extends React.PureComponent<IChannelItem> {
-    static propTypes = {
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        numberOfNewMessages: PropTypes.number.isRequired,
-        selected: PropTypes.bool.isRequired,
-        onChannelChange: PropTypes.func.isRequired
-    };
+export interface IChannelItemStateProps {
+    readonly channelItem: IChannelItem;
+}
+
+export interface IChannelItemChannelProps {
+    readonly id: Uuid;
+}
+
+type IProps = IChannelItemStateProps & IChannelItemChannelProps;
+
+export class ChannelItem extends React.PureComponent<IProps> {
 
     onClick = () => {
-        if (this.props.onChannelChange) {
-            this.props.onChannelChange(this.props.id);
+        if (this.props.channelItem.onChannelChange) {
+            this.props.channelItem.onChannelChange(this.props.channelItem.id);
         }
     };
 
     public render(): JSX.Element {
         return (
             <Menu.Item
-                name={this.props.name}
-                active={this.props.selected}
+                name={this.props.channelItem.name}
+                active={this.props.channelItem.selected}
                 onClick={this.onClick}
             >
                 <Label>
-                    <Icon name={'mail'}/>{this.props.numberOfNewMessages}
+                    <Icon name={'mail'}/>{this.props.channelItem.numberOfNewMessages}
                 </Label>
-                {this.props.name}
+                {this.props.channelItem.name}
             </Menu.Item>
         );
     }

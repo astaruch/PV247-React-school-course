@@ -1,6 +1,7 @@
 export interface IMessageItem {
-    readonly id: number;
-    readonly channelId: number;
-    readonly from: string;
+    readonly id: Uuid;
+    readonly channelId: Uuid;
+    readonly from: Uuid;
     readonly text: string;
+    readonly timestamp: number;
 }

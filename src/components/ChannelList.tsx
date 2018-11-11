@@ -1,26 +1,13 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import {ChannelItem} from './ChannelItem';
+import * as Immutable from 'immutable';
+import {ChannelItemContainer} from '../containers/ChannelItemContainer';
 import {Header, Menu, Segment} from 'semantic-ui-react';
-import {IChannelItem} from '../models/IChannelItem';
 
-export interface IChannelList {
-    channels: IChannelItem[];
-    onChannelChange: ((id: number) => void);
-    selectedChannel: number;
+export interface IChannelListStateProps {
+    readonly channelIds: Immutable.List<Uuid>;
 }
 
-export class ChannelList extends React.PureComponent<IChannelList> {
-    static propTypes = {
-        selectedChannel: PropTypes.number,
-        channels: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            numberOfNewMessages: PropTypes.number.isRequired,
-        })),
-        onChannelChange: PropTypes.func.isRequired
-    };
-
-
+export class ChannelList extends React.PureComponent<IChannelListStateProps> {
     public render(): JSX.Element {
         return (
             <Menu vertical style={{height: '100%'}}>
@@ -28,15 +15,11 @@ export class ChannelList extends React.PureComponent<IChannelList> {
                     Channels
                 </Header>
                 <Segment attached>
-                    {this.props.channels && this.props.channels.map((channel, index) => (
-                        <ChannelItem name={channel.name}
-                                     numberOfNewMessages={channel.numberOfNewMessages}
-                                     key={index}
-                                     selected={channel.id === this.props.selectedChannel}
-                                     id={index}
-                                     onChannelChange={this.props.onChannelChange}/>
+                    {this.props.channelIds && this.props.channelIds.map((channelId) => (
+                        <ChannelItemContainer id={channelId}/>
                     ))}
                 </Segment>
+                New channel (+)
             </Menu>
         );
     }

@@ -1,71 +1,86 @@
 import * as React from 'react';
-import {Redirect} from 'react-router-dom';
+import {ChangeEvent, FormEvent} from 'react';
 import {Button, Form, Grid, Header, Message, Popup, Segment} from 'semantic-ui-react';
 
 
 export interface ILoginState {
-    nick: string;
+    username: string;
     password: string;
-    result: JSX.Element;
 }
 
 export interface ILoginProps {
     onLogin: ((nick: string) => void);
 }
 
-export class Login extends React.PureComponent<ILoginProps, ILoginState> {
+export interface ILoginDispatchProps {
+    onLogin(username: string, password: string): void
+}
 
-    constructor(props) {
+export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState> {
+    constructor(props: ILoginDispatchProps) {
         super(props);
 
         this.state = {
-            nick: '',
+            username: '',
             password: '',
-            result: <span/>
         };
     }
 
-    setUsername = (event) => {
-        const newNick = event.target.value;
-        this.setState(() => ({
-                nick: newNick
-            })
-        );
+    private onSubmit = (e: FormEvent): void => {
+        e.preventDefault();
+        this.props.onLogin(this.state.username, this.state.password);
     };
 
-    setPassword = (event) => {
-        const newPassword = event.target.value;
-        this.setState(() => ({
-                password: newPassword
-            })
-        );
+    private onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+        const value = e.target.value;
+        const name = e.target.name;
+        this.setState((prevState) => {
+            return {...prevState, [name]: value};
+        });
     };
 
-    setResult = (value: JSX.Element) => {
-        this.setState(() => ({
-                result: value
-            })
-        );
-    };
+    // setUsername = (event) => {
+    //     const newNick = event.target.value;
+    //     this.setState(() => ({
+    //         username: newNick
+    //         })
+    //     );
+    // };
+    //
+    // setPassword = (event) => {
+    //     const newPassword = event.target.value;
+    //     this.setState(() => ({
+    //             password: newPassword
+    //         })
+    //     );
+    // };
 
-    loginSuccessful = (): boolean => {
-        const adminNick = 'admin';
-        const adminPass = 'pass';
-        return this.state.nick === adminNick && this.state.password === adminPass;
-    };
+    // setResult = (value: JSX.Element) => {
+    //     this.setState(() => ({
+    //             result: value
+    //         })
+    //     );
+    // };
 
-    handleSubmit = (event) => {
+    //
+    // loginSuccessful = (): boolean => {
+    //     const adminNick = 'admin';
+    //     const adminPass = 'pass';
+    //     return this.state.nick === adminNick && this.state.password === adminPass;
+    // };
 
-        event.preventDefault();
-        console.log('Login attempt: ', this.state.nick, ' - ', this.state.password);
-
-        if (this.loginSuccessful()) {
-            this.props.onLogin(this.state.nick);
-            this.setResult(<Redirect to="/"/>);
-        } else {
-            this.setResult(<h4>Incorrect username and/or password!</h4>);
-        }
-    };
+    // handleSubmit = (event) => {
+    //
+    //     event.preventDefault();
+    //     console.log('Login attempt: ', this.state.nick, ' - ', this.state.password);
+    //
+    //     if (this.loginSuccessful()) {
+    //         this.props.onLogin(this.state.nick);
+    //         this.setResult(<Redirect to="/"/>);
+    //     } else {
+    //         this.setResult(<h4>Incorrect username and/or password!</h4>);
+    //     }
+    // };
 
     render(): JSX.Element {
         return (
@@ -84,7 +99,7 @@ export class Login extends React.PureComponent<ILoginProps, ILoginState> {
                             Sign In
                         </Header>
                         <Form size="large" method={'post'} name={'Login_Form'} className={'form-signin'}
-                              onSubmit={this.handleSubmit}>
+                              onSubmit={this.onSubmit}>
                             <Segment stacked>
                                 <Form.Input
                                     fluid
@@ -93,8 +108,8 @@ export class Login extends React.PureComponent<ILoginProps, ILoginState> {
                                     iconPosition="left"
                                     placeholder="Username"
                                     name="Username"
-                                    value={this.state.nick}
-                                    onChange={this.setUsername}
+                                    value={this.state.username}
+                                    onChange={this.onChange}
                                 />
                                 <Form.Input
                                     fluid
@@ -103,7 +118,7 @@ export class Login extends React.PureComponent<ILoginProps, ILoginState> {
                                     placeholder="Password"
                                     name="Password"
                                     value={this.state.password}
-                                    onChange={this.setPassword}
+                                    onChange={this.onChange}
                                     type="password"
                                 />
                                 <Button color="teal" fluid size="large">
