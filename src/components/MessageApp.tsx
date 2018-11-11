@@ -6,7 +6,6 @@ import {MessageAppHeader} from './MessageAppHeader';
 import {ChatWindow} from './ChatWindow';
 import {IChannelItem} from '../models/IChannelItem';
 import {IMessageItem} from '../models/IMessageItem';
-import {IMessageApp} from '../models/IMessageApp';
 import {Segment} from 'semantic-ui-react';
 
 interface IMessageAppProps {
@@ -23,7 +22,7 @@ export interface IMessageAppDispatchProps {
     readonly onChannelChange: (selectedChannel: number) => void;
 }
 
-export class MessageApp extends React.PureComponent<IMessageAppProps & IMessageAppStateProps & IMessageAppDispatchProps, IMessageApp> {
+export class MessageApp extends React.PureComponent<IMessageAppProps & IMessageAppStateProps & IMessageAppDispatchProps> {
     static propTypes = {
         nick: PropTypes.string.isRequired,
         messages: PropTypes.arrayOf(PropTypes.shape({
