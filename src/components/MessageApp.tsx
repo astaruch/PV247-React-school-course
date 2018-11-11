@@ -2,23 +2,21 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 import {ChannelList} from './ChannelList';
-import {IChannelItem} from './ChannelItem';
 import {MessageAppHeader} from './MessageAppHeader';
 import {ChatWindow} from './ChatWindow';
-import {IMessageItem} from './MessageItem';
+import {IChannelItem} from '../models/IChannelItem';
+import {IMessageItem} from '../models/IMessageItem';
+import {IMessageApp} from '../models/IMessageApp';
 import {Segment} from 'semantic-ui-react';
 
-interface IMessageApp {
+interface IMessageAppProps {
     nick: string;
     messages: IMessageItem[];
     channels: IChannelItem[];
 }
 
-interface IMessageState {
-    selectedChannel: number;
-}
 
-export class MessageApp extends React.PureComponent<IMessageApp, IMessageState> {
+export class MessageApp extends React.PureComponent<IMessageAppProps, IMessageApp> {
     static propTypes = {
         nick: PropTypes.string.isRequired,
         messages: PropTypes.arrayOf(PropTypes.shape({

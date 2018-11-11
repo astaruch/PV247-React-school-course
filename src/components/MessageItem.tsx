@@ -1,13 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {Comment} from 'semantic-ui-react';
-
-export interface IMessageItem {
-    readonly id: number;
-    readonly channelId: number;
-    readonly from: string;
-    readonly text: string;
-}
+import {IMessageItem} from '../models/IMessageItem';
 
 export class MessageItem extends React.Component<IMessageItem> {
     static propTypes = {

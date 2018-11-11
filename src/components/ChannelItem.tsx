@@ -1,14 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {Icon, Label, Menu} from 'semantic-ui-react';
-
-export interface IChannelItem {
-    id: number;
-    name: string;
-    numberOfNewMessages: number;
-    selected?: boolean;
-    onChannelChange?: ((id: number) => any);
-}
+import {IChannelItem} from '../models/IChannelItem';
 
 export class ChannelItem extends React.PureComponent<IChannelItem> {
     static propTypes = {

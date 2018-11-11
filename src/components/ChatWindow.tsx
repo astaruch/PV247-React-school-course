@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 
 import {MessageList} from './MessageList';
 import {MessageForm} from './MessageForm';
-import {IMessageItem} from './MessageItem';
+import {IMessageItem} from '../models/IMessageItem';
 import {Grid} from 'semantic-ui-react';
 
 

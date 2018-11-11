@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {IMessageItem, MessageItem} from './MessageItem';
+import {MessageItem} from './MessageItem';
 import {List, Comment} from 'semantic-ui-react';
+import {IMessageItem} from '../models/IMessageItem';
 
 
 interface IMessageList {

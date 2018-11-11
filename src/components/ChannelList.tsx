@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {ChannelItem, IChannelItem} from './ChannelItem';
+import {ChannelItem} from './ChannelItem';
 import {Header, Menu, Segment} from 'semantic-ui-react';
+import {IChannelItem} from '../models/IChannelItem';
 
 export interface IChannelList {
     channels: IChannelItem[];

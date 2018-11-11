@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {MessageApp} from './components/MessageApp';
-import {IChannelItem} from './components/ChannelItem';
-import {IMessageItem} from './components/MessageItem';
+import {IChannelItem} from './models/IChannelItem';
+import {IMessageItem} from './models/IMessageItem';
 import {Login} from './components/Login';
 
 interface IAppState {
