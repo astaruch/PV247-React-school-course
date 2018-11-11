@@ -15,8 +15,15 @@ interface IMessageAppProps {
     channels: IChannelItem[];
 }
 
+export interface IMessageAppStateProps {
+    readonly selectedChannel: number;
+}
 
-export class MessageApp extends React.PureComponent<IMessageAppProps, IMessageApp> {
+export interface IMessageAppDispatchProps {
+    readonly onChannelChange: (selectedChannel: number) => void;
+}
+
+export class MessageApp extends React.PureComponent<IMessageAppProps & IMessageAppStateProps & IMessageAppDispatchProps, IMessageApp> {
     static propTypes = {
         nick: PropTypes.string.isRequired,
         messages: PropTypes.arrayOf(PropTypes.shape({
@@ -40,14 +47,14 @@ export class MessageApp extends React.PureComponent<IMessageAppProps, IMessageAp
     }
 
 
-    onChannelChange = (id: number) => {
-        const selectedId = id;
-        console.log('Selected channel ', selectedId);
-        this.setState(() => ({
-                selectedChannel: selectedId
-            })
-        );
-    };
+    // onChannelChange = (id: number) => {
+    //     const selectedId = id;
+    //     console.log('Selected channel ', selectedId);
+    //     this.setState(() => ({
+    //             selectedChannel: selectedId
+    //         })
+    //     );
+    // };
 
     public render(): JSX.Element {
         const channels = this.props.channels;
@@ -57,8 +64,8 @@ export class MessageApp extends React.PureComponent<IMessageAppProps, IMessageAp
             <Segment.Group style={{height: '100%'}}>
                 <MessageAppHeader user={user}/>
                 <Segment.Group horizontal style={{height: '100%'}}>
-                    <ChannelList channels={channels} onChannelChange={this.onChannelChange} selectedChannel={this.state.selectedChannel}/>
-                    <ChatWindow nick={user} messages={messages} selectedChannel={this.state.selectedChannel}/>
+                    <ChannelList channels={channels} onChannelChange={this.props.onChannelChange} selectedChannel={this.props.selectedChannel}/>
+                    <ChatWindow nick={user} messages={messages} selectedChannel={this.props.selectedChannel}/>
                 </Segment.Group>
             </Segment.Group>
         );

@@ -5,6 +5,7 @@ import {IMessageItem} from './models/IMessageItem';
 import {Login} from './components/Login';
 import {createStore} from 'redux';
 import {rootReducer} from './common/rootReducer';
+import {Provider} from 'react-redux';
 
 
 const initialState = {
@@ -67,7 +68,9 @@ export class App extends React.PureComponent<{}, IAppState> {
         //     );
         // } else {
         return (
-            <MessageApp nick={this.state.nick} messages={messages} channels={channels}/>
+            <Provider store={store}>
+                <MessageApp nick={this.state.nick} messages={messages} channels={channels}/>
+            </Provider>
         );
     }
 }
