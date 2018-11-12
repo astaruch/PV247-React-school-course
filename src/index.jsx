@@ -11,4 +11,5 @@ import './index.css';
 
 import { AppWrapper } from './AppWrapper.tsx';
 
-ReactDOM.render(<AppWrapper />, document.getElementById('app-root'));
+ReactDOM.render(<AppWrapper/>, document.getElementById('app-root'));
+
