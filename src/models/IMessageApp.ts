@@ -15,7 +15,7 @@ export interface IChannelList {
 
 export interface IUserList {
     allIds: Immutable.List<Uuid>;
-    byId: Immutable.Map<Uuid, IUser>
+    byId: Immutable.Map<Uuid, IUser>;
 }
 
 export interface IMessageAppState {
