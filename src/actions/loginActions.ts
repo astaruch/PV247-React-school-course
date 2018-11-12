@@ -1,7 +1,7 @@
 import {Dispatch} from 'redux';
 import {MESSAGE_APP_USER_LOGGED_IN, MESSAGE_APP_USER_LOGGING_FAILED} from '../constants/actionTypes';
 import {IUser} from '../models/IUser';
-import {users} from '../initialData';
+import {_users} from '../initialData';
 
 
 const loggingSuccess = (loggedUser: IUser): Action<MESSAGE_APP_USER_LOGGED_IN> => ({
@@ -16,7 +16,7 @@ const loggingFailed = (): Action<MESSAGE_APP_USER_LOGGING_FAILED> => ({
 });
 
 function getUserByUsername(username: string): IUser | undefined {
-    return users.filter((user) => user.username === username).get(0);
+    return _users.filter((user) => user.username === username).get(0);
 }
 
 export const logIn = (username: string, password: string): any => {
