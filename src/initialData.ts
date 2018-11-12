@@ -8,7 +8,7 @@ const imgUrl1 = "https://react.semantic-ui.com/images/avatar/small/matt.jpg";
 const imgUrl2 = "https://react.semantic-ui.com/images/avatar/small/elliot.jpg";
 const imgUrl3 = "https://react.semantic-ui.com/images/avatar/small/jenny.jpg";
 
-export const users:  Immutable.List<IUser> = Immutable.List([
+export const _users:  Immutable.List<IUser> = Immutable.List([
     {
         id: uuid(),
         name: 'Matt Brown',
@@ -35,7 +35,7 @@ export const users:  Immutable.List<IUser> = Immutable.List([
     }
 ]);
 
-export const channels: Immutable.List<IChannelItem> = Immutable.List([
+export const _channels: Immutable.List<IChannelItem> = Immutable.List([
     {
         id: uuid(),
         name: 'General',
@@ -53,32 +53,32 @@ export const channels: Immutable.List<IChannelItem> = Immutable.List([
     },
 ]);
 
-export const messages: Immutable.List<IMessageItem> = Immutable.List([
+export const _messages: Immutable.List<IMessageItem> = Immutable.List([
     {
         id: uuid(),
-        channelId: channels.get(0)!.id,
-        from: users.get(0)!.id,
+        channelId: _channels.get(0)!.id,
+        from: _users.get(0)!.id,
         text: 'Ahoj',
         timestamp: 1541954645
     },
     {
         id: uuid(),
-        channelId: channels.get(0)!.id,
-        from: users.get(1)!.id,
+        channelId: _channels.get(0)!.id,
+        from: _users.get(1)!.id,
         text: 'Nazdar',
         timestamp: 1541954945
     },
     {
         id: uuid(),
-        channelId: channels.get(1)!.id,
-        from: users.get(0)!.id,
+        channelId: _channels.get(1)!.id,
+        from: _users.get(0)!.id,
         text: 'Co je noveho?',
         timestamp: 1541954645
     },
     {
         id: uuid(),
-        channelId: channels.get(1)!.id,
-        from: users.get(2)!.id,
+        channelId: _channels.get(1)!.id,
+        from: _users.get(2)!.id,
         text: 'Nic moc',
         timestamp: 1541955945
     },

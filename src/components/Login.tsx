@@ -8,12 +8,8 @@ export interface ILoginState {
     password: string;
 }
 
-export interface ILoginProps {
-    onLogin: ((nick: string) => void);
-}
-
 export interface ILoginDispatchProps {
-    onLogin(username: string, password: string): void
+    onLogin(username: string, password: string): void;
 }
 
 export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState> {
@@ -38,49 +34,6 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
             return {...prevState, [name]: value};
         });
     };
-
-    // setUsername = (event) => {
-    //     const newNick = event.target.value;
-    //     this.setState(() => ({
-    //         username: newNick
-    //         })
-    //     );
-    // };
-    //
-    // setPassword = (event) => {
-    //     const newPassword = event.target.value;
-    //     this.setState(() => ({
-    //             password: newPassword
-    //         })
-    //     );
-    // };
-
-    // setResult = (value: JSX.Element) => {
-    //     this.setState(() => ({
-    //             result: value
-    //         })
-    //     );
-    // };
-
-    //
-    // loginSuccessful = (): boolean => {
-    //     const adminNick = 'admin';
-    //     const adminPass = 'pass';
-    //     return this.state.nick === adminNick && this.state.password === adminPass;
-    // };
-
-    // handleSubmit = (event) => {
-    //
-    //     event.preventDefault();
-    //     console.log('Login attempt: ', this.state.nick, ' - ', this.state.password);
-    //
-    //     if (this.loginSuccessful()) {
-    //         this.props.onLogin(this.state.nick);
-    //         this.setResult(<Redirect to="/"/>);
-    //     } else {
-    //         this.setResult(<h4>Incorrect username and/or password!</h4>);
-    //     }
-    // };
 
     render(): JSX.Element {
         return (
@@ -107,7 +60,7 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                                     icon="user"
                                     iconPosition="left"
                                     placeholder="Username"
-                                    name="Username"
+                                    name="username"
                                     value={this.state.username}
                                     onChange={this.onChange}
                                 />
@@ -116,7 +69,7 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                                     icon="lock"
                                     iconPosition="left"
                                     placeholder="Password"
-                                    name="Password"
+                                    name="password"
                                     value={this.state.password}
                                     onChange={this.onChange}
                                     type="password"
