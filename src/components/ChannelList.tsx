@@ -16,7 +16,7 @@ export class ChannelList extends React.PureComponent<IChannelListStateProps> {
                 </Header>
                 <Segment attached>
                     {this.props.channelIds && this.props.channelIds.map((channelId) => (
-                        <ChannelItemContainer id={channelId}/>
+                        <ChannelItemContainer id={channelId} key={channelId}/>
                     ))}
                 </Segment>
                 New channel (+)

@@ -1,12 +1,12 @@
 import * as uuid from 'uuid';
 import * as Immutable from 'immutable';
-import {IUser} from './models/IUser';
-import {IMessageItem} from './models/IMessageItem';
-import {IChannelItem} from './models/IChannelItem';
+import {IUser} from '../models/IUser';
+import {IMessageItem} from '../models/IMessageItem';
+import {IChannelItem} from '../models/IChannelItem';
 
-const imgUrl1 = "https://react.semantic-ui.com/images/avatar/small/matt.jpg";
-const imgUrl2 = "https://react.semantic-ui.com/images/avatar/small/elliot.jpg";
-const imgUrl3 = "https://react.semantic-ui.com/images/avatar/small/jenny.jpg";
+const imgUrl1 = 'https://react.semantic-ui.com/images/avatar/small/matt.jpg';
+const imgUrl2 = 'https://react.semantic-ui.com/images/avatar/small/elliot.jpg';
+const imgUrl3 = 'https://react.semantic-ui.com/images/avatar/small/jenny.jpg';
 
 export const _users:  Immutable.List<IUser> = Immutable.List([
     {

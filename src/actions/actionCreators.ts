@@ -1,24 +1,6 @@
-import {
-    MESSAGE_APP_LOADING_FINISHED,
-    MESSAGE_APP_LOGIN_USER,
-    MESSAGE_APP_SELECT_CHANNEL
-} from '../constants/actionTypes';
-import {_channels, _messages, _users} from "../initialData";
-import {Dispatch} from "redux";
-
-export const loginUser = (username: string): Action<string> => ({
-    type: MESSAGE_APP_LOGIN_USER,
-    payload: {
-        username,
-    }
-});
-
-export const selectChannel = (number: number): Action<string> => ({
-    type: MESSAGE_APP_SELECT_CHANNEL,
-    payload: {
-        number,
-    }
-});
+import {MESSAGE_APP_LOADING_FINISHED} from '../constants/actionTypes';
+import {_channels, _messages, _users} from '../common/initialData';
+import {Dispatch} from 'redux';
 
 const initialData = (): Action<MESSAGE_APP_LOADING_FINISHED> => ({
     type: MESSAGE_APP_LOADING_FINISHED,

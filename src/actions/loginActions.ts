@@ -1,7 +1,7 @@
 import {Dispatch} from 'redux';
 import {MESSAGE_APP_USER_LOGGED_IN, MESSAGE_APP_USER_LOGGING_FAILED} from '../constants/actionTypes';
 import {IUser} from '../models/IUser';
-import {_users} from '../initialData';
+import {_users} from '../common/initialData';
 
 
 const loggingSuccess = (loggedUser: IUser): Action<MESSAGE_APP_USER_LOGGED_IN> => ({

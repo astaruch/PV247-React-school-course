@@ -4,7 +4,7 @@ import {rootReducer} from './reducers/rootReducer';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import {AppContainer} from './containers/AppContainer';
-import {loadInitialData} from "./actions/actionCreators";
+import {loadInitialData} from './actions/actionCreators';
 
 // To enable redux extension - https://github.com/zalmoxisus/redux-devtools-extension#usage
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

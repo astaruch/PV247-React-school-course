@@ -79,7 +79,7 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                                 </Button>
                                 <Message
                                     icon="question circle"
-                                    content="Username = admin, Password = pass"
+                                    content="Username = matt123, fsociety or jenn. Password is arbitrary (not implemented yet.)"
                                 />
                             </Segment>
                         </Form>
