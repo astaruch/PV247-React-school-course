@@ -23,7 +23,7 @@ export const channelChange = (channelId: Uuid): any => {
         if (!selectedChannel) {
             return;
         }
-        console.log('Changing channel to: ', selectedChannel.name, selectedChannel);
+        console.log('Changing channel to: ', selectedChannel.name);
         dispatch(selectingChannelFinished(selectedChannel));
     };
 };

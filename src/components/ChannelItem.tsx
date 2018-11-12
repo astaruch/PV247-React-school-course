@@ -26,7 +26,7 @@ export class ChannelItem extends React.PureComponent<IProps> {
         return (
             <Menu.Item
                 name={this.props.channelItem.name}
-                active={this.props.channelItem.selected}
+                active={this.props.selected}
                 onClick={this.onClick}
             >
                 <Label>

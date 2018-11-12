@@ -10,7 +10,7 @@ const initialData = (): Action<MESSAGE_APP_LOADING_FINISHED> => ({
         users: _users,
         logged: false,
         currentUser: null,
-        selectedChannel: null,
+        selectedChannel: _channels.get(0)!.id,
     }
 });
 
