@@ -6,18 +6,19 @@ export interface IChannelItemStateProps {
     readonly channelItem: IChannelItem;
 }
 
-export interface IChannelItemChannelProps {
+export interface IChannelItemOwnProps {
     readonly id: Uuid;
 }
 
-type IProps = IChannelItemStateProps & IChannelItemChannelProps;
+export interface IChannelItemDispatchProps {
+    onClick(id: Uuid): void;
+}
+
+type IProps = IChannelItemStateProps & IChannelItemOwnProps & IChannelItemDispatchProps;
 
 export class ChannelItem extends React.PureComponent<IProps> {
-
-    onClick = () => {
-        if (this.props.channelItem.onChannelChange) {
-            this.props.channelItem.onChannelChange(this.props.channelItem.id);
-        }
+    private onClick = () => {
+        this.props.onClick(this.props.channelItem.id);
     };
 
     public render(): JSX.Element {
