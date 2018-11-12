@@ -4,6 +4,7 @@ import {IChannelItem} from '../models/IChannelItem';
 
 export interface IChannelItemStateProps {
     readonly channelItem: IChannelItem;
+    readonly selected: boolean;
 }
 
 export interface IChannelItemOwnProps {
