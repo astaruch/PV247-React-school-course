@@ -1,11 +1,10 @@
 import {combineReducers} from 'redux';
-import {channelsReducer} from './channelsReducer';
-import {currentUserReducer} from './currentUserReducer';
-import {selectedChannelReducer} from './selectedChannelReducer';
-import {messagesReducer} from './messagesReducer';
-import {loggedInReducer} from './loggedInReducer';
+import {channels} from './channels';
+import {currentUser} from './currentUser';
+import {selectedChannel} from './selectedChannel';
+import {messages} from './messages';
+import {users} from './users';
 
 export const rootReducer = combineReducers({
-    channelsReducer, currentUserReducer,
-    loggedInReducer, messagesReducer, selectedChannelReducer,
+    users, channels, messages, currentUser, selectedChannel
 });
