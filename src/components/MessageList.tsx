@@ -8,7 +8,7 @@ export interface IMessageListStateProps {
     readonly messagesIds: Immutable.List<Uuid>;
 }
 
-export class MessageList extends React.Component<IMessageListStateProps> {
+export class MessageList extends React.PureComponent<IMessageListStateProps> {
     render(): JSX.Element {
         return (
             <List>

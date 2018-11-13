@@ -4,7 +4,7 @@ import {App, IAppStateProps} from '../App';
 
 const mapStateToProps = (state: IMessageAppState): IAppStateProps => {
     return {
-        logged: state.currentUser === null,
+        logged: state.currentUser !== null
     };
 };
 
