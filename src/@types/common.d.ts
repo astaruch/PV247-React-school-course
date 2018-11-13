@@ -1,6 +1,6 @@
 type Uuid = string;
 
-type Action<T> = {
-    type: T;
+type Action = {
+    type: string;
     payload?: any;
 };
