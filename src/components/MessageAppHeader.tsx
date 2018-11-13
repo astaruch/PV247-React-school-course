@@ -1,24 +1,25 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import {Button, Menu} from 'semantic-ui-react';
 import {Profile} from './Profile';
+import {IUser} from '../models/IUser';
 
-interface IMessageAppHeader {
-    user: string;
+export interface IMessageAppHeaderStateProps {
+    user: IUser;
 }
 
 interface IMessageAppHeaderState {
     modalOpened: boolean;
 }
 
-export class MessageAppHeader extends React.PureComponent<IMessageAppHeader, IMessageAppHeaderState> {
-    static propTypes = {
-        user: PropTypes.string.isRequired,
-    };
+export class MessageAppHeader extends React.PureComponent<IMessageAppHeaderStateProps, IMessageAppHeaderState> {
 
-    state = {
-        modalOpened: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalOpened: false
+        };
+
+    }
 
     showModal = () => {
         console.log('Opening modal window with profile');
@@ -46,7 +47,7 @@ export class MessageAppHeader extends React.PureComponent<IMessageAppHeader, IMe
                 <Menu.Item position={'right'}>
                     <Button inverted circular icon={'user'} onClick={this.showModal}/>
                 </Menu.Item>
-                <Profile nick={this.props.user} onClose={this.closeModal} open={open}/>
+                <Profile user={this.props.user} onClose={this.closeModal} open={open}/>
             </Menu>
         );
     }

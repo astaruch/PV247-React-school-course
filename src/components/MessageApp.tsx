@@ -2,6 +2,7 @@ import * as React from 'react';
 import {ChatWindow} from './ChatWindow';
 import {Segment} from 'semantic-ui-react';
 import {ChannelListContainer} from '../containers/ChannelListContainer';
+import {MessageAppHeaderContainer} from '../containers/MessageAppHeaderContainer';
 
 
 export interface IMessageAppDispatchProps {
@@ -20,7 +21,7 @@ export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
     public render(): JSX.Element {
         return (
             <Segment.Group style={{height: '100%'}}>
-                {/*<MessageAppHeader user={user}/>*/}
+                <MessageAppHeaderContainer/>
                 <Segment.Group horizontal style={{height: '100%'}}>
                     <ChannelListContainer/>
                     <ChatWindow/>
