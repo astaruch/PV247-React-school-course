@@ -8,4 +8,4 @@ const mapStateToProps = (state: IMessageAppState, ownProps: IMessageItemOwnProps
     return {message, author};
 };
 
-export const MessageItemContainer = connect<IMessageItemStateProps, void>(mapStateToProps)(MessageItem);
+export const MessageItemContainer = connect<IMessageItemStateProps>(mapStateToProps)(MessageItem);

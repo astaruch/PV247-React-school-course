@@ -4,7 +4,18 @@ import {Segment} from 'semantic-ui-react';
 import {ChannelListContainer} from '../containers/ChannelListContainer';
 
 
-export class MessageApp extends React.PureComponent<{}> {
+export interface IMessageAppDispatchProps {
+    onMount(): void;
+}
+
+export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
+    public constructor(props: IMessageAppDispatchProps) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.props.onMount();
+    }
 
     public render(): JSX.Element {
         return (
