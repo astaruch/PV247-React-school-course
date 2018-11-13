@@ -2,9 +2,9 @@ import {Dispatch} from 'redux';
 import {MESSAGE_APP_CHANNEL_CHANGE_FINISHED, MESSAGE_APP_CHANNEL_CHANGE_STARTED} from '../constants/actionTypes';
 import {IChannelItem} from '../models/IChannelItem';
 import {_channels} from '../common/initialData';
+import {loadMessages} from './messagesActions';
 
 
-// SELECTING A CHANNEL
 const selectingChannelStarted = (): Action<MESSAGE_APP_CHANNEL_CHANGE_STARTED> => ({
    type: MESSAGE_APP_CHANNEL_CHANGE_STARTED
 });
@@ -25,5 +25,6 @@ export const channelChange = (channelId: Uuid): any => {
         }
         console.log('Changing channel to: ', selectedChannel.name);
         dispatch(selectingChannelFinished(selectedChannel));
+        dispatch(loadMessages(selectedChannel.id));
     };
 };
