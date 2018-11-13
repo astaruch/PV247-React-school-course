@@ -1,18 +1,12 @@
 import * as React from 'react';
-import {applyMiddleware, compose, createStore} from 'redux';
-import {rootReducer} from './reducers/rootReducer';
-import thunk from 'redux-thunk';
+import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {AppContainer} from './containers/AppContainer';
-// import {loadInitialData} from './actions/actionCreators';
+import {rootReducer} from './reducers/rootReducer';
 
 // To enable redux extension - https://github.com/zalmoxisus/redux-devtools-extension#usage
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middleware = [thunk];
-const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(...middleware)
-));
-
+const enhancer = (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__();
+const store = createStore(rootReducer, enhancer);
 
 export class AppWrapper extends React.PureComponent {
     public render(): JSX.Element {
