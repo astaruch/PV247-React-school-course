@@ -22,7 +22,6 @@ export interface IMessageAppState {
     messages: IMessageList;
     channels: IChannelList;
     users: IUserList;
-    logged: boolean;
     currentUser: IUser | null;
     selectedChannel: Uuid | null;
 }
