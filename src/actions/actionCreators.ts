@@ -1,7 +1,8 @@
 import {
     MESSAGE_APP_CHANNEL_SELECTED,
     MESSAGE_APP_DATA_LOADED,
-    MESSAGE_APP_LOGIN_SUCCESSFUL
+    MESSAGE_APP_LOGIN_SUCCESSFUL,
+    MESSAGE_APP_MESSAGE_SUBMITTED
 } from '../constants/actionTypes';
 import {IUser} from '../models/IUser';
 import * as Immutable from 'immutable';
@@ -30,5 +31,12 @@ export const channelSelected = (channel: IChannelItem): Action => ({
     type: MESSAGE_APP_CHANNEL_SELECTED,
     payload: {
         channel
+    }
+});
+
+export const messageSubmitted = (message: IMessageItem): Action => ({
+    type: MESSAGE_APP_MESSAGE_SUBMITTED,
+    payload: {
+        message
     }
 });

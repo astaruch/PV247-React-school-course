@@ -1,22 +1,21 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import {Form} from 'semantic-ui-react';
 
-export interface IMessageForm {
-    readonly nick: string;
-    onNewMessage: ((nick: string, message: string) => void);
+export interface IMessageFormStateProps {
+    readonly channelId: Uuid;
+    readonly userId: Uuid;
 }
 
+export interface IMessageFormDispatchProps {
+    onMessageSubmit: ((channelId: Uuid, userId: Uuid, text: string) => void);
+}
 export interface IMessageFormState {
     message: string;
 }
 
-export class MessageForm extends React.PureComponent<IMessageForm, IMessageFormState> {
-    static propTypes = {
-        nick: PropTypes.string.isRequired,
-        onNewMessage: PropTypes.func.isRequired
-    };
+type IMessageFormProps = IMessageFormStateProps & IMessageFormDispatchProps;
 
+export class MessageForm extends React.PureComponent<IMessageFormProps, IMessageFormState> {
     constructor(props) {
         super(props);
 
@@ -28,7 +27,7 @@ export class MessageForm extends React.PureComponent<IMessageForm, IMessageFormS
     onSubmit = (event) => {
         event.preventDefault();
         console.log('Sending message ', this.state.message);
-        this.props.onNewMessage(this.props.nick, this.state.message);
+        this.props.onMessageSubmit(this.props.channelId, this.props.userId, this.state.message);
         this.setState(() => ({
             message: ''
         }));
