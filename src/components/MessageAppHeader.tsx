@@ -1,17 +1,12 @@
 import * as React from 'react';
 import {Button, Menu} from 'semantic-ui-react';
-import {Profile} from './Profile';
-import {IUser} from '../models/IUser';
-
-export interface IMessageAppHeaderStateProps {
-    user: IUser;
-}
+import {ProfileContainer} from '../containers/ProfileContainer';
 
 interface IMessageAppHeaderState {
     modalOpened: boolean;
 }
 
-export class MessageAppHeader extends React.PureComponent<IMessageAppHeaderStateProps, IMessageAppHeaderState> {
+export class MessageAppHeader extends React.PureComponent<any, IMessageAppHeaderState> {
 
     constructor(props) {
         super(props);
@@ -47,7 +42,7 @@ export class MessageAppHeader extends React.PureComponent<IMessageAppHeaderState
                 <Menu.Item position={'right'}>
                     <Button inverted circular icon={'user'} onClick={this.showModal}/>
                 </Menu.Item>
-                <Profile user={this.props.user} onClose={this.closeModal} open={open}/>
+                <ProfileContainer onClose={this.closeModal} open={open}/>
             </Menu>
         );
     }
