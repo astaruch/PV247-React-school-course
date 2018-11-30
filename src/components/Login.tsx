@@ -49,7 +49,7 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                 <Grid textAlign="center" style={{height: '100%'}} verticalAlign="middle">
                     <Grid.Column style={{maxWidth: 450}}>
                         <Header as="h2" color="teal" textAlign="center">
-                            Sign In
+                            <s>Sign In</s> REGISTERING USER AND HACKING THINGS
                         </Header>
                         <Form size="large" method={'post'} name={'Login_Form'} className={'form-signin'}
                               onSubmit={this.onSubmit}>
@@ -59,7 +59,7 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                                     autoFocus
                                     icon="user"
                                     iconPosition="left"
-                                    placeholder="Username"
+                                    placeholder="e-mail"
                                     name="username"
                                     value={this.state.username}
                                     onChange={this.onChange}
@@ -75,7 +75,7 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                                     type="password"
                                 />
                                 <Button color="teal" fluid size="large">
-                                    Login
+                                    <s>Login</s> Register
                                 </Button>
                                 <Message
                                     icon="question circle"
