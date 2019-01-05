@@ -11,6 +11,7 @@ const imgUrl3 = 'https://react.semantic-ui.com/images/avatar/small/jenny.jpg';
 export const _users:  Immutable.List<IUser> = Immutable.List([
     {
         id: uuid(),
+        password: 'nbusr123',
         name: 'Matt Brown',
         username: 'matt123',
         email: 'matt@gmail.com',
@@ -20,6 +21,7 @@ export const _users:  Immutable.List<IUser> = Immutable.List([
     {
         id: uuid(),
         name: 'Elliot Aldersen',
+        password: 'nbusr123',
         username: 'fsociety',
         email: 'elliot@e-corp.com',
         gender: 'm',
@@ -28,6 +30,7 @@ export const _users:  Immutable.List<IUser> = Immutable.List([
     {
         id: uuid(),
         name: 'Jenny Hope',
+        password: 'nbusr123',
         username: 'jenn',
         email: 'jenny@gmail.com',
         gender: 'f',

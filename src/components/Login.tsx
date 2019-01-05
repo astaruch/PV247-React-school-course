@@ -59,7 +59,7 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                                     autoFocus
                                     icon="user"
                                     iconPosition="left"
-                                    placeholder="Username"
+                                    placeholder="e-mail"
                                     name="username"
                                     value={this.state.username}
                                     onChange={this.onChange}
@@ -79,7 +79,7 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                                 </Button>
                                 <Message
                                     icon="question circle"
-                                    content="Username = matt123, fsociety or jenn. Password is arbitrary (not implemented yet.)"
+                                    content="Username = a@b.com. Password is arbitrary (not implemented yet.)"
                                 />
                             </Segment>
                         </Form>

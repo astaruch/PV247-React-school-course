@@ -16,9 +16,10 @@ export interface IProfileDispatchProps {
 }
 
 interface IProfileState {
-    name: string;
-    gender: string;
     email: string;
+    password: string;
+    name?: string;
+    gender?: string;
 }
 
 const genders = [
@@ -36,6 +37,7 @@ export class Profile extends React.PureComponent<IProps, IProfileState> {
         this.state = {
             name: this.props.user.name,
             gender: this.props.user.gender,
+            password: this.props.user.password,
             email: this.props.user.email
         };
     }
@@ -64,12 +66,13 @@ export class Profile extends React.PureComponent<IProps, IProfileState> {
     onSave = (event) => {
         event.preventDefault();
         this.props.onSave({
+            email: this.state.email,
+            password: this.state.password,
             id: this.props.user.id,
             pictureUrl: this.props.user.pictureUrl,
             username: this.props.user.username,
             name: this.state.name,
             gender: this.state.gender,
-            email: this.state.email
         });
         this.props.onClose();
     };
