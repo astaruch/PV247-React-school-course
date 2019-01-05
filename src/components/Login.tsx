@@ -49,7 +49,7 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                 <Grid textAlign="center" style={{height: '100%'}} verticalAlign="middle">
                     <Grid.Column style={{maxWidth: 450}}>
                         <Header as="h2" color="teal" textAlign="center">
-                            <s>Sign In</s> REGISTERING USER AND HACKING THINGS
+                            Sign In
                         </Header>
                         <Form size="large" method={'post'} name={'Login_Form'} className={'form-signin'}
                               onSubmit={this.onSubmit}>
@@ -75,11 +75,11 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
                                     type="password"
                                 />
                                 <Button color="teal" fluid size="large">
-                                    <s>Login</s> Register
+                                    Login
                                 </Button>
                                 <Message
                                     icon="question circle"
-                                    content="Username = matt123, fsociety or jenn. Password is arbitrary (not implemented yet.)"
+                                    content="Username = a@b.com. Password is arbitrary (not implemented yet.)"
                                 />
                             </Segment>
                         </Form>
