@@ -5,8 +5,9 @@ import {IUser} from '../models/IUser';
 // import {_users} from '../common/initialData';
 // import {loginSuccessful} from '../actions/actionCreators';
 import * as authService from '../services/authService';
-import {AUTH__FAIL, AUTH__SUCCESS, MESSAGE_APP_REGISTER_SUCCESS, MESSAGE_APP_REGISTERING_FAILED, USER_ALREADY_REGISTERED} from '../constants/actionTypes';
-import {BearerToken} from '../services/authService';
+import {AUTH__FAIL, AUTH__SUCCESS, MESSAGE_APP_REGISTER_SUCCESS, MESSAGE_APP_REGISTERING_FAILED, USER_ALREADY_REGISTERED,
+    LOGIN_EMAIL_DOES_NOT_EXIST} from '../constants/actionTypes';
+// import {BearerToken} from '../services/authService';
 
 // function getUserByUsername(username: string): IUser | undefined {
 //     return _users.filter((user) => user.username === username).get(0);
@@ -37,11 +38,10 @@ const registrationSuccess = (user: IUser): Action => ({
     }
 });
 
-const authSuccess = (bearer: BearerToken, id: Uuid): Action => ({
+const authSuccess = (currentUser: IUser): Action => ({
     type: AUTH__SUCCESS,
     payload: {
-        bearer,
-        id
+        currentUser
     }
 });
 
@@ -67,16 +67,26 @@ export const registerUser = (email: string, password: string): any => {
 
 export const loginUser = (email: string, password: string): any => {
     return async (dispatch: Dispatch): Promise<void> => {
+        // AUTHENTICATION STARTED
         console.log(`Logging in: ${email} : ${password}`);
         const bearerTokenObj = await authService.authUser(email);
 
         if (typeof bearerTokenObj === 'object') {
-            console.log('Type if object');
+            console.log('Type is object');
             localStorage.setItem('token', bearerTokenObj.token);
-
             const userObj = await authService.fetchUser(email, bearerTokenObj.token);
-            dispatch(authSuccess(bearerTokenObj, userObj.customData.id));
+            if (userObj !== LOGIN_EMAIL_DOES_NOT_EXIST) {
+                console.log('LOGIN OK');
+                // save user to local storage
+                localStorage.setItem('logged_user', JSON.stringify(userObj));
+                dispatch(authSuccess(userObj));
+            } else {
+                // SOME ERROR
+                console.log('non existing user');
+                dispatch(authFailed());
+            }
         } else {
+            // AUTHENTICATION FAILED
             console.log('It is AUTH__FAIL');
             dispatch(authFailed());
         }

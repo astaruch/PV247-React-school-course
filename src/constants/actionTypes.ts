@@ -15,3 +15,6 @@ export const AUTH__SUCCESS = 'AUTH__SUCCESS';
 export type AUTH__SUCCESS = typeof AUTH__SUCCESS;
 export const AUTH__FAIL = 'AUTH__FAIL';
 export type AUTH__FAIL = typeof AUTH__FAIL;
+
+export const LOGIN_EMAIL_DOES_NOT_EXIST = 'LOGIN_EMAIL_DOES_NOT_EXIST';
+export type LOGIN_EMAIL_DOES_NOT_EXIST = typeof LOGIN_EMAIL_DOES_NOT_EXIST;

@@ -2,7 +2,8 @@ import axios from 'axios';
 import * as uuid from 'uuid';
 import {IUser} from '../models/IUser';
 import {ResponseUser} from '../@types/api';
-import {AUTH__FAIL, USER_ALREADY_REGISTERED} from '../constants/actionTypes';
+import {AUTH__FAIL, USER_ALREADY_REGISTERED, LOGIN_EMAIL_DOES_NOT_EXIST} from '../constants/actionTypes';
+
 
 export const APP_ID = '4715e315-acca-484f-8634-32910a77360c';
 export const SERVER_PATH = 'https://pv247messaging.azurewebsites.net/api/v2';
@@ -30,18 +31,19 @@ export async function authUser(email: string): Promise<BearerToken | AUTH__FAIL>
     });
 }
 
-export async function fetchUser(email: string, token: string): Promise<ResponseUser> {
+export async function fetchUser(email: string, token: string): Promise<IUser | LOGIN_EMAIL_DOES_NOT_EXIST> {
     return axios.get<ResponseUser>(
         `${USER_PATH}/${email}`, {
             headers: {Authorization: 'Bearer ' + token}
         })
         .then((user) => {
             console.log(user);
+            const customData = user.data.customData;
             return Promise.resolve({
-                email: user.data.email,
-                customData: user.data.customData
+                email: user.data.email, ...customData
             });
-        });
+        })
+        .catch(() => LOGIN_EMAIL_DOES_NOT_EXIST as LOGIN_EMAIL_DOES_NOT_EXIST);
 }
 
 
