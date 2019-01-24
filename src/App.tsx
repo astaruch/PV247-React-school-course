@@ -3,12 +3,11 @@ import {MessageAppContainer} from './containers/MessageAppContainer';
 import {LoginContainer} from './containers/LoginContainer';
 
 export interface IAppStateProps {
-    logged: boolean;
+  logged: boolean;
 }
 
 export class App extends React.PureComponent<IAppStateProps> {
-
-    render(): JSX.Element {
-        return (this.props.logged) ? <MessageAppContainer/> : <LoginContainer/>;
-    }
+  render(): JSX.Element {
+    return (this.props.logged) ? <MessageAppContainer/> : <LoginContainer/>;
+  }
 }

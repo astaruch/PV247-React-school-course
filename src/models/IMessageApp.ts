@@ -4,24 +4,24 @@ import {IChannelItem} from './IChannelItem';
 import {IUser} from './IUser';
 
 export interface IMessageList {
-    allIds: Immutable.List<Uuid>;
-    byId: Immutable.Map<Uuid, IMessageItem>;
+  allIds: Immutable.List<Uuid>;
+  byId: Immutable.Map<Uuid, IMessageItem>;
 }
 
 export interface IChannelList {
-    allIds: Immutable.List<Uuid>;
-    byId: Immutable.Map<Uuid, IChannelItem>;
+  allIds: Immutable.List<Uuid>;
+  byId: Immutable.Map<Uuid, IChannelItem>;
 }
 
 export interface IUserList {
-    allIds: Immutable.List<Uuid>;
-    byId: Immutable.Map<Uuid, IUser>;
+  allIds: Immutable.List<Uuid>;
+  byId: Immutable.Map<Uuid, IUser>;
 }
 
 export interface IMessageAppState {
-    messages: IMessageList;
-    channels: IChannelList;
-    users: IUserList;
-    currentUser: IUser | null;
-    selectedChannel: Uuid | null;
+  messages: IMessageList;
+  channels: IChannelList;
+  users: IUserList;
+  currentUser: IUser | null;
+  selectedChannel: Uuid | null;
 }
