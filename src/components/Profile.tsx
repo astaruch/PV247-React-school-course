@@ -23,8 +23,8 @@ interface IProfileState {
 }
 
 const genders = [
-    {key: 'm', text: 'Male', value: 'm'},
-    {key: 'f', text: 'Female', value: 'f'}
+  {key: 'm', text: 'Male', value: 'm'},
+  {key: 'f', text: 'Female', value: 'f'}
 ];
 
 
