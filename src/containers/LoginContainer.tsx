@@ -1,12 +1,17 @@
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import {ILoginDispatchProps, Login} from '../components/Login';
+import {ILoginDispatchProps, ILoginStateProps, Login} from '../components/Login';
 import {tryToLogin} from '../actions/loginActions';
+import {IMessageAppState} from '../models/IMessageApp';
 
-
-const mapDispatchToProps = (dispatch: Dispatch): ILoginDispatchProps => {
-    return {
-        onLogin: (username: string, password: string) => dispatch(tryToLogin(username, password))
-    };
+const mapStateToProps = (state: IMessageAppState): ILoginStateProps => {
+  return {
+    loginPageError: state.loginPageError
+  };
 };
-export const LoginContainer = connect<void, ILoginDispatchProps>(null, mapDispatchToProps)(Login);
+const mapDispatchToProps = (dispatch: Dispatch): ILoginDispatchProps => {
+  return {
+    onLogin: (username: string, password: string) => dispatch(tryToLogin(username, password))
+  };
+};
+export const LoginContainer = connect<void, ILoginDispatchProps>(mapStateToProps, mapDispatchToProps)(Login);

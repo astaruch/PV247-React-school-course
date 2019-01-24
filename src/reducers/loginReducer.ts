@@ -11,3 +11,12 @@ export function currentUser(prevState: IUser | null = null, action: Action): IUs
       return prevState;
   }
 }
+
+export const loginPageError = (prevState: any | null = null, action: Action) => {
+  switch (action.type) {
+    case LOGIN_FAILED:
+      return action.payload.loginPageError;
+    default:
+      return prevState;
+  }
+};

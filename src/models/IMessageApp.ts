@@ -2,6 +2,7 @@ import * as Immutable from 'immutable';
 import {IMessageItem} from './IMessageItem';
 import {IChannelItem} from './IChannelItem';
 import {IUser} from './IUser';
+import {LOGIN_PAGE_FAILURES} from '../actions/loginActions';
 
 export interface IMessageList {
   allIds: Immutable.List<Uuid>;
@@ -24,4 +25,5 @@ export interface IMessageAppState {
   users: IUserList;
   currentUser: IUser | null;
   selectedChannel: Uuid | null;
+  loginPageError: LOGIN_PAGE_FAILURES | null;
 }

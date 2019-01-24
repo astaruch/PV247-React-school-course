@@ -5,20 +5,21 @@ import {IUser} from '../models/IUser';
 export const LOGIN_STARTED = 'LOGIN_STARTED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export type LOGIN_TYPES = typeof LOGIN_STARTED | typeof LOGIN_FAILED | typeof LOGIN_SUCCESS;
+// export type LOGIN_TYPES = typeof LOGIN_STARTED | typeof LOGIN_FAILED | typeof LOGIN_SUCCESS;
 
 export type LOGIN_NON_EXISTING_EMAIL = 'LOGIN_NON_EXISTING_EMAIL';
 export type LOGIN_BAD_PASSWORD = 'LOGIN_BAD_PASSWORD';
-export type LOGIN_FAILURE = LOGIN_NON_EXISTING_EMAIL | LOGIN_BAD_PASSWORD;
+
+export type LOGIN_PAGE_FAILURES = LOGIN_NON_EXISTING_EMAIL | LOGIN_BAD_PASSWORD;
 
 const authenticationStarted = () => ({
   type: LOGIN_STARTED
 });
 
-const authenticationFailed = (error: LOGIN_FAILURE) => ({
+const authenticationFailed = (error: LOGIN_PAGE_FAILURES) => ({
   type: LOGIN_FAILED,
   payload: {
-    error
+    loginPageError: error
   }
 });
 

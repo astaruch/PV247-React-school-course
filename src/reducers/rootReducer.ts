@@ -3,8 +3,8 @@ import {channels} from './channels';
 import {selectedChannel} from './selectedChannel';
 import {messages} from './messages';
 import {users} from './users';
-import {currentUser} from './loginReducer';
+import {currentUser, loginPageError} from './loginReducer';
 
 export const rootReducer = combineReducers({
-  users, channels, messages, currentUser, selectedChannel
+  users, channels, messages, currentUser, selectedChannel, loginPageError
 });
