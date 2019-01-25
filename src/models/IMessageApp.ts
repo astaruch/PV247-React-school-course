@@ -25,5 +25,5 @@ export interface IMessageAppState {
   users: IUserList;
   currentUser: IUser | null;
   selectedChannel: Uuid | null;
-  loginPageError: LOGIN_PAGE_FAILURES | null;
+  authPageError: LOGIN_PAGE_FAILURES | null;
 }

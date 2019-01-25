@@ -6,27 +6,27 @@ import {MessageAppHeader} from './MessageAppHeader';
 
 
 export interface IMessageAppDispatchProps {
-    onMount(): void;
+  onMount(): void;
 }
 
 export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
-    public constructor(props: IMessageAppDispatchProps) {
-        super(props);
-    }
+  public constructor(props: IMessageAppDispatchProps) {
+    super(props);
+  }
 
-    componentDidMount() {
-        this.props.onMount();
-    }
+  componentDidMount() {
+    this.props.onMount();
+  }
 
-    public render(): JSX.Element {
-        return (
-            <Segment.Group style={{height: '100%'}}>
-                <MessageAppHeader/>
-                <Segment.Group horizontal style={{height: '100%'}}>
-                    <ChannelListContainer/>
-                    <ChatWindow/>
-                </Segment.Group>
-            </Segment.Group>
-        );
-    }
+  public render(): JSX.Element {
+    return (
+      <Segment.Group style={{height: '100%'}}>
+        <MessageAppHeader/>
+        <Segment.Group horizontal style={{height: '100%'}}>
+          <ChannelListContainer/>
+          <ChatWindow/>
+        </Segment.Group>
+      </Segment.Group>
+    );
+  }
 }

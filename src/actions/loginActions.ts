@@ -19,7 +19,7 @@ const authenticationStarted = () => ({
 const authenticationFailed = (error: LOGIN_PAGE_FAILURES) => ({
   type: LOGIN_FAILED,
   payload: {
-    loginPageError: error
+    authPageError: error
   }
 });
 

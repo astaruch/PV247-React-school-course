@@ -10,7 +10,7 @@ export interface ILoginState {
 }
 
 export interface ILoginStateProps {
-  readonly loginPageError: LOGIN_PAGE_FAILURES | null;
+  readonly authPageError: LOGIN_PAGE_FAILURES | null;
 }
 
 export interface ILoginDispatchProps {
@@ -89,7 +89,7 @@ export class Login extends React.PureComponent<IProps, ILoginState> {
                   content="Username = a@b.com. Password is arbitrary (not implemented yet.)"
                 />
                 <Message
-                  content={this.props.loginPageError ? this.props.loginPageError : 'No-error'}
+                  content={this.props.authPageError ? this.props.authPageError : 'No-error'}
                 />
               </Segment>
             </Form>
