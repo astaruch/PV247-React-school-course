@@ -14,7 +14,7 @@ export interface ISignUpStateProps {
 }
 
 export interface ISignUpDispatchProps {
-  onLogin(username: string, password: string): void;
+  onSignUp(username: string, password: string): void;
 }
 
 type IProps = ISignUpStateProps & ISignUpDispatchProps;
@@ -31,7 +31,7 @@ export class SignUp extends React.PureComponent<IProps, ISignUpState> {
 
   private onSubmit = (e: FormEvent): void => {
     e.preventDefault();
-    this.props.onLogin(this.state.email, this.state.password);
+    this.props.onSignUp(this.state.email, this.state.password);
   };
 
   private onChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -54,7 +54,7 @@ export class SignUp extends React.PureComponent<IProps, ISignUpState> {
               icon="user"
               iconPosition="left"
               placeholder="New e-mail"
-              name="username"
+              name="email"
               value={this.state.email}
               onChange={this.onChange}
             />

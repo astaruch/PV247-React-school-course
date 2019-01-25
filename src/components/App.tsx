@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {MessageAppContainer} from '../containers/MessageAppContainer';
-import {AuthPage} from "./AuthPage";
+import {AuthPage} from './AuthPage';
 
 export interface IAppStateProps {
   logged: boolean;
