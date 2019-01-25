@@ -7,7 +7,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
-import './index.css';
+import './app.less';
 
 import { AppWrapper } from './AppWrapper.tsx';
 

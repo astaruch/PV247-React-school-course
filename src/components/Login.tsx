@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ChangeEvent, FormEvent} from 'react';
-import {Button, Form, Grid, Header, Message, Popup, Segment} from 'semantic-ui-react';
+import {Button, Form, Grid, Message, Segment} from 'semantic-ui-react';
 import {LOGIN_PAGE_FAILURES} from '../actions/loginActions';
 
 
@@ -44,29 +44,16 @@ export class Login extends React.PureComponent<IProps, ILoginState> {
 
   render(): JSX.Element {
     return (
-      <div className="login-form">
-        <style>{`
-      body > div,
-      body > div > div,
-      body > div > div > div.login-form {
-        height: 100%;
-      }
-    `}
-        </style>
-        <Grid textAlign="center" style={{height: '100%'}} verticalAlign="middle">
-          <Grid.Column style={{maxWidth: 450}}>
-            <Header as="h2" color="teal" textAlign="center">
-              Sign In
-            </Header>
-            <Form size="large" method={'post'} name={'Login_Form'} className={'form-signin'}
-                  onSubmit={this.onSubmit}>
+
+          <Grid.Column className={'login-form-grid-column'}>
+            <Form size="large" method={'post'} onSubmit={this.onSubmit}>
               <Segment stacked>
                 <Form.Input
                   fluid
                   autoFocus
                   icon="user"
                   iconPosition="left"
-                  placeholder="e-mail"
+                  placeholder="Your e-mail"
                   name="username"
                   value={this.state.username}
                   onChange={this.onChange}
@@ -75,35 +62,22 @@ export class Login extends React.PureComponent<IProps, ILoginState> {
                   fluid
                   icon="lock"
                   iconPosition="left"
-                  placeholder="Password"
+                  placeholder="Your password"
                   name="password"
                   value={this.state.password}
                   onChange={this.onChange}
                   type="password"
                 />
-                <Button color="teal" fluid size="large">
-                  Login
+                <Button color="blue" fluid size="large">
+                  Log In
                 </Button>
-                <Message
-                  icon="question circle"
-                  content="Username = a@b.com. Password is arbitrary (not implemented yet.)"
-                />
                 <Message
                   content={this.props.authPageError ? this.props.authPageError : 'No-error'}
                 />
               </Segment>
             </Form>
-            <Message>
-              Not having an account? <Popup
-              trigger={<a href={'#'}>Sign up!</a>}
-              content="Not implemented yet"
-              on="click"
-              style={{height: 'auto'}}
-            />
-            </Message>
           </Grid.Column>
-        </Grid>
-      </div>
+
     );
   }
 }
