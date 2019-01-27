@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {ChangeEvent, FormEvent} from 'react';
-import {Button, Form, Grid, Message, Segment} from 'semantic-ui-react';
-import {LOGIN_PAGE_FAILURES} from '../actions/loginActions';
+import {Button, Form, Grid, Segment} from 'semantic-ui-react';
 
 
 export interface ISignUpState {
@@ -9,18 +8,12 @@ export interface ISignUpState {
   password: string;
 }
 
-export interface ISignUpStateProps {
-  readonly authPageError: LOGIN_PAGE_FAILURES | null;
-}
-
 export interface ISignUpDispatchProps {
   onSignUp(username: string, password: string): void;
 }
 
-type IProps = ISignUpStateProps & ISignUpDispatchProps;
-
-export class SignUp extends React.PureComponent<IProps, ISignUpState> {
-  constructor(props: IProps) {
+export class SignUp extends React.PureComponent<ISignUpDispatchProps, ISignUpState> {
+  constructor(props: ISignUpDispatchProps) {
     super(props);
 
     this.state = {
@@ -71,9 +64,6 @@ export class SignUp extends React.PureComponent<IProps, ISignUpState> {
             <Button color="green" fluid size="large">
               Sign Up
             </Button>
-            <Message
-              content={this.props.authPageError ? this.props.authPageError : 'No-error'}
-            />
           </Segment>
         </Form>
       </Grid.Column>

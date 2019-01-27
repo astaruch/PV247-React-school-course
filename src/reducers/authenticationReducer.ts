@@ -17,6 +17,9 @@ export function currentUser(prevState: IUser | null = null, action: Action): IUs
 
 export const authPageError = (prevState: any | null = null, action: Action) => {
   switch (action.type) {
+    case LOGIN_SUCCEEDED:
+    case REGISTRATION_SUCCEEDED:
+      return null;
     case LOGIN_FAILED:
     case REGISTRATION_FAILED:
       return action.payload.authPageError;
