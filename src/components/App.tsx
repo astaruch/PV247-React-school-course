@@ -7,6 +7,7 @@ import {AuthPageContainer} from '../containers/AuthPageContainer';
 export interface IAppStateProps {
   logged: boolean;
   authPageError: LOGIN_PAGE_FAILURES | SIGN_UP_PAGE_FAILURES | null;
+  asyncOperationsCount: number;
 }
 
 export class App extends React.PureComponent<IAppStateProps> {
