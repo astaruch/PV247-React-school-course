@@ -33,7 +33,6 @@ export class AuthPage extends React.PureComponent<IAuthPageStateProps, IState> {
   render(): JSX.Element {
     const {displayLoginPage} = this.state;
     const {authPageError, asyncOperationsCount} = this.props;
-    console.log(`count = ${asyncOperationsCount}`);
     return (
       <div className={'auth-page'}>
         <Grid textAlign="center" verticalAlign="middle" className={'auth-page-grid'}>

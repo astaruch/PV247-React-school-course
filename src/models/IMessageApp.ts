@@ -10,6 +10,23 @@ export interface IMessageList {
   byId: Immutable.Map<Uuid, IMessageItem>;
 }
 
+export interface IChannelItem {
+  readonly id: Uuid;
+  readonly name: string;
+  readonly numberOfNewMessages: number;
+  readonly selected?: boolean;
+  readonly onChannelChange?: ((id: Uuid) => any);
+}
+
+export interface IChannel {
+  readonly id: Uuid;
+  readonly name: string;
+  readonly numberOfNewMessages: number;
+  readonly selected?: boolean;
+  readonly order: number;
+  readonly usersId: Immutable.List<Uuid>;
+}
+
 export interface IChannelList {
   allIds: Immutable.List<Uuid>;
   byId: Immutable.Map<Uuid, IChannelItem>;

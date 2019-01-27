@@ -20,7 +20,7 @@ export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
 
   public render(): JSX.Element {
     return (
-      <Segment.Group style={{height: '100%'}}>
+      <Segment.Group className={'message-app'}>
         <MessageAppHeader/>
         <Segment.Group horizontal style={{height: '100%'}}>
           <ChannelListContainer/>
