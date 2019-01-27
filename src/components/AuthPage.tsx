@@ -1,7 +1,9 @@
 import * as React from 'react';
+import {Button, Grid, Message} from 'semantic-ui-react';
+import Loader from 'react-loader-spinner';
+
 import {LoginContainer} from '../containers/LoginContainer';
 import {SignUpContainer} from '../containers/SignUpContainer';
-import {Button, Grid, Message} from 'semantic-ui-react';
 import {LOGIN_PAGE_FAILURES} from '../actions/loginActions';
 import {SIGN_UP_PAGE_FAILURES} from '../actions/signUpActions';
 
@@ -47,6 +49,9 @@ export class AuthPage extends React.PureComponent<IAuthPageStateProps, IState> {
           </Grid.Row>
           <Grid.Row>
             {authPageError && <Message content={authPageError}/>}
+          </Grid.Row>
+          <Grid.Row>
+            <Loader/>
           </Grid.Row>
         </Grid>
       </div>
