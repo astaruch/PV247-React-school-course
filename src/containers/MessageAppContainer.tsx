@@ -6,7 +6,8 @@ import {IMessageItem} from '../models/IMessageItem';
 import {_messages, _users} from '../common/initialData';
 import {IUser} from '../models/IUser';
 import {dataLoaded} from '../actions/actionCreators';
-import {getChannelsFromServer} from '../actions/channelActions';
+import * as channelService from '../services/channelService';
+import {channelsRetrievingEnded, channelsRetrievingStarted} from '../actions/channelActions';
 
 
 async function loadMessages(): Promise<Immutable.List<IMessageItem>> {
@@ -18,8 +19,11 @@ async function loadUsers(): Promise<Immutable.List<IUser>> {
 }
 
 const loadData = (): any => {
+  console.log('loadData()');
   return async (dispatch: Dispatch): Promise<void> => {
-    const channels = await getChannelsFromServer();
+    dispatch(channelsRetrievingStarted());
+    const channels = await channelService.getChannels();
+    dispatch(channelsRetrievingEnded(channels));
     const messages = await loadMessages();
     const users = await loadUsers();
     console.log('loadData - channels:', channels);
@@ -29,6 +33,7 @@ const loadData = (): any => {
 
 
 const mapDispatchToProps = (dispatch: Dispatch): any => {
+  console.log('msgAppContainer - mapDispatchToProps');
   return {
     onMount: () => dispatch(loadData())
   };

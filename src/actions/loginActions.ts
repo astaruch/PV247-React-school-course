@@ -32,14 +32,12 @@ const authenticationSuccess = (loggedUser: IUser) => ({
 export const tryToLogin = (email: string, password: string): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(authenticationStarted());
-    console.log(`Trying to login: |${email}|${password}|`);
 
     const bearerToken = await authenticationService.getBearerTokenForExistingUser(email);
     if (!bearerToken) {
       dispatch(authenticationFailed('LOGIN_NON_EXISTING_EMAIL'));
       return;
     }
-    console.log('Token:', bearerToken);
 
     // E-mail was used somewhere in PV247-API across all project. Need to check if it's in this specific app.
     const existingUser = await authenticationService.getExistingUser(email);
@@ -47,7 +45,6 @@ export const tryToLogin = (email: string, password: string): any => {
       dispatch(authenticationFailed('LOGIN_NON_EXISTING_EMAIL'));
       return;
     }
-    console.log('Existing user:', existingUser);
 
     if (password !== existingUser.password) {
       dispatch(authenticationFailed('LOGIN_BAD_PASSWORD'));
@@ -56,6 +53,5 @@ export const tryToLogin = (email: string, password: string): any => {
 
     localStorage.setItem('LOGGED_USER', JSON.stringify(existingUser));
     dispatch(authenticationSuccess(existingUser));
-    console.log('Logged in...');
   };
 };

@@ -7,11 +7,11 @@ import {IChannel} from '../models/IMessageApp';
 export const CHANNELS_RETRIEVING_STARTED = 'CHANNELS_RETRIEVING_STARTED';
 export const CHANNELS_RETRIEVING_ENDED = 'CHANNELS_RETRIEVING_ENDED';
 
-const channelsRetrievingStarted = () => ({
+export const channelsRetrievingStarted = () => ({
   type: CHANNELS_RETRIEVING_STARTED
 });
 
-const channelsRetrievingEnded = (channels: Immutable.List<IChannel>) => ({
+export const channelsRetrievingEnded = (channels: Immutable.List<IChannel> = Immutable.List()): Action => ({
   type: CHANNELS_RETRIEVING_ENDED,
   payload: {
     channels
