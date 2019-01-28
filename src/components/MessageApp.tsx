@@ -6,7 +6,7 @@ import {MessageAppHeader} from './MessageAppHeader';
 
 
 export interface IMessageAppDispatchProps {
-  onMount(): void;
+  loadDataFromServer(): void;
 }
 
 export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
@@ -15,7 +15,7 @@ export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
   }
 
   componentDidMount() {
-    this.props.onMount();
+    this.props.loadDataFromServer();
   }
 
   public render(): JSX.Element {
