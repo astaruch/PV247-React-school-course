@@ -11,8 +11,8 @@ import {changeChannel} from '../actions/channelActions';
 
 const mapStateToProps = (state: IMessageAppState, channelProps: IChannelItemOwnProps): IChannelItemStateProps => {
   return {
-    channel: state.channels.byId.get(channelProps.id)!,
-    selected: state.selectedChannel === channelProps.id,
+    channel: state.channels.asMap.get(channelProps.id)!,
+    selected: state.channels.selected === channelProps.id,
   };
 };
 

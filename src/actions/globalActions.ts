@@ -41,7 +41,6 @@ const messageAppDataLoadingEnded = (
   }
 );
 
-
 export const loadDataFromServer = (): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(messageAppDataLoadingStarted());

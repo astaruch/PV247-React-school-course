@@ -8,3 +8,9 @@ export interface IChannel {
   readonly order: number;
   readonly usersId: Immutable.List<Uuid>;
 }
+
+export interface IChannelList {
+  asList: Immutable.List<Uuid>;
+  asMap: Immutable.Map<Uuid, IChannel>;
+  selected: Uuid;
+}

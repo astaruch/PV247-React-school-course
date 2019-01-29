@@ -15,7 +15,7 @@ export class ChannelList extends React.PureComponent<IChannelListStateProps> {
         <Header as={'h3'} className={'channel-list-header-text'}>
           <Icon name={'unordered list'}/>
           <Header.Content>Channels</Header.Content>
-          <Button className={'channel-list-header-button'} icon={'add'}/>
+          <Button  className={'channel-list-header-button'} icon={'add'}/>
         </Header>
         <Segment attached>
           {this.props.channelIds && this.props.channelIds.map((channelId) => (
