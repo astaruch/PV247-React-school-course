@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = (state: IMessageAppState): IChannelListStateProps => {
   return {
-    channelIds: state.channels && state.channels.allIds || null,
+    channelsList: state.channels && state.channels.asList,
   };
 };
 export const ChannelListContainer = connect<IChannelListStateProps, void>(mapStateToProps)(ChannelList);

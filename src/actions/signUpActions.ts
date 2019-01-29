@@ -36,7 +36,6 @@ const validEmail = (email: string): boolean => {
 export const registerNewUser = (email: string, password: string): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(registrationStarted());
-    console.log(`Trying to register: |${email}|${password}|`);
     if (!validEmail(email)) {
       dispatch(registrationFailed('REGISTRATION_INVALID_EMAIL'));
       return;
@@ -54,6 +53,5 @@ export const registerNewUser = (email: string, password: string): any => {
     localStorage.setItem('LOGGED_USER', JSON.stringify(newUser));
     dispatch(registrationSucceeded(newUser));
     await authenticationService.getBearerTokenForExistingUser(email);
-    console.log('Created a new account. Logging in...');
   };
 };

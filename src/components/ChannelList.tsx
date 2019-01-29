@@ -4,7 +4,7 @@ import {ChannelItemContainer} from '../containers/ChannelItemContainer';
 import {Button, Header, Icon, Menu, Segment} from 'semantic-ui-react';
 
 export interface IChannelListStateProps {
-  readonly channelIds: Immutable.List<Uuid>;
+  readonly channelsList: Immutable.List<Uuid>;
 }
 
 export class ChannelList extends React.PureComponent<IChannelListStateProps> {
@@ -18,7 +18,7 @@ export class ChannelList extends React.PureComponent<IChannelListStateProps> {
           <Button  className={'channel-list-header-button'} icon={'add'}/>
         </Header>
         <Segment attached>
-          {this.props.channelIds && this.props.channelIds.map((channelId) => (
+          {this.props.channelsList && this.props.channelsList.map((channelId) => (
             <ChannelItemContainer id={channelId} key={channelId}/>
           ))}
         </Segment>

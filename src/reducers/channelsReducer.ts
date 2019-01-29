@@ -32,7 +32,7 @@ const selected = (prevState: Uuid | null = null, action: Action): Uuid | null =>
     default:
       return prevState;
   }
-}
+};
 
 export const channels = combineReducers({
   asList,
