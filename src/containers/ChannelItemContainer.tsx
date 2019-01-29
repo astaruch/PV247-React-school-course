@@ -8,19 +8,6 @@ import {
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {changeChannel} from '../actions/channelActions';
-//import {_channels} from '../common/initialData';
-//import {channelSelected} from '../actions/actionCreators';
-
-//const channelChange = (channelId: Uuid): any => {
-//    return async (dispatch: Dispatch): Promise<void> => {
-//        const selectedChannel = _channels.filter((channel) => channel.id === channelId).get(0);
-//        if (!selectedChannel) {
-//            return;
-//        }
-//        console.log('Changing channel to: ', selectedChannel.name);
-//        dispatch(channelSelected(selectedChannel));
-//    };
-//};
 
 const mapStateToProps = (state: IMessageAppState, channelProps: IChannelItemOwnProps): IChannelItemStateProps => {
   return {
@@ -31,7 +18,6 @@ const mapStateToProps = (state: IMessageAppState, channelProps: IChannelItemOwnP
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-//        onClick: (channelId: Uuid) => dispatch(channelChange(channelId)),
     onClick: (channelId: Uuid) => dispatch(changeChannel(channelId))
   };
 };

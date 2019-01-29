@@ -1,12 +1,14 @@
-import {MESSAGE_APP_CHANNEL_SELECTED, MESSAGE_APP_DATA_LOADED} from '../constants/actionTypes';
+import {MESSAGE_APP_DATA_LOADING_ENDED} from '../actions/globalActions';
+import {CHANGING_CHANNEL_ENDED} from '../actions/channelActions';
 
 export function selectedChannel(prevState: Uuid | null = null, action: Action): Uuid | null {
-    switch (action.type) {
-        case MESSAGE_APP_DATA_LOADED:
-            return action.payload.channels.get(0).id;
-        case MESSAGE_APP_CHANNEL_SELECTED:
-            return action.payload.channel.id;
-        default:
-            return prevState;
-    }
+  switch (action.type) {
+    // On first load set it to 1st channel
+    case MESSAGE_APP_DATA_LOADING_ENDED:
+      return action.payload.channels.get(0).id;
+    case CHANGING_CHANNEL_ENDED:
+      return action.payload.id;
+    default:
+      return prevState;
+  }
 }

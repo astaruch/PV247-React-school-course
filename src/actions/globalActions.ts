@@ -43,7 +43,6 @@ const messageAppDataLoadingEnded = (
 
 
 export const loadDataFromServer = (): any => {
-  console.log('globalActions: loadData()');
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(messageAppDataLoadingStarted());
 
