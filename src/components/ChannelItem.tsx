@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Icon, Label, Menu} from 'semantic-ui-react';
-import {IChannel} from '../models/IMessageApp';
+import {IChannel} from '../models/IChannel';
 
 export interface IChannelItemStateProps {
     readonly channel: IChannel;

@@ -1,7 +1,7 @@
 import * as Immutable from 'immutable';
 import {combineReducers} from 'redux';
 import {CHANNELS_RETRIEVING_ENDED} from '../actions/globalActions';
-import {IChannel} from '../models/IMessageApp';
+import {IChannel} from '../models/IChannel';
 
 const byId = (prevState = Immutable.Map<Uuid, IChannel>(), action: Action): Immutable.Map<Uuid, IChannel> => {
   switch (action.type) {

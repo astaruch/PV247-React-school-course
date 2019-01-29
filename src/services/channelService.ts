@@ -2,7 +2,7 @@ import * as Immutable from 'immutable';
 import axios from 'axios';
 
 import {CHANNEL_PATH} from './authenticationService';
-import {IChannel} from '../models/IMessageApp';
+import {IChannel} from '../models/IChannel';
 import {ResponseChannel} from '../@types/api';
 
 const getBearer = () => {
@@ -19,7 +19,6 @@ export async function getChannels(): Promise<Immutable.List<IChannel>> {
   return axios.get<ResponseChannel[]>(CHANNEL_PATH,
     getAuthorizationHeader()
   ).then((response) => {
-    console.log('getChannels()');
     const responseChannels = response.data;
     if (!responseChannels || responseChannels.length === 0) {
       return Immutable.List();

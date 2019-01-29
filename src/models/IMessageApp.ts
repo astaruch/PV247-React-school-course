@@ -3,19 +3,11 @@ import {IMessageItem} from './IMessageItem';
 import {IUser} from './IUser';
 import {LOGIN_PAGE_FAILURES} from '../actions/loginActions';
 import {SIGN_UP_PAGE_FAILURES} from '../actions/signUpActions';
+import {IChannel} from './IChannel';
 
 export interface IMessageList {
   allIds: Immutable.List<Uuid>;
   byId: Immutable.Map<Uuid, IMessageItem>;
-}
-
-export interface IChannel {
-  readonly id: Uuid;
-  readonly name: string;
-  readonly numberOfNewMessages: number;
-  readonly selected?: boolean;
-  readonly order: number;
-  readonly usersId: Immutable.List<Uuid>;
 }
 
 export interface IChannelList {

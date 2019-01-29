@@ -2,7 +2,7 @@ import * as Immutable from 'immutable';
 import {Dispatch} from 'redux';
 
 import * as channelService from '../services/channelService';
-import {IChannel} from '../models/IMessageApp';
+import {IChannel} from '../models/IChannel';
 import {IMessageItem} from '../models/IMessageItem';
 import {IUser} from '../models/IUser';
 
