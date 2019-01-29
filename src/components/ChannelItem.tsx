@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {Icon, Label, Menu} from 'semantic-ui-react';
-import {IChannelItem} from '../models/IChannelItem';
+import {IChannel} from '../models/IMessageApp';
 
 export interface IChannelItemStateProps {
-    readonly channelItem: IChannelItem;
+    readonly channel: IChannel;
     readonly selected: boolean;
 }
 
@@ -19,20 +19,20 @@ type IProps = IChannelItemStateProps & IChannelItemOwnProps & IChannelItemDispat
 
 export class ChannelItem extends React.PureComponent<IProps> {
     private onClick = () => {
-        this.props.onClick(this.props.channelItem.id);
+        this.props.onClick(this.props.channel.id);
     };
 
     public render(): JSX.Element {
         return (
             <Menu.Item
-                name={this.props.channelItem.name}
+                name={this.props.channel.name}
                 active={this.props.selected}
                 onClick={this.onClick}
             >
                 <Label>
-                    <Icon name={'mail'}/>{this.props.channelItem.numberOfNewMessages}
+                    <Icon name={'mail'}/>{this.props.channel.numberOfNewMessages}
                 </Label>
-                {this.props.channelItem.name}
+                {this.props.channel.name}
             </Menu.Item>
         );
     }
