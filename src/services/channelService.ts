@@ -80,3 +80,8 @@ export async function createChannel(newName: string, newCustomData: object): Pro
     return Promise.resolve(channel);
   });
 }
+
+export async function deleteChannel(channelId: Uuid): Promise<void> {
+  return axios.delete(`${CHANNEL_PATH}/${channelId}`, getAuthorizationHeader()
+  ).then(response => console.log(response));
+}

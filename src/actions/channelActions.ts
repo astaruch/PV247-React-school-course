@@ -13,6 +13,9 @@ export const CREATE_NEW_CHANNEL_STARTED = 'CREATE_NEW_CHANNEL_STARTED';
 export const CREATE_NEW_CHANNEL_SAVING = 'CREATE_NEW_CHANNEL_SAVING';
 export const CREATE_NEW_CHANNEL_CANCELED = 'CREATE_NEW_CHANNEL_CANCELED';
 
+export const DELETE_CHANNEL_STARTED = 'DELETE_CHANNEL_STARTED';
+export const DELETE_CHANNEL_ENDED = 'DELETE_CHANNEL_ENDED';
+
 export const changingChannelStarted = (): Action => ({
   type: CHANGING_CHANNEL_STARTED
 });
@@ -54,6 +57,17 @@ export const creatingNewChannelCanceled = (): Action => ({
   type: CREATE_NEW_CHANNEL_CANCELED
 });
 
+export const deleteChannelStarted = () => ({
+  type: DELETE_CHANNEL_STARTED
+});
+
+export const deleteChannelEnded = (id: Uuid) => ({
+  type: DELETE_CHANNEL_ENDED,
+  payload: {
+    id
+  }
+});
+
 export const changeChannel = (channelId: Uuid): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(changingChannelStarted());
@@ -90,6 +104,14 @@ export const saveNewChannel = (name: string, order: number): any => {
 export const cancelChannelCreation = (): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(creatingNewChannelCanceled());
-    console.log('cancelChannelCreation');
+  };
+};
+
+
+export const deleteChannel = (id: Uuid): any => {
+  return async (dispatch: Dispatch): Promise<void> => {
+    dispatch(deleteChannelStarted());
+    await channelService.deleteChannel(id);
+    dispatch(deleteChannelEnded(id));
   };
 };

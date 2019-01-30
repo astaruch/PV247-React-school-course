@@ -15,6 +15,7 @@ export interface IChannelItemOwnProps {
 export interface IChannelItemDispatchProps {
   onChannelChange(id: Uuid): void;
   onSavingChannelName(channel: IChannel, name: string): void;
+  onDeleteChannel(id: Uuid): void;
 }
 
 interface IState {
@@ -58,6 +59,10 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
     this.props.onSavingChannelName(this.props.channel, this.state.currentChannelName);
   };
 
+  private onDeleteChannel = () => {
+    this.props.onDeleteChannel(this.props.channel.id);
+  }
+
   public render(): JSX.Element {
     return (
       <Segment.Group horizontal>
@@ -99,6 +104,9 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
               </Button>
               <Button onClick={() => this.onCancelChanges(false)}>
                 <Icon name={'x'}/>
+              </Button>
+              <Button onClick={this.onDeleteChannel}>
+                <Icon name={'trash'}/>
               </Button>
             </Button.Group>
           </div>
