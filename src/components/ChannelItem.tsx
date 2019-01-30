@@ -15,7 +15,7 @@ export interface IChannelItemOwnProps {
 export interface IChannelItemDispatchProps {
   onChannelChange(id: Uuid): void;
 
-  onSavingChannelName(id: Uuid, name: string): void;
+  onSavingChannelName(channel: IChannel, name: string): void;
 }
 
 interface IState {
@@ -56,8 +56,7 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
   };
 
   private onSavingChannelName = () => {
-    this.props.onSavingChannelName(this.props.channel.id, this.state.currentChannelName);
-    console.log(this.state.currentChannelName);
+    this.props.onSavingChannelName(this.props.channel, this.state.currentChannelName);
   };
 
   public render(): JSX.Element {

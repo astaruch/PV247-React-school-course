@@ -39,3 +39,28 @@ export async function getChannels(): Promise<Immutable.List<IChannel>> {
     return Promise.resolve(channels.sort((a, b) => a.order - b.order));
   });
 }
+
+export async function renameChannel(channelId: Uuid, newName: string, oldCustomData: object): Promise<IChannel> {
+  return axios.put<ResponseChannel>(
+    `${CHANNEL_PATH}/${channelId}`,
+    {
+      name: newName,
+      customData: oldCustomData
+    },
+    getAuthorizationHeader()
+  ).then((response) => {
+    console.log(response);
+    const {id, name, customData} = response.data;
+    const {numberOfNewMessages, selected, order, usersId} = customData;
+    const renamedChannel = {
+      id,
+      name,
+      numberOfNewMessages,
+      selected,
+      order,
+      usersId: Immutable.List<Uuid>(usersId),
+      waitingForAsyncRenaming: false};
+    return Promise.resolve(renamedChannel);
+  });
+
+}
