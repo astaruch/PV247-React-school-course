@@ -24,13 +24,16 @@ export async function getChannels(): Promise<Immutable.List<IChannel>> {
       return Immutable.List();
     }
     const channels = Immutable.List(responseChannels.map((channel) => {
+      const {id, name, customData} = channel;
+      const {numberOfNewMessages, selected, order, usersId} = customData;
       return {
-        id: channel.id,
-        name: channel.name,
-        numberOfNewMessages: channel.customData.numberOfNewMessages,
-        selected: channel.customData.selected,
-        order: channel.customData.order,
-        usersId: Immutable.List<Uuid>(channel.customData.usersId),
+        id,
+        name,
+        numberOfNewMessages,
+        selected,
+        order,
+        usersId: Immutable.List<Uuid>(usersId),
+        waitingForAsyncRenaming: false
       };
     }));
     return Promise.resolve(channels.sort((a, b) => a.order - b.order));

@@ -7,6 +7,7 @@ export interface IChannel {
   readonly selected?: boolean;
   readonly order: number;
   readonly usersId: Immutable.List<Uuid>;
+  readonly waitingForAsyncRenaming: boolean;
 }
 
 export interface IChannelList {

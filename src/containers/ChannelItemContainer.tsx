@@ -7,7 +7,7 @@ import {
 } from '../components/ChannelItem';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import {changeChannel} from '../actions/channelActions';
+import {changeChannel, changeChannelName} from '../actions/channelActions';
 
 const mapStateToProps = (state: IMessageAppState, channelProps: IChannelItemOwnProps): IChannelItemStateProps => {
   return {
@@ -18,7 +18,8 @@ const mapStateToProps = (state: IMessageAppState, channelProps: IChannelItemOwnP
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    onClick: (channelId: Uuid) => dispatch(changeChannel(channelId))
+    onChannelChange: (channelId: Uuid) => dispatch(changeChannel(channelId)),
+    onSavingChannelName: (channelId: Uuid, name: string) => dispatch(changeChannelName(channelId, name)),
   };
 };
 export const ChannelItemContainer = connect<IChannelItemStateProps, IChannelItemDispatchProps>(mapStateToProps, mapDispatchToProps)(ChannelItem);
