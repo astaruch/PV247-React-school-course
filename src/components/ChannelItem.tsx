@@ -14,7 +14,6 @@ export interface IChannelItemOwnProps {
 
 export interface IChannelItemDispatchProps {
   onChannelChange(id: Uuid): void;
-
   onSavingChannelName(channel: IChannel, name: string): void;
 }
 

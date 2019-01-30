@@ -59,8 +59,24 @@ export async function renameChannel(channelId: Uuid, newName: string, oldCustomD
       selected,
       order,
       usersId: Immutable.List<Uuid>(usersId),
-      waitingForAsyncRenaming: false};
+      waitingForAsyncRenaming: false
+    };
     return Promise.resolve(renamedChannel);
   });
+}
 
+export async function createChannel(newName: string, newCustomData: object): Promise<IChannel> {
+  return axios.post<ResponseChannel>(CHANNEL_PATH, {name: newName, customData: newCustomData}, getAuthorizationHeader()
+  ).then((response) => {
+    console.log(response);
+    const {id, name, customData} = response.data;
+    const channel = {
+      id,
+      name,
+      ...customData,
+      usersId: Immutable.List<Uuid>(customData.usersId),
+      waitingForAsyncRenaming: false
+    };
+    return Promise.resolve(channel);
+  });
 }
