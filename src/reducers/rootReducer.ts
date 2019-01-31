@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import {channels} from './channelsReducer';
 import {messages} from './messages';
-import {users} from './users';
+import {users} from './usersReducer';
 import {currentUser, authPageError} from './authenticationReducer';
 import {asyncOperationsCount} from './spinnerReducer';
 

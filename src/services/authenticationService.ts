@@ -16,6 +16,16 @@ export type BearerToken = {
   readonly expiration: string,
 };
 
+const getBearer = () => {
+  return JSON.parse(localStorage.getItem('BEARER_TOKEN') || '');
+};
+
+export const getAuthorizationHeader = () => {
+  return {
+    headers: {Authorization: 'Bearer ' + getBearer().token}
+  };
+};
+
 export async function getBearerTokenForExistingUser(email: string): Promise<BearerToken | null> {
   return axios.post<BearerToken>(AUTH_PATH, {
     email
@@ -61,4 +71,5 @@ export async function registerNewUser(email: string, password: string): Promise<
     return Promise.resolve({email: response.data.email, ...response.data.customData});
   });
 }
+
 

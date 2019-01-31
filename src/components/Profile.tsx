@@ -18,34 +18,25 @@ export interface IProfileDispatchProps {
 interface IProfileState {
     email: string;
     password: string;
-    name?: string;
-    gender?: string;
+    username?: string;
 }
-
-const genders = [
-  {key: 'm', text: 'Male', value: 'm'},
-  {key: 'f', text: 'Female', value: 'f'}
-];
-
 
 type IProps = IProfileStateProps & IProfileDispatchProps & IProfileOwnProps;
 
 export class Profile extends React.PureComponent<IProps, IProfileState> {
-
     constructor(props) {
         super(props);
         this.state = {
-            name: this.props.user.name,
-            gender: this.props.user.gender,
+            username: this.props.user.username,
             password: this.props.user.password,
             email: this.props.user.email
         };
     }
 
-    onNameChange = (event) => {
-        const name = event.target.value;
+    onUsernameChange = (event) => {
+        const username = event.target.value;
         this.setState(() => {
-            return {name};
+            return {username};
         });
     };
 
@@ -53,13 +44,6 @@ export class Profile extends React.PureComponent<IProps, IProfileState> {
         const email = event.target.value;
         this.setState(() => {
             return {email};
-        });
-    };
-
-    onGenderSelect = (_, data) => {
-        const gender = data.value;
-        this.setState(() => {
-            return {gender};
         });
     };
 
@@ -71,8 +55,6 @@ export class Profile extends React.PureComponent<IProps, IProfileState> {
             id: this.props.user.id,
             pictureUrl: this.props.user.pictureUrl,
             username: this.props.user.username,
-            name: this.state.name,
-            gender: this.state.gender,
         });
         this.props.onClose();
     };
@@ -85,24 +67,15 @@ export class Profile extends React.PureComponent<IProps, IProfileState> {
                     <Form>
                         <Form.Group>
                             <Form.Field
-                                value={this.state.name}
+                                value={this.state.username}
                                 name={'name'}
                                 width={12}
                                 label={'Name'}
                                 control={'input'}
                                 placeholder="Name"
-                                onChange={this.onNameChange}
+                                onChange={this.onUsernameChange}
                             />
-                            <Form.Select
-                                value={this.state.gender}
-                                name={'gender'}
-                                width={4}
-                                fluid
-                                label="Gender"
-                                options={genders}
-                                placeholder="Gender"
-                                onChange={this.onGenderSelect}
-                            />
+
                         </Form.Group>
                         <Form.Field
                             value={this.state.email}

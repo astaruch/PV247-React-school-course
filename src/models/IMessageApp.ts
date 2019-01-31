@@ -1,6 +1,6 @@
 import * as Immutable from 'immutable';
 import {IMessageItem} from './IMessageItem';
-import {IUser} from './IUser';
+import {IUser, IUserList} from './IUser';
 import {LOGIN_PAGE_FAILURES} from '../actions/loginActions';
 import {SIGN_UP_PAGE_FAILURES} from '../actions/signUpActions';
 import {IChannelList} from './IChannel';
@@ -8,11 +8,6 @@ import {IChannelList} from './IChannel';
 export interface IMessageList {
   allIds: Immutable.List<Uuid>;
   byId: Immutable.Map<Uuid, IMessageItem>;
-}
-
-export interface IUserList {
-  allIds: Immutable.List<Uuid>;
-  byId: Immutable.Map<Uuid, IUser>;
 }
 
 export interface IMessageAppState {

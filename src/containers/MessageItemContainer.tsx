@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = (state: IMessageAppState, ownProps: IMessageItemOwnProps): IMessageItemStateProps => {
     const message = state.messages.byId.get(ownProps.id)!;
-    const author = state.users.byId.get(message.from)!;
+    const author = state.users.asMap.get(message.from)!;
     return {message, author};
 };
 

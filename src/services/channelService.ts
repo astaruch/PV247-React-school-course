@@ -1,19 +1,9 @@
 import * as Immutable from 'immutable';
 import axios from 'axios';
 
-import {CHANNEL_PATH} from './authenticationService';
+import {CHANNEL_PATH, getAuthorizationHeader} from './authenticationService';
 import {IChannel} from '../models/IChannel';
 import {ResponseChannel} from '../@types/api';
-
-const getBearer = () => {
-  return JSON.parse(localStorage.getItem('BEARER_TOKEN') || '');
-};
-
-const getAuthorizationHeader = () => {
-  return {
-    headers: {Authorization: 'Bearer ' + getBearer().token}
-  };
-};
 
 export async function getChannels(): Promise<Immutable.List<IChannel>> {
   return axios.get<ResponseChannel[]>(CHANNEL_PATH,

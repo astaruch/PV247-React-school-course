@@ -7,7 +7,7 @@ import {IMessageAppState} from '../models/IMessageApp';
 
 const updateProfile = (user: IUser): any => {
     return async (dispatch: Dispatch): Promise<void> => {
-        console.log('Saving profile ', user.name);
+        console.log('Saving profile ', user.username);
         dispatch(profileUpdated(user));
     };
 };
