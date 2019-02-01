@@ -3,6 +3,8 @@ import {IUser} from '../models/IUser';
 import {combineReducers} from 'redux';
 import {USERS_RETRIEVING_ENDED} from '../actions/globalActions';
 import {UPDATE_USER_ENDED} from '../actions/userActions';
+import {LOGIN_FAILED, LOGIN_SUCCEEDED} from '../actions/loginActions';
+import {REGISTRATION_FAILED, REGISTRATION_SUCCEEDED} from '../actions/signUpActions';
 
 const asMap = (prevState = Immutable.Map<Uuid, IUser>(), action: Action): Immutable.Map<Uuid, IUser> => {
   switch (action.type) {
@@ -27,7 +29,27 @@ const asList = (prevState = Immutable.List<Uuid>(), action: Action): Immutable.L
   }
 };
 
+const currentUser = (prevState: IUser | null = null, action: Action): IUser | null => {
+  switch (action.type) {
+    case LOGIN_SUCCEEDED:
+    case REGISTRATION_SUCCEEDED:
+      return {...action.payload.currentUser};
+
+    case LOGIN_FAILED:
+    case REGISTRATION_FAILED:
+      return null;
+
+    case UPDATE_USER_ENDED:
+      return {...action.payload.user};
+
+    default:
+      return prevState;
+  }
+};
+
 export const users = combineReducers({
   asMap,
-  asList
+  asList,
+  currentUser
 });
+

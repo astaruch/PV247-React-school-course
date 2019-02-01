@@ -7,7 +7,7 @@ import {updateUser} from '../actions/userActions';
 
 const mapStateToProps = (state: IMessageAppState): IProfileStateProps => {
     return {
-        user: state.currentUser!
+        user: state.users.currentUser!
     };
 };
 

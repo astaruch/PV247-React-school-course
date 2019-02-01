@@ -15,4 +15,5 @@ export interface IUser {
 export interface IUserList {
   asList: Immutable.List<Uuid>;
   asMap: Immutable.Map<Uuid, IUser>;
+  currentUser: IUser;
 }

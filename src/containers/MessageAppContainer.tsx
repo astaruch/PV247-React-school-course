@@ -4,7 +4,6 @@ import {Dispatch} from 'redux';
 import {loadDataFromServer} from '../actions/globalActions';
 
 const mapDispatchToProps = (dispatch: Dispatch): any => {
-  console.log('msgAppContainer - mapDispatchToProps');
   return {
     loadDataFromServer: () => dispatch(loadDataFromServer())
   };

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = (state: IMessageAppState): IMessageListStateProps => {
     return {
-        messagesIds: state.messages.byId.filter(msg => msg.channelId === state.selectedChannel).map(msg => msg.id).toList()
+        messagesIds: state.messages.byId.filter(msg => msg.channelId === state.channels.selected).map(msg => msg.id).toList()
     };
 };
 
