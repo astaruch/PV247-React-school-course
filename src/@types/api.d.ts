@@ -5,7 +5,7 @@ export type ResponseUser = {
   readonly customData: {
     readonly id: Uuid;
     readonly password: string;
-    readonly username?: string;
+    readonly username: string;
     readonly pictureUrl?: string;
   };
 };

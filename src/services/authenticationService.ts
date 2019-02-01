@@ -34,7 +34,6 @@ export async function getBearerTokenForExistingUser(email: string): Promise<Bear
       token: response.data.token,
       expiration: response.data.token,
     };
-    localStorage.setItem('BEARER_TOKEN', JSON.stringify(bearerToken));
     return Promise.resolve(bearerToken);
   }).catch(() => {
     console.log('User e-mail doesn\'t exist in this app.');

@@ -41,7 +41,7 @@ export const registerNewUser = (email: string, password: string): any => {
       return;
     }
 
-    const bearerToken = await authenticationService.getBearerTokenForExistingUser(email);
+    let bearerToken = await authenticationService.getBearerTokenForExistingUser(email);
     if (bearerToken) {
       dispatch(registrationFailed('REGISTRATION_EMAIL_ALREADY_USED'));
       return;
@@ -52,6 +52,7 @@ export const registerNewUser = (email: string, password: string): any => {
 
     localStorage.setItem('LOGGED_USER', JSON.stringify(newUser));
     dispatch(registrationSucceeded(newUser));
-    await authenticationService.getBearerTokenForExistingUser(email);
+    bearerToken = await authenticationService.getBearerTokenForExistingUser(email);
+    localStorage.setItem('BEARER_TOKEN', JSON.stringify(bearerToken));
   };
 };

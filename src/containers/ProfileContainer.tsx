@@ -1,16 +1,9 @@
 import {Dispatch} from 'redux';
 import {IUser} from '../models/IUser';
-import {profileUpdated} from '../actions/actionCreators';
 import {connect} from 'react-redux';
 import {IProfileDispatchProps, IProfileStateProps, Profile} from '../components/Profile';
 import {IMessageAppState} from '../models/IMessageApp';
-
-const updateProfile = (user: IUser): any => {
-    return async (dispatch: Dispatch): Promise<void> => {
-        console.log('Saving profile ', user.customData.username);
-        dispatch(profileUpdated(user));
-    };
-};
+import {updateUser} from '../actions/userActions';
 
 const mapStateToProps = (state: IMessageAppState): IProfileStateProps => {
     return {
@@ -20,7 +13,7 @@ const mapStateToProps = (state: IMessageAppState): IProfileStateProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch): IProfileDispatchProps => {
     return {
-        onSave: (user: IUser) => dispatch(updateProfile(user))
+        onSave: (user: IUser) => dispatch(updateUser(user))
     };
 };
 

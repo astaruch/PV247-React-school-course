@@ -16,3 +16,14 @@ export async function getUsers(): Promise<Immutable.List<IUser>> {
       return Immutable.List(responseUsers);
     });
 }
+
+export async function updateUser(email: string, customData: object): Promise<IUser> {
+  return axios.put<ResponseUser>(
+    `${USER_PATH}/${email}`,
+    {customData},
+    getAuthorizationHeader()
+  ).then((response) => {
+    console.log('UpdateUser() response:', response);
+    return Promise.resolve(response.data);
+  });
+}

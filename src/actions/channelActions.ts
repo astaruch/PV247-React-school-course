@@ -16,18 +16,18 @@ export const CREATE_NEW_CHANNEL_CANCELED = 'CREATE_NEW_CHANNEL_CANCELED';
 export const DELETE_CHANNEL_STARTED = 'DELETE_CHANNEL_STARTED';
 export const DELETE_CHANNEL_ENDED = 'DELETE_CHANNEL_ENDED';
 
-export const changingChannelStarted = (): Action => ({
+const changingChannelStarted = (): Action => ({
   type: CHANGING_CHANNEL_STARTED
 });
 
-export const changingChannelEnded = (id: Uuid): Action => ({
+const changingChannelEnded = (id: Uuid): Action => ({
   type: CHANGING_CHANNEL_ENDED,
   payload: {
     id
   }
 });
 
-export const changingChannelNameStarted = (id: Uuid, name: string): Action => ({
+const changingChannelNameStarted = (id: Uuid, name: string): Action => ({
   type: CHANGING_CHANNEL_NAME_STARTED,
   payload: {
     id,
@@ -35,33 +35,33 @@ export const changingChannelNameStarted = (id: Uuid, name: string): Action => ({
   }
 });
 
-export const changingChannelNameEnded = (id: Uuid): Action => ({
+const changingChannelNameEnded = (id: Uuid): Action => ({
   type: CHANGING_CHANNEL_NAME_ENDED,
   payload: {
     id
   }
 });
 
-export const creatingNewChannelStarted = (): Action => ({
+const creatingNewChannelStarted = (): Action => ({
   type: CREATE_NEW_CHANNEL_STARTED
 });
 
-export const savingNewChannel = (channel: IChannel): Action => ({
+const savingNewChannel = (channel: IChannel): Action => ({
   type: CREATE_NEW_CHANNEL_SAVING,
   payload: {
     channel
   }
 });
 
-export const creatingNewChannelCanceled = (): Action => ({
+const creatingNewChannelCanceled = (): Action => ({
   type: CREATE_NEW_CHANNEL_CANCELED
 });
 
-export const deleteChannelStarted = () => ({
+const deleteChannelStarted = () => ({
   type: DELETE_CHANNEL_STARTED
 });
 
-export const deleteChannelEnded = (id: Uuid) => ({
+const deleteChannelEnded = (id: Uuid) => ({
   type: DELETE_CHANNEL_ENDED,
   payload: {
     id

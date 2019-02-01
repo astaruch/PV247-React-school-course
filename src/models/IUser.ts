@@ -3,7 +3,7 @@ import * as Immutable from 'immutable';
 export interface IUserCustomData {
   readonly id: Uuid;
   password: string;
-  username?: string;
+  username: string;
   pictureUrl?: string;
 }
 

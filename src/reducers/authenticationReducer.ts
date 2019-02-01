@@ -1,15 +1,21 @@
 import {IUser} from '../models/IUser';
 import {LOGIN_FAILED, LOGIN_SUCCEEDED} from '../actions/loginActions';
 import {REGISTRATION_FAILED, REGISTRATION_SUCCEEDED} from '../actions/signUpActions';
+import {UPDATE_USER_ENDED} from '../actions/userActions';
 
 export function currentUser(prevState: IUser | null = null, action: Action): IUser | null {
   switch (action.type) {
     case LOGIN_SUCCEEDED:
     case REGISTRATION_SUCCEEDED:
       return {...action.payload.currentUser};
+
     case LOGIN_FAILED:
     case REGISTRATION_FAILED:
       return null;
+
+    case UPDATE_USER_ENDED:
+      return {...action.payload.user};
+
     default:
       return prevState;
   }
