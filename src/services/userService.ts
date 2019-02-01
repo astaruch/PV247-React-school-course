@@ -13,14 +13,6 @@ export async function getUsers(): Promise<Immutable.List<IUser>> {
         // this should never happen :-). Remove this statement before deadline
         return Immutable.List();
       }
-      const users = Immutable.List(responseUsers.map((user) => {
-        const {email, customData} = user;
-//        const {id, password, username, pictureUrl} = customData;
-        return {
-          email,
-          ...customData
-        };
-      }));
-      return Promise.resolve(users);
+      return Immutable.List(responseUsers);
     });
 }

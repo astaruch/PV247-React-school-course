@@ -46,7 +46,7 @@ export const tryToLogin = (email: string, password: string): any => {
       return;
     }
 
-    if (password !== existingUser.password) {
+    if (password !== existingUser.customData.password) {
       dispatch(authenticationFailed('LOGIN_BAD_PASSWORD'));
       return;
     }

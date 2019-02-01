@@ -18,9 +18,9 @@ export class MessageItem extends React.PureComponent<IProps> {
     render(): JSX.Element {
         return (
             <Comment key={this.props.id}>
-                <Comment.Avatar src={this.props.author.pictureUrl}/>
+                <Comment.Avatar src={this.props.author.customData.pictureUrl}/>
                 <Comment.Content>
-                    <Comment.Author>{this.props.author.username}</Comment.Author>
+                    <Comment.Author>{this.props.author.customData.username}</Comment.Author>
                     <Comment.Metadata>
                         <div>{this.props.message.timestamp}</div>
                     </Comment.Metadata>

@@ -48,8 +48,7 @@ export async function getExistingUser(email: string): Promise<IUser | null> {
   return axios.get<ResponseUser>(`${USER_PATH}/${email}`, {
     headers: {Authorization: 'Bearer ' + bearerToken.token}
   }).then((response) => {
-    const customData = response.data.customData;
-    return Promise.resolve({email: response.data.email, ...customData});
+    return Promise.resolve(response.data);
   }).catch(() => {
     return null;
   });
@@ -61,14 +60,12 @@ export async function registerNewUser(email: string, password: string): Promise<
     customData: {
       id: uuid(),
       password,
-      name: 'Meno',
-      username: 'Priezvisko',
-      gender: 'M',
+      username: '',
       pictureUrl: ''
     }
   }).then((response) => {
     console.log(response);
-    return Promise.resolve({email: response.data.email, ...response.data.customData});
+    return Promise.resolve(response.data);
   });
 }
 

@@ -23,7 +23,7 @@ const submitMessage = (channelId: Uuid, userId: Uuid, text: string): any => {
 const mapStateToProps = (state: IMessageAppState): IMessageFormStateProps => {
     return {
         channelId: state.selectedChannel!,
-        userId: state.currentUser!.id
+        userId: state.currentUser!.customData.id
     };
 };
 

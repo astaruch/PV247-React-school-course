@@ -7,8 +7,9 @@ export interface IUserCustomData {
   pictureUrl?: string;
 }
 
-export interface IUser extends  IUserCustomData{
+export interface IUser {
   readonly email: string;
+  customData: IUserCustomData;
 }
 
 export interface IUserList {
