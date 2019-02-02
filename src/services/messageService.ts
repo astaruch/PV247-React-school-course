@@ -1,6 +1,6 @@
 import * as Immutable from 'immutable';
 import axios from 'axios';
-import {IMessage} from '../models/IMessage';
+import {IMessage, IMessageCustomData} from '../models/IMessage';
 import {ResponseMessage} from '../@types/api';
 import {CHANNEL_PATH, getAuthorizationHeader} from './authenticationService';
 
@@ -16,5 +16,22 @@ export async function getMessages(channelId: Uuid): Promise<Immutable.List<IMess
     }
 
     return Immutable.List(responseMessages);
+  });
+}
+
+export async function sendMessage(value: string,
+                                  channelId: Uuid,
+                                  customData: IMessageCustomData): Promise<IMessage> {
+  return axios.post<ResponseMessage>(
+    `${CHANNEL_PATH}/${channelId}/message`,
+    {
+      value,
+      customData
+    },
+    getAuthorizationHeader()
+  ).then((response) => {
+    const newMessage = response.data;
+    console.log('Sended message:', newMessage);
+    return newMessage;
   });
 }
