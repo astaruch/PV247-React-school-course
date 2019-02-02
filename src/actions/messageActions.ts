@@ -10,10 +10,11 @@ const messageSendingStarted = (): Action => ({
   type: MESSAGE_SENDING_STARTED
 });
 
-const messageSendingEnded = (message: IMessage): Action => ({
+const messageSendingEnded = (message: IMessage, channelId: Uuid): Action => ({
   type: MESSAGE_SENDING_ENDED,
   payload: {
-    message
+    message,
+    channelId
   }
 });
 
@@ -26,6 +27,6 @@ export const sendMessage = (value: string, channelId: Uuid, userId: Uuid): any =
       authorId: userId
     };
     const message = await messageService.sendMessage(value, channelId, customData);
-    dispatch(messageSendingEnded(message));
+    dispatch(messageSendingEnded(message, channelId));
   };
 };

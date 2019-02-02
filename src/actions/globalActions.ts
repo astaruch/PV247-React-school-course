@@ -48,10 +48,12 @@ const messagesRetrievingStarted = () => ({
   type: MESSAGES_RETRIEVING_STARTED,
 });
 
-const messagesRetrievingEnded = (messages: Immutable.List<IMessage> = Immutable.List()): Action => ({
+const messagesRetrievingEnded = (messages: Immutable.List<IMessage> = Immutable.List(),
+                                 channelId: Uuid): Action => ({
   type: MESSAGES_RETRIEVING_ENDED,
   payload: {
-    messages
+    messages,
+    channelId
   }
 });
 
@@ -90,7 +92,7 @@ export const loadDataFromServer = (): any => {
     if (firstChannelId) {
       dispatch(messagesRetrievingStarted());
       messages = await messageService.getMessages(firstChannelId);
-      dispatch(messagesRetrievingEnded(messages));
+      dispatch(messagesRetrievingEnded(messages, firstChannelId));
     }
 
     dispatch(messageAppDataLoadingEnded(channels, messages, users));
