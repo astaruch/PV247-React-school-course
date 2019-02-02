@@ -8,15 +8,13 @@ import * as userService from '../services/userService';
 import {IChannel} from '../models/IChannel';
 import {IMessage} from '../models/IMessage';
 import {IUser} from '../models/IUser';
+import {messagesRetrievingEnded, messagesRetrievingStarted} from './messageActions';
 
 export const CHANNELS_RETRIEVING_STARTED = 'CHANNELS_RETRIEVING_STARTED';
 export const CHANNELS_RETRIEVING_ENDED = 'CHANNELS_RETRIEVING_ENDED';
 
 export const USERS_RETRIEVING_STARTED = 'USERS_RETRIEVING_STARTED';
 export const USERS_RETRIEVING_ENDED = 'USERS_RETRIEVING_ENDED';
-
-export const MESSAGES_RETRIEVING_STARTED = 'MESSAGES_RETRIEVING_STARTED';
-export const MESSAGES_RETRIEVING_ENDED = 'MESSAGES_RETRIEVING_ENDED';
 
 export const MESSAGE_APP_DATA_LOADING_STARTED = 'MESSAGE_APP_DATA_LOADING_STARTED';
 export const MESSAGE_APP_DATA_LOADING_ENDED = 'MESSAGE_APP_DATA_LOADING_ENDED';
@@ -32,7 +30,6 @@ const channelsRetrievingEnded = (channels: Immutable.List<IChannel> = Immutable.
   }
 });
 
-
 const usersRetrievingStarted = () => ({
   type: USERS_RETRIEVING_STARTED
 });
@@ -41,19 +38,6 @@ const usersRetrievingEnded = (users: Immutable.List<IUser> = Immutable.List()): 
   type: USERS_RETRIEVING_ENDED,
   payload: {
     users
-  }
-});
-
-const messagesRetrievingStarted = () => ({
-  type: MESSAGES_RETRIEVING_STARTED,
-});
-
-const messagesRetrievingEnded = (messages: Immutable.List<IMessage> = Immutable.List(),
-                                 channelId: Uuid): Action => ({
-  type: MESSAGES_RETRIEVING_ENDED,
-  payload: {
-    messages,
-    channelId
   }
 });
 

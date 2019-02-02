@@ -1,6 +1,9 @@
 import {Dispatch} from 'redux';
 import {IChannel, IChannelCustomData} from '../models/IChannel';
 import * as channelService from '../services/channelService';
+import * as messageService from '../services/messageService';
+import {messagesRetrievingStarted} from './messageActions';
+import {messagesRetrievingEnded} from './messageActions';
 
 
 export const CHANGING_CHANNEL_STARTED = 'CHANGING_CHANNEL_STARTED';
@@ -71,6 +74,9 @@ const deleteChannelEnded = (id: Uuid) => ({
 export const changeChannel = (channelId: Uuid): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(changingChannelStarted());
+    dispatch(messagesRetrievingStarted());
+    const messages = await messageService.getMessages(channelId);
+    dispatch(messagesRetrievingEnded(messages, channelId));
     dispatch(changingChannelEnded(channelId));
   };
 };
@@ -106,7 +112,6 @@ export const cancelChannelCreation = (): any => {
     dispatch(creatingNewChannelCanceled());
   };
 };
-
 
 export const deleteChannel = (id: Uuid): any => {
   return async (dispatch: Dispatch): Promise<void> => {
