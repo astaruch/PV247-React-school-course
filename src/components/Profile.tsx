@@ -88,6 +88,7 @@ export class Profile extends React.PureComponent<IProps, IProfileState> {
                 </Form.Group>
                 <Form.Group>
                   <Form.Field
+                    disabled
                     value={this.state.email}
                     name={'email'}
                     width={7}

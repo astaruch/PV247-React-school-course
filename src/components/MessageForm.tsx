@@ -7,7 +7,7 @@ export interface IMessageFormStateProps {
 }
 
 export interface IMessageFormDispatchProps {
-    onMessageSubmit: ((channelId: Uuid, userId: Uuid, text: string) => void);
+    onMessageSubmit: (() => void);
 }
 export interface IMessageFormState {
     message: string;
@@ -27,7 +27,7 @@ export class MessageForm extends React.PureComponent<IMessageFormProps, IMessage
     onSubmit = (event) => {
         event.preventDefault();
         console.log('Sending message ', this.state.message);
-        this.props.onMessageSubmit(this.props.channelId, this.props.userId, this.state.message);
+        this.props.onMessageSubmit();
         this.setState(() => ({
             message: ''
         }));

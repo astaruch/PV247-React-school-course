@@ -1,6 +1,6 @@
 import * as Immutable from 'immutable';
-import {IUser} from '../models/IUser';
 import {combineReducers} from 'redux';
+import {IUser} from '../models/IUser';
 import {USERS_RETRIEVING_ENDED} from '../actions/globalActions';
 import {UPDATE_USER_ENDED} from '../actions/userActions';
 import {LOGIN_FAILED, LOGIN_SUCCEEDED} from '../actions/loginActions';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Comment} from 'semantic-ui-react';
-import {IMessageItem} from '../models/IMessageItem';
+import {IMessage} from '../models/IMessage';
 import {IUser} from '../models/IUser';
 
 export interface IMessageItemOwnProps {
@@ -8,7 +8,7 @@ export interface IMessageItemOwnProps {
 }
 
 export interface IMessageItemStateProps {
-    readonly message: IMessageItem;
+    readonly message: IMessage;
     readonly author: IUser;
 }
 
@@ -22,10 +22,10 @@ export class MessageItem extends React.PureComponent<IProps> {
                 <Comment.Content>
                     <Comment.Author>{this.props.author.customData.username}</Comment.Author>
                     <Comment.Metadata>
-                        <div>{this.props.message.timestamp}</div>
+                        <div>{this.props.message.createdAt}</div>
                     </Comment.Metadata>
                     <Comment.Text>
-                        {this.props.message.text}
+                        {this.props.message.value}
                     </Comment.Text>
                 </Comment.Content>
             </Comment>

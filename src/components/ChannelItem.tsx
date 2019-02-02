@@ -14,7 +14,9 @@ export interface IChannelItemOwnProps {
 
 export interface IChannelItemDispatchProps {
   onChannelChange(id: Uuid): void;
+
   onSavingChannelName(channel: IChannel, name: string): void;
+
   onDeleteChannel(id: Uuid): void;
 }
 
@@ -61,7 +63,7 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
 
   private onDeleteChannel = () => {
     this.props.onDeleteChannel(this.props.channel.id);
-  }
+  };
 
   public render(): JSX.Element {
     return (
