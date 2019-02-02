@@ -76,9 +76,9 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
             onClick={this.onChannelChange}
             className={'channel-item'}
           >
-            {this.props.channel.numberOfNewMessages > 0 &&
+            {this.props.channel.customData.numberOfNewMessages > 0 &&
             <Label size={'small'}>
-                <Icon name={'mail'}/>{this.props.channel.numberOfNewMessages}
+                <Icon name={'mail'}/>{this.props.channel.customData.numberOfNewMessages}
             </Label>
             }
 
@@ -87,7 +87,7 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
             }
             {this.state.editing &&
             <Input
-                loading={this.props.channel.waitingForAsyncRenaming}
+                loading={this.props.channel.customData.waitingForAsyncRenaming}
                 placeholder={'New channel name...'}
                 onChange={this.onChange}
             />

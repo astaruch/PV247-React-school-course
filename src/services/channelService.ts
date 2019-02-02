@@ -15,18 +15,17 @@ export async function getChannels(): Promise<Immutable.List<IChannel>> {
     }
     const channels = Immutable.List(responseChannels.map((channel) => {
       const {id, name, customData} = channel;
-      const {numberOfNewMessages, selected, order, usersId} = customData;
       return {
         id,
         name,
-        numberOfNewMessages,
-        selected,
-        order,
-        usersId: Immutable.List<Uuid>(usersId),
-        waitingForAsyncRenaming: false
+        customData: {
+          ...customData,
+          usersId: Immutable.List<Uuid>(customData.usersId),
+          waitingForAsyncRenaming: false
+        }
       };
     }));
-    return Promise.resolve(channels.sort((a, b) => a.order - b.order));
+    return Promise.resolve(channels.sort((a, b) => a.customData.order - b.customData.order));
   });
 }
 
@@ -41,17 +40,16 @@ export async function renameChannel(channelId: Uuid, newName: string, oldCustomD
   ).then((response) => {
     console.log(response);
     const {id, name, customData} = response.data;
-    const {numberOfNewMessages, selected, order, usersId} = customData;
-    const renamedChannel = {
+    const channel = {
       id,
       name,
-      numberOfNewMessages,
-      selected,
-      order,
-      usersId: Immutable.List<Uuid>(usersId),
-      waitingForAsyncRenaming: false
+      customData: {
+        ...customData,
+        usersId: Immutable.List<Uuid>(customData.usersId),
+        waitingForAsyncRenaming: false,
+      }
     };
-    return Promise.resolve(renamedChannel);
+    return Promise.resolve(channel);
   });
 }
 
@@ -63,9 +61,11 @@ export async function createChannel(newName: string, newCustomData: object): Pro
     const channel = {
       id,
       name,
-      ...customData,
-      usersId: Immutable.List<Uuid>(customData.usersId),
-      waitingForAsyncRenaming: false
+      customData: {
+        ...customData,
+        usersId: Immutable.List<Uuid>(customData.usersId),
+        waitingForAsyncRenaming: false
+      }
     };
     return Promise.resolve(channel);
   });

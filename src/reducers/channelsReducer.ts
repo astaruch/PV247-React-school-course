@@ -19,19 +19,27 @@ const asMap = (prevState = Immutable.Map<Uuid, IChannel>(), action: Action): Imm
       return Immutable.Map(action.payload.channels.map((channel: IChannel) => [channel.id, channel]));
 
     case CHANGING_CHANNEL_NAME_STARTED:
+      const channelRename = prevState.get(action.payload.id)!;
       return prevState.set(action.payload.id,
         {
-          ...prevState.get(action.payload.id)!,
+          ...channelRename,
           name: action.payload.name,
-          waitingForAsyncRenaming: true
+          customData: {
+            ...channelRename.customData,
+            waitingForAsyncRenaming: true
+          }
         }
       );
 
     case CHANGING_CHANNEL_NAME_ENDED:
+      const renamed = prevState.get(action.payload.id)!;
       return prevState.set(action.payload.id,
         {
-          ...prevState.get(action.payload.id)!,
-          waitingForAsyncRenaming: false
+          ...renamed,
+          customData: {
+            ...renamed.customData,
+            waitingForAsyncRenaming: false
+          }
         }
       );
 

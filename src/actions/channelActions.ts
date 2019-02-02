@@ -83,8 +83,7 @@ export const changeChannel = (channelId: Uuid): any => {
 
 export const changeChannelName = (channel: IChannel, newName: string): any => {
   return async (dispatch: Dispatch): Promise<void> => {
-    const {id, numberOfNewMessages, selected, order, usersId} = channel;
-    const customData = {numberOfNewMessages, selected, order, usersId};
+    const {id, customData} = channel;
     dispatch(changingChannelNameStarted(id, newName));
     const renamedChannel = await channelService.renameChannel(id, newName, customData);
     dispatch(changingChannelNameEnded(renamedChannel.id));

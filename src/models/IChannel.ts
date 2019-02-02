@@ -8,9 +8,10 @@ export interface IChannelCustomData {
   readonly waitingForAsyncRenaming: boolean;
 }
 
-export interface IChannel extends IChannelCustomData {
+export interface IChannel {
   readonly id: Uuid;
   readonly name: string;
+  customData: IChannelCustomData;
 }
 
 export interface IChannelList {
