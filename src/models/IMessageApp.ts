@@ -9,5 +9,7 @@ export interface IMessageAppState {
   channels: IChannelList;
   users: IUserList;
   authPageError: LOGIN_PAGE_FAILURES | SIGN_UP_PAGE_FAILURES | null;
-  asyncOperationsCount: number;
+  spinners: {
+    authPageCount: number
+  };
 }

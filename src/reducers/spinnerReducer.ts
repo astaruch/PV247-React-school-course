@@ -1,7 +1,8 @@
 import {LOGIN_STARTED, LOGIN_FAILED, LOGIN_SUCCEEDED} from '../actions/loginActions';
 import {REGISTRATION_STARTED, REGISTRATION_FAILED, REGISTRATION_SUCCEEDED} from '../actions/signUpActions';
+import {combineReducers} from 'redux';
 
-export function asyncOperationsCount(prevState: number = 0, action: Action): number {
+const authPageCount = (prevState: number = 0, action: Action): number => {
   switch (action.type) {
     case LOGIN_STARTED:
     case REGISTRATION_STARTED:
@@ -14,4 +15,8 @@ export function asyncOperationsCount(prevState: number = 0, action: Action): num
     default:
       return prevState;
   }
-}
+};
+
+export const spinners = combineReducers({
+  authPageCount
+});
