@@ -1,7 +1,7 @@
 // source https://pv247messaging.azurewebsites.net/help/index.html
-
 import {IMessageCustomData} from '../models/IMessage';
 import {IUserCustomData} from '../models/IUser';
+import {IChannelCustomData} from '../models/IChannel';
 
 export type ResponseUser = {
   readonly email: string;
@@ -11,12 +11,7 @@ export type ResponseUser = {
 export type ResponseChannel = {
   readonly id: Uuid;
   readonly name: string;
-  readonly customData: {
-    readonly numberOfNewMessages: number;
-    readonly selected?: boolean;
-    readonly order: number;
-    readonly usersId: Uuid[];
-  };
+  readonly customData: IChannelCustomData;
 };
 
 export type ResponseMessage = {
