@@ -6,9 +6,8 @@ import {
   CHANGING_CHANNEL_ENDED,
   CHANGING_CHANNEL_NAME_ENDED,
   CHANGING_CHANNEL_NAME_STARTED,
-  CREATE_NEW_CHANNEL_CANCELED,
-  CREATE_NEW_CHANNEL_SAVING,
   CREATE_NEW_CHANNEL_STARTED,
+  CREATE_NEW_CHANNEL_ENDED,
   DELETE_CHANNEL_ENDED
 } from '../actions/channelActions';
 
@@ -43,7 +42,7 @@ const asMap = (prevState = Immutable.Map<Uuid, IChannel>(), action: Action): Imm
         }
       );
 
-    case CREATE_NEW_CHANNEL_SAVING:
+    case CREATE_NEW_CHANNEL_ENDED:
       return prevState.set(action.payload.channel.id, action.payload.channel);
 
     case DELETE_CHANNEL_ENDED:
@@ -60,7 +59,7 @@ const asList = (prevState = Immutable.List<Uuid>(), action: Action): Immutable.L
     case CHANNELS_RETRIEVING_ENDED:
       return Immutable.List(action.payload.channels.map((channel: IChannel) => channel.id));
 
-    case CREATE_NEW_CHANNEL_SAVING:
+    case CREATE_NEW_CHANNEL_ENDED:
       return prevState.push(action.payload.channel.id);
 
     case DELETE_CHANNEL_ENDED:
@@ -87,8 +86,7 @@ const newChannel = (prevState: IChannel | null = null, action: Action): IChannel
   switch (action.type) {
     case CREATE_NEW_CHANNEL_STARTED:
       return {} as IChannel;
-    case CREATE_NEW_CHANNEL_CANCELED:
-    case CREATE_NEW_CHANNEL_SAVING:
+    case CREATE_NEW_CHANNEL_ENDED:
       return null;
     default:
       return prevState;

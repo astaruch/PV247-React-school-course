@@ -13,8 +13,7 @@ export const CHANGING_CHANNEL_NAME_STARTED = 'CHANGING_CHANNEL_NAME_STARTED';
 export const CHANGING_CHANNEL_NAME_ENDED = 'CHANGING_CHANNEL_NAME_ENDED';
 
 export const CREATE_NEW_CHANNEL_STARTED = 'CREATE_NEW_CHANNEL_STARTED';
-export const CREATE_NEW_CHANNEL_SAVING = 'CREATE_NEW_CHANNEL_SAVING';
-export const CREATE_NEW_CHANNEL_CANCELED = 'CREATE_NEW_CHANNEL_CANCELED';
+export const CREATE_NEW_CHANNEL_ENDED = 'CREATE_NEW_CHANNEL_ENDED';
 
 export const DELETE_CHANNEL_STARTED = 'DELETE_CHANNEL_STARTED';
 export const DELETE_CHANNEL_ENDED = 'DELETE_CHANNEL_ENDED';
@@ -49,15 +48,11 @@ const creatingNewChannelStarted = (): Action => ({
   type: CREATE_NEW_CHANNEL_STARTED
 });
 
-const savingNewChannel = (channel: IChannel): Action => ({
-  type: CREATE_NEW_CHANNEL_SAVING,
+const creatingNewChannelEnded = (channel: IChannel): Action => ({
+  type: CREATE_NEW_CHANNEL_ENDED,
   payload: {
     channel
   }
-});
-
-const creatingNewChannelCanceled = (): Action => ({
-  type: CREATE_NEW_CHANNEL_CANCELED
 });
 
 const deleteChannelStarted = () => ({
@@ -90,25 +85,13 @@ export const changeChannelName = (channel: IChannel, newName: string): any => {
   };
 };
 
-export const addNewChannel = (): any => {
+export const createNewChannel = (name: string, order: number): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(creatingNewChannelStarted());
-  };
-};
-
-export const saveNewChannel = (name: string, order: number): any => {
-  return async (dispatch: Dispatch): Promise<void> => {
-    console.log(`saveNewChannel ${name} ${order}`);
     const customData = {} as IChannelCustomData;
     customData.order = order;
     const newChannel = await channelService.createChannel(name, customData);
-    dispatch(savingNewChannel(newChannel));
-  };
-};
-
-export const cancelChannelCreation = (): any => {
-  return async (dispatch: Dispatch): Promise<void> => {
-    dispatch(creatingNewChannelCanceled());
+    dispatch(creatingNewChannelEnded(newChannel));
   };
 };
 

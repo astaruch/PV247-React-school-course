@@ -12,6 +12,6 @@ export interface IAppStateProps {
 
 export class App extends React.PureComponent<IAppStateProps> {
   render(): JSX.Element {
-    return (this.props.logged) ? <MessageAppContainer/> : <AuthPageContainer/>;
+    return (true) ? <MessageAppContainer/> : <AuthPageContainer/>;
   }
 }

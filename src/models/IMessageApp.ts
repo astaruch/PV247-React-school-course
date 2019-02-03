@@ -11,5 +11,6 @@ export interface IMessageAppState {
   authPageError: LOGIN_PAGE_FAILURES | SIGN_UP_PAGE_FAILURES | null;
   spinners: {
     authPageCount: number
+    addingNewChannel: boolean
   };
 }

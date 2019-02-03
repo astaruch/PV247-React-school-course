@@ -28,17 +28,22 @@
   display: grid;
   height: 100vh;
 
-  @left-sidebar-width: 250px;
+  @sidebar-width: 300px;
   @header-height: 60px;
-  @bottom-area-height: 200px;
+  @bottom-row-1-height: 150px;
+  @bottom-row-2-height: 200px;
 
-  grid-template-columns: 300px auto 300px;
-  grid-template-rows: 60px auto  150px 200px;
+  grid-template-columns: @sidebar-width auto @sidebar-width;
+  grid-template-rows: @header-height auto  @bottom-row-1-height @bottom-row-2-height;
   grid-template-areas:
     "app-header       channel-header  user-header"
     "channel-list     message-list    user-list"
     "browse-channels  message-list    channel-attachments"
     "browse-channels  message-form    channel-attachments";
+
+
+  justify-items: center;
+  align-items: center;
 
   .app-header {
     grid-area: app-header;
@@ -57,11 +62,30 @@
 
   .channel-list {
     grid-area: channel-list;
+    justify-self: start;
+    align-self: start;
+
+    padding-top: 20px;
+    padding-left: 20px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: calc(100vh - @header-height - (@bottom-row-1-height + @bottom-row-2-height));
+    overflow-y: scroll;
+    flex-grow: 1;
+
     border:1px solid black;
   }
 
   .browse-channels {
     grid-area: browse-channels;
+    justify-self: start;
+    align-self: start;
+
+    padding-top: @header-height;
+    padding-left: 20px;
+
     border:1px solid black;
   }
 
