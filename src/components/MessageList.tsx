@@ -5,19 +5,19 @@ import {MessageItemContainer} from '../containers/MessageItemContainer';
 
 
 export interface IMessageListStateProps {
-    readonly messagesIds: Immutable.List<Uuid>;
+  readonly messagesIds: Immutable.List<Uuid>;
 }
 
 export class MessageList extends React.PureComponent<IMessageListStateProps> {
-    render(): JSX.Element {
-        return (
-            <List>
-                <Comment.Group>
-                    {this.props.messagesIds && this.props.messagesIds.map((messageId) => (
-                        <MessageItemContainer id={messageId} key={messageId}/>
-                    ))}
-                </Comment.Group>
-            </List>
-        );
-    }
+  render(): JSX.Element {
+    return (
+      <List>
+        <Comment.Group>
+          {this.props.messagesIds!.map((messageId) => (
+            <MessageItemContainer id={messageId} key={messageId}/>
+          ))}
+        </Comment.Group>
+      </List>
+    );
+  }
 }

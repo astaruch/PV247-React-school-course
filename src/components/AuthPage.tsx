@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Grid, Message} from 'semantic-ui-react';
+import {Button, Message} from 'semantic-ui-react';
 import Loader from 'react-loader-spinner';
 
 import {LoginContainer} from '../containers/LoginContainer';
@@ -35,37 +35,28 @@ export class AuthPage extends React.PureComponent<IAuthPageStateProps, IState> {
     const {authPageError, asyncOperationsCount} = this.props;
     return (
       <div className={'auth-page'}>
-        <Grid textAlign="center" verticalAlign="middle" className={'auth-page-grid'}>
-          <Grid.Row className={'auth-page-switch'}>
-            <Button.Group>
-              <Button color={'blue'} size={'huge'}
-                      onClick={() => this.handleClick(true)}>
-                Log In
-              </Button>
-              <Button.Or/>
-              <Button color={'green'} size={'huge'}
-                      onClick={() => this.handleClick(false)}>
-                Register an account!
-              </Button>
-            </Button.Group>
-          </Grid.Row>
-          <Grid.Row className={'auth-page-input-form'}>
-            {displayLoginPage ? <LoginContainer/> : <SignUpContainer/>}
-          </Grid.Row>
-          <Grid.Row>
-            {authPageError && <Message content={authPageError}/>}
-          </Grid.Row>
-          <Grid.Row>
-            {asyncOperationsCount > 0 &&
-            <Loader
-                type={'MutatingDot'}
-                color={'#00BFFF'}
-                height={80}
-                width={80}
-            />
-            }
-          </Grid.Row>
-        </Grid>
+        <Button.Group className={'auth-page-switch-buttons'}>
+          <Button color={'blue'}
+                  size={'huge'}
+                  onClick={() => this.handleClick(true)}>
+            Log In
+          </Button>
+          <Button.Or/>
+          <Button color={'green'} size={'huge'}
+                  onClick={() => this.handleClick(false)}>
+            Register an account!
+          </Button>
+        </Button.Group>
+        {displayLoginPage ? <LoginContainer/> : <SignUpContainer/>}
+        {authPageError && <Message content={authPageError}/>}
+        {asyncOperationsCount > 0 &&
+        <Loader
+            type={'MutatingDot'}
+            color={'#00BFFF'}
+            height={80}
+            width={80}
+        />
+        }
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ChangeEvent, FormEvent} from 'react';
-import {Button, Form, Grid, Segment} from 'semantic-ui-react';
+import {Button, Form} from 'semantic-ui-react';
 
 
 export interface ILoginState {
@@ -37,37 +37,31 @@ export class Login extends React.PureComponent<ILoginDispatchProps, ILoginState>
 
   render(): JSX.Element {
     return (
-
-          <Grid.Column className={'login-form-grid-column'}>
-            <Form size="large" method={'post'} onSubmit={this.onSubmit}>
-              <Segment stacked>
-                <Form.Input
-                  fluid
-                  autoFocus
-                  icon="user"
-                  iconPosition="left"
-                  placeholder="Your e-mail"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.onChange}
-                />
-                <Form.Input
-                  fluid
-                  icon="lock"
-                  iconPosition="left"
-                  placeholder="Your password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  type="password"
-                />
-                <Button color="blue" fluid size="large">
-                  Log In
-                </Button>
-              </Segment>
-            </Form>
-          </Grid.Column>
-
+      <Form className={'auth-page-input-form'} method={'post'} onSubmit={this.onSubmit}>
+          <Form.Input
+            fluid
+            autoFocus
+            icon="user"
+            iconPosition="left"
+            placeholder="Your e-mail"
+            name="username"
+            value={this.state.username}
+            onChange={this.onChange}
+          />
+          <Form.Input
+            fluid
+            icon="lock"
+            iconPosition="left"
+            placeholder="Your password"
+            name="password"
+            value={this.state.password}
+            onChange={this.onChange}
+            type="password"
+          />
+          <Button color="blue" fluid size="large">
+            Log In
+          </Button>
+      </Form>
     );
   }
 }

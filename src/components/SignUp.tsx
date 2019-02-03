@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ChangeEvent, FormEvent} from 'react';
-import {Button, Form, Grid, Segment} from 'semantic-ui-react';
+import {Button, Form} from 'semantic-ui-react';
 
 
 export interface ISignUpState {
@@ -37,36 +37,29 @@ export class SignUp extends React.PureComponent<ISignUpDispatchProps, ISignUpSta
 
   render(): JSX.Element {
     return (
-
-      <Grid.Column className={'login-form-grid-column'}>
-        <Form size="large" method={'post'} onSubmit={this.onSubmit}>
-          <Segment stacked>
-            <Form.Input
-              fluid
-              autoFocus
-              icon="user"
-              iconPosition="left"
-              placeholder="New e-mail"
-              name="email"
-              value={this.state.email}
-              onChange={this.onChange}
-            />
-            <Form.Input
-              fluid
-              icon="lock"
-              iconPosition="left"
-              placeholder="New password"
-              name="password"
-              value={this.state.password}
-              onChange={this.onChange}
-              type="password"
-            />
-            <Button color="green" fluid size="large">
-              Sign Up
-            </Button>
-          </Segment>
-        </Form>
-      </Grid.Column>
+      <Form className={'auth-page-input-form'} method={'post'} onSubmit={this.onSubmit}>
+        <Form.Input
+          autoFocus
+          icon="user"
+          iconPosition="left"
+          placeholder="New e-mail"
+          name="email"
+          value={this.state.email}
+          onChange={this.onChange}
+        />
+        <Form.Input
+          icon="lock"
+          iconPosition="left"
+          placeholder="New password"
+          name="password"
+          value={this.state.password}
+          onChange={this.onChange}
+          type="password"
+        />
+        <Button color="green" fluid size="large">
+          Sign Up
+        </Button>
+      </Form>
 
     );
   }

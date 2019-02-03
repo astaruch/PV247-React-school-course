@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Form, Grid, Modal} from 'semantic-ui-react';
+import {Button, Form, Grid, Input, Modal} from 'semantic-ui-react';
 import {IUser} from '../models/IUser';
 
 export interface IProfileOwnProps {
@@ -111,6 +111,8 @@ export class Profile extends React.PureComponent<IProps, IProfileState> {
               </Form>
             </Grid.Column>
             <Grid.Column width={5}>
+              {/*<input type="file" accept="image/*" onChange={this.onFileChange} id="file" ref={this.fileInputRef} style={{display: 'none'}}/>*/}
+              <Input type={'file'}/>
               <Button icon={'add'}/>
             </Grid.Column>
           </Grid>
