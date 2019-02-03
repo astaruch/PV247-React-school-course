@@ -26,41 +26,103 @@
 
 .message-app {
   display: grid;
-  height: 100%;
+  height: 100vh;
 
-  .message-app-header {
-    margin-bottom: 0px;
+  @left-sidebar-width: 250px;
+  @header-height: 60px;
+  @bottom-area-height: 200px;
+
+  grid-template-columns: 300px auto 300px;
+  grid-template-rows: 60px auto  150px 200px;
+  grid-template-areas:
+    "app-header       channel-header  user-header"
+    "channel-list     message-list    user-list"
+    "browse-channels  message-list    channel-attachments"
+    "browse-channels  message-form    channel-attachments";
+
+  .app-header {
+    grid-area: app-header;
+    border:1px solid black;
   }
 
-  .message-app-content {
-    height: 100%;
-
-    .channel-list {
-      width: 30em !important;
-
-      .channel-list-header-text {
-        position: relative;
-        .channel-list-header-button {
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-      }
-      .channel-item {
-
-        .channel-editing-buttons {
-          float: right;
-        }
-      }
-    }
-
-    .chat-window {
-      width: 90%;
-
-      .message-form {
-        width: 90%;
-      }
-    }
+  .channel-header {
+    grid-area: channel-header;
+    border:1px solid black;
   }
+
+  .user-header {
+    grid-area: user-header;
+    border:1px solid black;
+  }
+
+  .channel-list {
+    grid-area: channel-list;
+    border:1px solid black;
+  }
+
+  .browse-channels {
+    grid-area: browse-channels;
+    border:1px solid black;
+  }
+
+  .message-list {
+    grid-area: message-list;
+    border:1px solid black;
+  }
+  .message-form {
+    grid-area: message-form;
+    border:1px solid black;
+  }
+
+  .user-list {
+    grid-area: user-list;
+    border:1px solid black;
+    min-width: 150px;
+  }
+
+  .channel-attachments {
+    grid-area: channel-attachments;
+    border:1px solid black;
+  }
+
+
+
+
+
+
+  //.message-app-header {
+  //  margin-bottom: 0px;
+  //}
+  //
+  //.message-app-content {
+  //  height: 100%;
+  //
+  //  .channel-list {
+  //    width: 30em !important;
+  //
+  //    .channel-list-header-text {
+  //      position: relative;
+  //      .channel-list-header-button {
+  //        position: absolute;
+  //        right: 0px;
+  //        top: 0px;
+  //      }
+  //    }
+  //    .channel-item {
+  //
+  //      .channel-editing-buttons {
+  //        float: right;
+  //      }
+  //    }
+  //  }
+  //
+  //  .chat-window {
+  //    width: 90%;
+  //
+  //    .message-form {
+  //      width: 90%;
+  //    }
+  //  }
+  //}
 }
 
