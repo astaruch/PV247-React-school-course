@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Icon, Input, Label, List, Segment} from 'semantic-ui-react';
+import {Icon, Input, Label, List, Segment} from 'semantic-ui-react';
 import {IChannel} from '../models/IChannel';
 import {ChangeEvent} from 'react';
 
@@ -97,20 +97,18 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
         </Segment>
         <Segment tertiary>
           <div className={'channel-editing-buttons'}>
-            <Button.Group icon size={'small'}>
-              <Button onClick={() => this.onStartEditing(true)}>
-                <Icon name={'edit'}/>
-              </Button>
-              <Button onClick={this.onSavingChannelName}>
-                <Icon name={'save'}/>
-              </Button>
-              <Button onClick={() => this.onCancelChanges(false)}>
-                <Icon name={'x'}/>
-              </Button>
-              <Button onClick={this.onDeleteChannel}>
-                <Icon name={'trash'}/>
-              </Button>
-            </Button.Group>
+            <Icon name={'edit'}
+                  link
+                  onClick={() => this.onStartEditing(true)}/>
+            <Icon name={'save'}
+                  link
+                  onClick={() => this.onSavingChannelName()}/>
+            <Icon name={'x'}
+                  link
+                  onClick={() => this.onCancelChanges(false)}/>
+            <Icon name={'trash'}
+                  icon
+                  onClick={this.onDeleteChannel}/>
           </div>
         </Segment>
       </Segment.Group>

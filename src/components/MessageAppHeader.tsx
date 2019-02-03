@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Menu} from 'semantic-ui-react';
+import {Button, Icon, Menu} from 'semantic-ui-react';
 import {ProfileContainer} from '../containers/ProfileContainer';
 
 interface IMessageAppHeaderState {
@@ -15,6 +15,10 @@ export class MessageAppHeader extends React.PureComponent<any, IMessageAppHeader
     };
 
   }
+
+  onLogOut = () => {
+    console.log('logging out');
+  };
 
   showModal = () => {
     console.log('Opening modal window with profile');
@@ -34,6 +38,8 @@ export class MessageAppHeader extends React.PureComponent<any, IMessageAppHeader
 
   public render(): JSX.Element {
     const open = this.state.modalOpened;
+
+
     return (
       <div className={'message-app-header'}>
         <Menu inverted>
@@ -42,6 +48,9 @@ export class MessageAppHeader extends React.PureComponent<any, IMessageAppHeader
           </Menu.Item>
           <Menu.Item position={'right'}>
             <Button inverted circular icon={'user'} onClick={this.showModal}/>
+          </Menu.Item>
+          <Menu.Item>
+            <Icon inverted link onClick={this.onLogOut} name={'log out'}/>
           </Menu.Item>
           <ProfileContainer onClose={this.closeModal} open={open}/>
         </Menu>

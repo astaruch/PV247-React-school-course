@@ -26,21 +26,35 @@
     margin-bottom: 0px;
   }
 
-  .channel-list {
-    width: 30em !important;
+  .message-app-content {
+    height: 100%;
 
-    .channel-list-header-text {
-      position: relative;
-      .channel-list-header-button {
-        position: absolute;
-        right: 0px;
-        top: 0px;
+    .channel-list {
+      width: 30em !important;
+
+      .channel-list-header-text {
+        position: relative;
+        .channel-list-header-button {
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+      }
+      .channel-item {
+
+        .channel-editing-buttons {
+          float: right;
+        }
       }
     }
-    .channel-item {
 
-      .channel-editing-buttons {
-        float: right;
+    .chat-window {
+      .chat-window-grid {
+        width: 90%;
+
+        .message-form {
+          width: 90%;
+        }
       }
     }
   }

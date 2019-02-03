@@ -46,7 +46,7 @@ export class MessageForm extends React.PureComponent<IMessageFormProps, IMessage
 
   render(): JSX.Element {
     return (
-      <Form style={{width: '90%'}} onSubmit={this.onSubmit}>
+      <Form className={'message-form'} onSubmit={this.onSubmit}>
         <Form.TextArea label={'Message'}
                        placeholder={'Write your message...'}
                        value={this.state.message}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Immutable from 'immutable';
 import {ChannelItemContainer} from '../containers/ChannelItemContainer';
-import {Button, Header, Icon, Input, List, Segment} from 'semantic-ui-react';
+import {Header, Icon, Input, List, Segment} from 'semantic-ui-react';
 import {ChangeEvent} from 'react';
 import {IChannel} from '../models/IChannel';
 
@@ -57,7 +57,9 @@ export class ChannelList extends React.PureComponent<IProps, IState> {
       <div className={'channel-list'}>
         <Header as={'h3'} className={'channel-list-header-text'}>
           <Header.Content>Channels</Header.Content>
-          <Button onClick={this.onAddNewChannel} className={'channel-list-header-button'} icon={'add'}/>
+          <Icon name={'add'}
+                link
+                onClick={this.onAddNewChannel}/>
         </Header>
         <List link>
           {this.props.channelsList && this.props.channelsList.map((channelId) => (
@@ -68,28 +70,23 @@ export class ChannelList extends React.PureComponent<IProps, IState> {
           <Segment.Group horizontal>
               <Segment>
                   <List.Item
-                      className={'channel-item'}
-                  >
+                      className={'channel-item'}>
                       <Input
                           placeholder={'Enter new channel name...'}
-                          onChange={this.onChange}
-                      />
+                          onChange={this.onChange}/>
                   </List.Item>
               </Segment>
               <Segment tertiary>
                   <div className={'channel-editing-buttons'}>
-                      <Button.Group icon size={'small'}>
-                          <Button onClick={this.onSavingNewChannel}>
-                              <Icon name={'save'}/>
-                          </Button>
-                          <Button onClick={this.onCancelingChannelCreation}>
-                              <Icon name={'x'}/>
-                          </Button>
-                      </Button.Group>
+                      <Icon name={'save'}
+                            link
+                            onClick={this.onSavingNewChannel}/>
+                      <Icon name={'x'}
+                            link
+                            onClick={this.onCancelingChannelCreation}/>
                   </div>
               </Segment>
           </Segment.Group>
-
           }
         </List>
       </div>

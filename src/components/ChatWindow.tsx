@@ -8,7 +8,7 @@ export class ChatWindow extends React.PureComponent {
 
     public render(): JSX.Element {
         return (
-            <Grid divided={'vertically'} style={{width: '90%'}}>
+            <Grid divided={'vertically'} className={'chat-window-grid'}>
                 <Grid.Row>
                     <MessageListContainer/>
                 </Grid.Row>
