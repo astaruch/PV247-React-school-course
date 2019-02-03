@@ -107,7 +107,7 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
                   link
                   onClick={() => this.onCancelChanges(false)}/>
             <Icon name={'trash'}
-                  icon
+                  link
                   onClick={this.onDeleteChannel}/>
           </div>
         </Segment>
