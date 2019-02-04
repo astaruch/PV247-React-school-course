@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Immutable from 'immutable';
 import {ChannelItemContainer} from '../containers/ChannelItemContainer';
-import {Header, Icon, Input, List} from 'semantic-ui-react';
+import {Header, Icon, Input} from 'semantic-ui-react';
 import {ChangeEvent} from 'react';
 
 
@@ -24,10 +24,9 @@ export class ChannelList extends React.PureComponent<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      newName: 'New Channel'
+      newName: ''
     };
     this.onNewNameChange = this.onNewNameChange.bind(this);
-
   }
 
   readonly onSavingNewChannel = () => {
@@ -46,18 +45,17 @@ export class ChannelList extends React.PureComponent<IProps, IState> {
         <Header as={'h3'}>
           <Header.Content>Channels</Header.Content>
         </Header>
-        <Input icon={
-          <Icon name={'add'} link onClick={this.onSavingNewChannel}/>}
+        <Input value={this.state.newName}
+               icon={
+                 <Icon name={'add'} link onClick={this.onSavingNewChannel}/>}
                placeholder={'Add new channel...'}
                onChange={this.onNewNameChange}
                loading={this.props.asyncAddingChannel}
         />
-        <List link>
-          {this.props.channelsList && this.props.channelsList.map((channelId) => (
-            <ChannelItemContainer id={channelId} key={channelId}/>
-          ))}
+        {this.props.channelsList!.map((channelId) => (
+          <ChannelItemContainer id={channelId} key={channelId}/>
+        ))}
 
-        </List>
       </div>
     );
   }

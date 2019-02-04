@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {Icon, Input, Label, List, Segment} from 'semantic-ui-react';
+import {Icon} from 'semantic-ui-react';
 import {IChannel} from '../models/IChannel';
-import {ChangeEvent} from 'react';
+//import {ChangeEvent} from 'react';
 
 export interface IChannelItemStateProps {
   readonly channel: IChannel;
@@ -36,82 +36,87 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
     };
   }
 
-  private onChannelChange = () => {
-    this.props.onChannelChange(this.props.channel.id);
-  };
+//  private onChannelChange = () => {
+//    this.props.onChannelChange(this.props.channel.id);
+//  };
 
-  readonly onStartEditing = (editing: boolean): void => this.setState(prevState => ({
-    ...prevState,
-    editing
-  }));
+//  readonly onStartEditing = (editing: boolean): void => this.setState(prevState => ({
+//    ...prevState,
+//    editing
+//  }));
+//
+//  readonly onCancelChanges = (editing: boolean): void => this.setState(prevState => ({
+//    ...prevState,
+//    editing
+//  }));
 
-  readonly onCancelChanges = (editing: boolean): void => this.setState(prevState => ({
-    ...prevState,
-    editing
-  }));
+//  private onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+//    const value = e.target.value;
+//    this.setState((prevState) => {
+//      return {...prevState, currentChannelName: value};
+//    });
+//  };
 
-  private onChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const value = e.target.value;
-    this.setState((prevState) => {
-      return {...prevState, currentChannelName: value};
-    });
-  };
-
-  private onSavingChannelName = () => {
-    this.props.onSavingChannelName(this.props.channel, this.state.currentChannelName);
-  };
-
-  private onDeleteChannel = () => {
-    this.props.onDeleteChannel(this.props.channel.id);
-  };
+//  private onSavingChannelName = () => {
+//    this.props.onSavingChannelName(this.props.channel, this.state.currentChannelName);
+//  };
+//
+//  private onDeleteChannel = () => {
+//    this.props.onDeleteChannel(this.props.channel.id);
+//  };
 
   public render(): JSX.Element {
     return (
-      <Segment.Group horizontal>
-        <Segment>
-          <List.Item
-            as={'a'}
-            name={this.props.channel.name}
-            active={this.props.selected}
-            onClick={this.onChannelChange}
-            className={'channel-item'}
-          >
-            {this.props.channel.customData.numberOfNewMessages > 0 &&
-            <Label size={'small'}>
-                <Icon name={'mail'}/>{this.props.channel.customData.numberOfNewMessages}
-            </Label>
-            }
+      <div className={'channel-item-row'}>
+        {/*<List.Item as={'a'}*/}
+        {/*name={this.props.channel.name}*/}
+        {/*active={this.props.selected}*/}
+        {/*onClick={this.onChannelChange}*/}
+        {/*>*/}
+        {/*<Label size={'small'}>*/}
+        {/*<Icon name={'mail'}/>10*/}
+        {/*</Label>*/}
+        {/*{!this.state.editing &&*/}
+        {/*<List.Content>{this.props.channel.name}</List.Content>*/}
+        {/*}*/}
+        {/*{this.state.editing &&*/}
+        {/*<Input*/}
+        {/*loading={this.props.channel.customData.waitingForAsyncRenaming}*/}
+        {/*placeholder={'New channel name...'}*/}
+        {/*onChange={this.onChange}*/}
+        {/*/>*/}
+        {/*}*/}
 
-            {!this.state.editing &&
-            <List.Content>{this.props.channel.name}</List.Content>
-            }
-            {this.state.editing &&
-            <Input
-                loading={this.props.channel.customData.waitingForAsyncRenaming}
-                placeholder={'New channel name...'}
-                onChange={this.onChange}
-            />
-            }
-
-          </List.Item>
-        </Segment>
-        <Segment tertiary>
-          <div className={'channel-editing-buttons'}>
-            <Icon name={'edit'}
-                  link
-                  onClick={() => this.onStartEditing(true)}/>
-            <Icon name={'save'}
-                  link
-                  onClick={() => this.onSavingChannelName()}/>
-            <Icon name={'x'}
-                  link
-                  onClick={() => this.onCancelChanges(false)}/>
-            <Icon name={'trash'}
-                  link
-                  onClick={this.onDeleteChannel}/>
+        {/*</List.Item>*/}
+        <div className="channel-item-column">
+          <div className="channel-item-badge">tetetet</div>
+        </div>
+        <div className="channel-item-column">
+          <div className="channel-item-content">text</div>
+        </div>
+        <div className="channel-item-column">
+          <div className="channel-item-icons">
+            <Icon name={'cogs'}/>
           </div>
-        </Segment>
-      </Segment.Group>
+        </div>
+
+        {/*<Icon.Group className={'channel-item-icons'}>*/}
+        {/*<Icon name={'trash'}/>*/}
+        {/*<Icon name={'edit'}*/}
+        {/*link*/}
+        {/*onClick={() => this.onStartEditing(true)}/>*/}
+        {/*<Icon name={'save'}*/}
+        {/*link*/}
+        {/*onClick={() => this.onSavingChannelName()}/>*/}
+        {/*<Icon name={'x'}*/}
+        {/*link*/}
+        {/*onClick={() => this.onCancelChanges(false)}/>*/}
+        {/*<Icon name={'trash'}*/}
+        {/*link*/}
+        {/*onClick={this.onDeleteChannel}/>*/}
+        {/*</Icon.Group>*/}
+
+      </div>
     );
   }
 }

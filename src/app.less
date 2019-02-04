@@ -62,11 +62,12 @@
 
   .channel-list {
     grid-area: channel-list;
-    justify-self: start;
+    justify-self: stretch;
     align-self: start;
 
-    padding-top: 20px;
-    padding-left: 20px;
+    //padding-top: 20px;
+    //padding-left: 20px;
+    padding: 20px;
 
     display: flex;
     flex-direction: column;
@@ -74,6 +75,35 @@
     height: calc(100vh - @header-height - (@bottom-row-1-height + @bottom-row-2-height));
     overflow-y: scroll;
     flex-grow: 1;
+
+    .channel-item-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      cursor: pointer;
+
+      .channel-item-column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+      }
+      .channel-item-badge {
+        background-color: yellow;
+      }
+
+      .channel-item-content {
+        background-color: teal;
+      }
+
+      .channel-item-icons {
+        background-color: gray;
+
+      }
+    }
+
+    .channel-item-iconst {
+    }
 
     border:1px solid black;
   }
