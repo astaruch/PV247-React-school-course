@@ -6,7 +6,6 @@ import {
   CHANGING_CHANNEL_ENDED,
   CHANGING_CHANNEL_NAME_ENDED,
   CHANGING_CHANNEL_NAME_STARTED,
-  CREATE_NEW_CHANNEL_STARTED,
   CREATE_NEW_CHANNEL_ENDED,
   DELETE_CHANNEL_ENDED, EDIT_CHANNEL_STARTED, EDIT_CHANNEL_ENDED
 } from '../actions/channelActions';
@@ -104,20 +103,8 @@ const selected = (prevState: Uuid | null = null, action: Action): Uuid | null =>
   }
 };
 
-const newChannel = (prevState: IChannel | null = null, action: Action): IChannel | null => {
-  switch (action.type) {
-    case CREATE_NEW_CHANNEL_STARTED:
-      return {} as IChannel;
-    case CREATE_NEW_CHANNEL_ENDED:
-      return null;
-    default:
-      return prevState;
-  }
-};
-
 export const channels = combineReducers({
   asList,
   asMap,
   selected,
-  newChannel,
 });

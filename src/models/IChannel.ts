@@ -19,6 +19,5 @@ export interface IChannelList {
   asList: Immutable.List<Uuid>;
   asMap: Immutable.Map<Uuid, IChannel>;
   selected: Uuid;
-  newChannel: IChannel;
   isRenamed: boolean;
 }

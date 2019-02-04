@@ -55,29 +55,9 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
   };
 
   public render(): JSX.Element {
-    const {editing, asyncRenaming } = this.props.channel.customData;
+    const {editing, asyncRenaming} = this.props.channel.customData;
     return (
       <div className={'channel-item-row'}>
-        {/*<List.Item as={'a'}*/}
-        {/*name={this.props.channel.name}*/}
-        {/*active={this.props.selected}*/}
-        {/*onClick={this.onChannelChange}*/}
-        {/*>*/}
-        {/*<Label size={'small'}>*/}
-        {/*<Icon name={'mail'}/>10*/}
-        {/*</Label>*/}
-        {/*{!this.state.editing &&*/}
-        {/*<List.Content>{this.props.channel.name}</List.Content>*/}
-        {/*}*/}
-        {/*{this.state.editing &&*/}
-        {/*<Input*/}
-        {/*loading={this.props.channel.customData.waitingForAsyncRenaming}*/}
-        {/*placeholder={'New channel name...'}*/}
-        {/*onChange={this.onChange}*/}
-        {/*/>*/}
-        {/*}*/}
-
-        {/*</List.Item>*/}
         <div className="channel-item-column">
           <div className="channel-item-badge">
             {this.props.channel.customData.numberOfNewMessages > 0 &&
@@ -123,23 +103,6 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
             </Popup>
           </div>
         </div>
-
-        {/*<Icon.Group className={'channel-item-icons'}>*/}
-        {/*<Icon name={'trash'}/>*/}
-        {/*<Icon name={'edit'}*/}
-        {/*link*/}
-        {/*onClick={() => this.onStartEditing(true)}/>*/}
-        {/*<Icon name={'save'}*/}
-        {/*link*/}
-        {/*onClick={() => this.onSavingChannelName()}/>*/}
-        {/*<Icon name={'x'}*/}
-        {/*link*/}
-        {/*onClick={() => this.onCancelChanges(false)}/>*/}
-        {/*<Icon name={'trash'}*/}
-        {/*link*/}
-        {/*onClick={this.onDeleteChannel}/>*/}
-        {/*</Icon.Group>*/}
-
       </div>
     );
   }
