@@ -126,3 +126,9 @@ export const startEditing = (id: Uuid): any => {
     dispatch(editingChannelStarted(id));
   };
 };
+
+export const stopEditing = (id: Uuid): any => {
+  return async (dispatch: Dispatch): Promise<void> => {
+    dispatch(editingChannelEnded(id));
+  };
+};

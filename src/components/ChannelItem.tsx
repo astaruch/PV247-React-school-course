@@ -20,6 +20,8 @@ export interface IChannelItemDispatchProps {
   onDeleteChannel(id: Uuid): void;
 
   onStartEditing(id: Uuid): void;
+
+  onStopEditing(id: Uuid): void;
 }
 
 interface IState {
@@ -54,6 +56,10 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
     this.props.onDeleteChannel(this.props.channel.id);
   };
 
+  readonly cancelEditing = () => {
+    this.props.onStopEditing(this.props.channel.id);
+  }
+
   public render(): JSX.Element {
     const {editing, asyncRenaming} = this.props.channel.customData;
     return (
@@ -80,6 +86,7 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
                        value={this.state.newName}
                        onChange={this.onNewNameChange}
                        loading={asyncRenaming}
+                       onBlur={this.cancelEditing}
                 />
             </div>
             }
