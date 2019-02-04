@@ -8,7 +8,7 @@ import {
   CHANGING_CHANNEL_NAME_STARTED,
   CREATE_NEW_CHANNEL_STARTED,
   CREATE_NEW_CHANNEL_ENDED,
-  DELETE_CHANNEL_ENDED
+  DELETE_CHANNEL_ENDED, EDIT_CHANNEL_STARTED, EDIT_CHANNEL_ENDED
 } from '../actions/channelActions';
 
 // Used in ChannelItemContainer as data-source
@@ -25,7 +25,7 @@ const asMap = (prevState = Immutable.Map<Uuid, IChannel>(), action: Action): Imm
           name: action.payload.name,
           customData: {
             ...channelRename.customData,
-            waitingForAsyncRenaming: true
+            asyncRenaming: true
           }
         }
       );
@@ -37,10 +37,32 @@ const asMap = (prevState = Immutable.Map<Uuid, IChannel>(), action: Action): Imm
           ...renamed,
           customData: {
             ...renamed.customData,
-            waitingForAsyncRenaming: false
+            asyncRenaming: false
           }
         }
       );
+
+    case EDIT_CHANNEL_STARTED:
+      const editStart = prevState.get(action.payload.id)!;
+      return prevState.set(action.payload.id,
+        {
+          ...editStart,
+          customData: {
+            ...editStart.customData,
+            editing: true
+          }
+        });
+
+    case EDIT_CHANNEL_ENDED:
+      const editEnd = prevState.get(action.payload.id)!;
+      return prevState.set(action.payload.id,
+        {
+          ...editEnd,
+          customData: {
+            ...editEnd.customData,
+            editing: false
+          }
+        });
 
     case CREATE_NEW_CHANNEL_ENDED:
       return prevState.set(action.payload.channel.id, action.payload.channel);
@@ -97,5 +119,5 @@ export const channels = combineReducers({
   asList,
   asMap,
   selected,
-  newChannel
+  newChannel,
 });

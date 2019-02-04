@@ -18,6 +18,9 @@ export const CREATE_NEW_CHANNEL_ENDED = 'CREATE_NEW_CHANNEL_ENDED';
 export const DELETE_CHANNEL_STARTED = 'DELETE_CHANNEL_STARTED';
 export const DELETE_CHANNEL_ENDED = 'DELETE_CHANNEL_ENDED';
 
+export const EDIT_CHANNEL_STARTED = 'EDIT_CHANNEL_STARTED';
+export const EDIT_CHANNEL_ENDED = 'EDIT_CHANNEL_ENDED';
+
 const changingChannelStarted = (): Action => ({
   type: CHANGING_CHANNEL_STARTED
 });
@@ -66,6 +69,20 @@ const deleteChannelEnded = (id: Uuid) => ({
   }
 });
 
+const editingChannelStarted = (id: Uuid) => ({
+  type: EDIT_CHANNEL_STARTED,
+  payload: {
+    id
+  }
+});
+
+const editingChannelEnded = (id: Uuid) => ({
+  type: EDIT_CHANNEL_ENDED,
+  payload: {
+    id
+  }
+});
+
 export const changeChannel = (channelId: Uuid): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(changingChannelStarted());
@@ -82,6 +99,7 @@ export const changeChannelName = (channel: IChannel, newName: string): any => {
     dispatch(changingChannelNameStarted(id, newName));
     const renamedChannel = await channelService.renameChannel(id, newName, customData);
     dispatch(changingChannelNameEnded(renamedChannel.id));
+    dispatch(editingChannelEnded(id));
   };
 };
 
@@ -100,5 +118,11 @@ export const deleteChannel = (id: Uuid): any => {
     dispatch(deleteChannelStarted());
     await channelService.deleteChannel(id);
     dispatch(deleteChannelEnded(id));
+  };
+};
+
+export const startEditing = (id: Uuid): any => {
+  return async (dispatch: Dispatch): Promise<void> => {
+    dispatch(editingChannelStarted(id));
   };
 };

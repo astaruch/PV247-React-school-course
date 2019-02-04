@@ -5,7 +5,8 @@ export interface IChannelCustomData {
   readonly selected?: boolean;
   order: number;
   readonly usersId: Immutable.List<Uuid>;
-  readonly waitingForAsyncRenaming: boolean;
+  readonly editing: boolean;
+  readonly asyncRenaming: boolean;
 }
 
 export interface IChannel {
@@ -19,4 +20,5 @@ export interface IChannelList {
   asMap: Immutable.Map<Uuid, IChannel>;
   selected: Uuid;
   newChannel: IChannel;
+  isRenamed: boolean;
 }

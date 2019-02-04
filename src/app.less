@@ -38,7 +38,7 @@
   grid-template-areas:
     "app-header       channel-header  user-header"
     "channel-list     message-list    user-list"
-    "browse-channels  message-list    channel-attachments"
+    "channel-list     message-list    channel-attachments"
     "browse-channels  message-form    channel-attachments";
 
 
@@ -67,43 +67,57 @@
 
     //padding-top: 20px;
     //padding-left: 20px;
-    padding: 20px;
+    @channel-padding: 20px;
+    padding: @channel-padding;
 
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    height: calc(100vh - @header-height - (@bottom-row-1-height + @bottom-row-2-height));
+    height: calc(100vh - @header-height - @bottom-row-2-height);
     overflow-y: scroll;
     flex-grow: 1;
+    align-items: center;
 
+    .channel-list-header {
+      padding: 5px;
+      width: @sidebar-width - @channel-padding - @channel-padding - 12px;
+
+      .channel-list-header-input {
+        width: 100%;
+      }
+    }
     .channel-item-row {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       cursor: pointer;
+      width: 100%;
+      height: 40px;
 
       .channel-item-column {
-        display: flex;
-        flex-direction: column;
-        flex-basis: 100%;
-        flex: 1;
+        align-self: center;
       }
+
+      @badge-width: 46px;
+      @icons-width: 20px;
+      @content-width: @sidebar-width - @channel-padding - @channel-padding - @badge-width - @icons-width - 20;
       .channel-item-badge {
-        background-color: yellow;
+        width: @badge-width;
       }
 
       .channel-item-content {
-        background-color: teal;
+        width: @content-width;
+
+        .channel-item-renaming {
+          width: 90%;
+        }
       }
 
       .channel-item-icons {
-        background-color: gray;
-
+        width: @icons-width;
       }
     }
 
-    .channel-item-iconst {
-    }
 
     border:1px solid black;
   }

@@ -45,13 +45,17 @@ export class ChannelList extends React.PureComponent<IProps, IState> {
         <Header as={'h3'}>
           <Header.Content>Channels</Header.Content>
         </Header>
-        <Input value={this.state.newName}
-               icon={
-                 <Icon name={'add'} link onClick={this.onSavingNewChannel}/>}
-               placeholder={'Add new channel...'}
-               onChange={this.onNewNameChange}
-               loading={this.props.asyncAddingChannel}
-        />
+        <div className="channel-list-header">
+          <Input value={this.state.newName}
+                 icon={
+                   <Icon name={'add'} link onClick={this.onSavingNewChannel}/>}
+                 placeholder={'Add new channel...'}
+                 onChange={this.onNewNameChange}
+                 loading={this.props.asyncAddingChannel}
+                 size={'small'}
+                 className="channel-list-header-input"
+          />
+        </div>
         {this.props.channelsList!.map((channelId) => (
           <ChannelItemContainer id={channelId} key={channelId}/>
         ))}
