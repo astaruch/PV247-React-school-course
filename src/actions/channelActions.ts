@@ -21,6 +21,11 @@ export const DELETE_CHANNEL_ENDED = 'DELETE_CHANNEL_ENDED';
 export const EDIT_CHANNEL_STARTED = 'EDIT_CHANNEL_STARTED';
 export const EDIT_CHANNEL_ENDED = 'EDIT_CHANNEL_ENDED';
 
+export const JOIN_CHANNEL_STARTED = 'JOIN_CHANNEL_STARTED';
+export const JOIN_CHANNEL_ENDED = 'JOIN_CHANNEL_ENDED';
+export const LEAVE_CHANNEL_STARTED = 'LEAVE_CHANNEL_STARTED';
+export const LEAVE_CHANNEL_ENDED = 'LEAVE_CHANNEL_ENDED';
+
 const changingChannelStarted = (): Action => ({
   type: CHANGING_CHANNEL_STARTED
 });
@@ -83,6 +88,24 @@ const editingChannelEnded = (id: Uuid) => ({
   }
 });
 
+const joinChannelStarted = () => ({
+  type: JOIN_CHANNEL_STARTED
+});
+
+const joinChannelEnded = (channelId: Uuid, userId: Uuid) => ({
+  type: JOIN_CHANNEL_ENDED,
+  payload: {channelId, userId}
+});
+
+const leaveChannelStarted = () => ({
+  type: LEAVE_CHANNEL_STARTED
+});
+
+const leaveChannelEnded = (channelId: Uuid, userId: Uuid) => ({
+  type: LEAVE_CHANNEL_ENDED,
+  payload: {channelId, userId}
+});
+
 export const changeChannel = (channelId: Uuid): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(changingChannelStarted());
@@ -130,5 +153,21 @@ export const startEditing = (id: Uuid): any => {
 export const stopEditing = (id: Uuid): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(editingChannelEnded(id));
+  };
+};
+
+export const joinChannel = (channelId: Uuid, userId: Uuid): any => {
+  return async (dispatch: Dispatch): Promise<void> => {
+    dispatch(joinChannelStarted());
+    await channelService.joinChannel(channelId, userId);
+    dispatch(joinChannelEnded(channelId, userId));
+  };
+};
+
+export const leaveChannel = (channelId: Uuid, userId: Uuid): any => {
+  return async (dispatch: Dispatch): Promise<void> => {
+    dispatch(leaveChannelStarted());
+    await channelService.leaveChannel(channelId, userId);
+    dispatch(leaveChannelEnded(channelId, userId));
   };
 };

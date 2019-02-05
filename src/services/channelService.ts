@@ -21,6 +21,8 @@ export async function getChannels(): Promise<Immutable.List<IChannel>> {
         customData: {
           ...customData,
           editing: false,
+          usersId: customData.usersId || Immutable.List<Uuid>()
+
         }
       };
     }));
@@ -44,7 +46,7 @@ export async function renameChannel(channelId: Uuid, newName: string, oldCustomD
       name,
       customData: {
         ...customData,
-        editing: false
+        editing: false,
       }
     };
     return Promise.resolve(channel);
@@ -71,3 +73,4 @@ export async function deleteChannel(channelId: Uuid): Promise<void> {
   return axios.delete(`${CHANNEL_PATH}/${channelId}`, getAuthorizationHeader()
   ).then(response => console.log(response));
 }
+
