@@ -89,19 +89,16 @@ export async function joinChannel(channelId: Uuid, name: string, newCustomData: 
   });
 }
 
-export async function leaveChannel(channelId: Uuid, userId: Uuid, channel: IChannel): Promise<IChannel> {
+export async function leaveChannel(channelId: Uuid, name: string, newCustomData: object): Promise<IChannel> {
   return axios.put<ResponseChannel>(
     `${CHANNEL_PATH}/${channelId}`,
     {
-      name: channel.name,
-      customData: {
-        ...channel.customData,
-        usersId: channel.customData.usersId.filter((_userId) => { return userId !== _userId; })
-      }
+      name,
+      customData: newCustomData
     },
     getAuthorizationHeader()
   ).then((response) => {
-    console.log(response);
+    console.log('response leaving', response);
     return Promise.resolve(response.data);
   });
 }

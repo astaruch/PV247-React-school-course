@@ -162,11 +162,9 @@ export const stopEditing = (id: Uuid): any => {
 export const joinChannel = (channelId: Uuid, userId: Uuid, channel: IChannel): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(joinChannelStarted());
-    const customData = {
-      ...channel.customData,
-      userIds: channel.customData.usersId.push(userId),
-    };
-    const joinedChannel = await channelService.joinChannel(channelId, name, customData);
+    const {id, name, customData} = channel;
+    customData.usersId.push(userId);
+    const joinedChannel = await channelService.joinChannel(id, name, customData);
     dispatch(joinChannelEnded(channelId, userId, joinedChannel));
   };
 };
@@ -174,7 +172,11 @@ export const joinChannel = (channelId: Uuid, userId: Uuid, channel: IChannel): a
 export const leaveChannel = (channelId: Uuid, userId: Uuid, channel: IChannel): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(leaveChannelStarted());
-    const leftChannel = await channelService.leaveChannel(channelId, userId, channel);
+    const customData = {
+      ...channel.customData,
+      usersId: channel.customData.usersId.filter(_userId => {return _userId !== _userId; })
+    };
+    const leftChannel = await channelService.leaveChannel(channelId, channel.name, customData);
     dispatch(leaveChannelEnded(channelId, userId, leftChannel));
   };
 };

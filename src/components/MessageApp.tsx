@@ -3,6 +3,7 @@ import Header from 'semantic-ui-react/dist/commonjs/elements/Header/Header';
 import {ChannelListContainer} from '../containers/ChannelListContainer';
 import {BrowseChannelContainer} from '../containers/BrowseChannelsContainer';
 import {ChannelHeaderContainer} from '../containers/ChannelHeaderContainer';
+import {UserListContainer} from '../containers/UserListContainer';
 //import {ChatWindow} from './ChatWindow';
 //import {Segment} from 'semantic-ui-react';
 //import {ChannelListContainer} from '../containers/ChannelListContainer';
@@ -46,14 +47,14 @@ export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
         </div>
 
         <div className="message-list">
-          Channel List
+          Message List
         </div>
         <div className="message-form">
           Message Form
         </div>
 
         <div className="user-list">
-          User List
+          <UserListContainer/>
         </div>
         <div className="channel-attachments">
           Channel Attachments

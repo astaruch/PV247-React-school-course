@@ -87,7 +87,6 @@ const asMap = (prevState = Immutable.Map<Uuid, IChannel>(), action: Action): Imm
 
     case LEAVE_CHANNEL_ENDED:
       const left = prevState.get(action.payload.channelId)!;
-      console.log('left', left);
       return prevState.set(action.payload.channelId,
         {
           ...left,
