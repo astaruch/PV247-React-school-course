@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Icon, Input, Label, Popup} from 'semantic-ui-react';
+import {Header, Icon, Input, Label, Popup} from 'semantic-ui-react';
 import {IChannel} from '../models/IChannel';
 import {ChangeEvent} from 'react';
 
@@ -60,6 +60,10 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
     this.props.onChannelLeave(this.props.channel.id, this.props.loggedUserId, this.props.channel);
   };
 
+  readonly onChannelChange = () => {
+    this.props.onChannelChange(this.props.channel.id);
+  };
+
   public render(): JSX.Element {
     const {editing, asyncRenaming} = this.props.channel.customData;
     return (
@@ -76,7 +80,11 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
         <div className="channel-item-column">
           <div className="channel-item-content">
             {!editing &&
-            <span>{this.props.channel.name}</span>
+            <Header as={'h5'}
+                    onClick={this.onChannelChange}
+            >
+              {this.props.channel.name}
+            </Header>
             }
             {editing &&
             <div className="channel-item-renaming">
