@@ -14,8 +14,9 @@ export async function getMessages(channelId: Uuid): Promise<Immutable.List<IMess
     if (!responseMessages || responseMessages.length === 0) {
       return Immutable.List();
     }
-
-    return Immutable.List(responseMessages);
+    return Immutable.List(responseMessages).sort((a, b) => {
+      return (a.createdAt < b.createdAt) ? -1 : ((a.createdAt > b.createdAt) ? 1 : 0);
+    });
   });
 }
 

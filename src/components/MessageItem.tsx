@@ -39,7 +39,7 @@ export class MessageItem extends React.PureComponent<IProps> {
     const todayISO = today.toISOString();
     const todayArray = todayISO.split(/[T.]/);
     const timestampArray = this.props.message.createdAt.split(/[T.]/);
-    return todayArray[0] !== timestampArray[0] ? timestampArray[0] : timestampArray[1];
+    return todayArray[0] !== timestampArray[0] ? `${timestampArray[0]} ${timestampArray[1]}` : timestampArray[1];
   };
 
   render(): JSX.Element {
