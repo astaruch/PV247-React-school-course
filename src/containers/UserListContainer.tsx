@@ -6,7 +6,8 @@ import {IUserListDispatchProps, IUserListStateProps, UserList} from '../componen
 const mapStateToProps = (state: IMessageAppState): IUserListStateProps => {
   return {
     userList: state.channels.asMap.get(state.channels.selected)! &&
-      state.channels.asMap.get(state.channels.selected)!.customData.usersId
+      state.channels.asMap.get(state.channels.selected)!.customData.usersId,
+    allUsers: state.users.asMap
   };
 };
 

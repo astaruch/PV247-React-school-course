@@ -34,7 +34,11 @@
 
   grid-template-columns: @sidebar-width auto @sidebar-width;
   grid-template-rows: @header-height auto @bottom-row-1-height @bottom-row-2-height;
-  grid-template-areas: "app-header       channel-header  user-header" "channel-list     message-list    user-list" "channel-list     message-list    channel-attachments" "browse-channels  message-form    channel-attachments";
+  grid-template-areas:
+          "app-header       channel-header  user-header"
+          "channel-list     message-list    user-list"
+          "channel-list     message-list    channel-attachments"
+          "browse-channels  message-form    channel-attachments";
 
   justify-items: center;
   align-items: center;
@@ -168,7 +172,35 @@
   .user-list {
     grid-area: user-list;
     border: 1px solid black;
-    min-width: 150px;
+    //min-width: 150px;
+    background: aqua;
+
+    justify-self: stretch;
+    align-self: start;
+
+    @channel-padding: 20px;
+    padding: @channel-padding;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: calc(100vh - @header-height - @bottom-row-1-height - @bottom-row-2-height);
+    overflow-y: scroll;
+    flex-grow: 1;
+    align-items: center;
+
+    .user-list-items {
+      align-self: stretch;
+
+      .user-list-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 2px;
+      }
+    }
+
   }
 
   .channel-attachments {
