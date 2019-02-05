@@ -13,5 +13,6 @@ export interface IMessageAppState {
     authPageCount: number;
     addingNewChannel: boolean;
     asyncSendingMessage: boolean;
+    asyncChangingChannels: boolean;
   };
 }

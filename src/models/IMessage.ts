@@ -3,6 +3,8 @@ import * as Immutable from 'immutable';
 export interface IMessageCustomData {
   readonly channelId;
   readonly authorId;
+  likes: Immutable.Set<Uuid>;
+  dislikes: Immutable.Set<Uuid>;
 }
 
 export interface IMessage {

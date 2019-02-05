@@ -5,7 +5,8 @@ import {getMessagesForChannel} from '../selectors/messagesSelector';
 
 const mapStateToProps = (state: IMessageAppState): IMessageListStateProps => {
   return {
-    messagesIds: getMessagesForChannel(state)
+    messagesIds: getMessagesForChannel(state),
+    asyncChangingChannels: state.spinners.asyncChangingChannels
   };
 };
 

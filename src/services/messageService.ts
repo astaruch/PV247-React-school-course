@@ -35,3 +35,20 @@ export async function sendMessage(value: string,
     return newMessage;
   });
 }
+
+export async function updateMessage(value: string,
+                                    channelId: Uuid,
+                                    customData: IMessageCustomData,
+                                    messageId: Uuid): Promise<IMessage> {
+  return axios.put<ResponseMessage>(
+    `${CHANNEL_PATH}/${channelId}/message/${messageId}`,
+    {
+      value,
+      customData
+    },
+    getAuthorizationHeader()
+  ).then(response => {
+    console.log('Response PUT:', response.data);
+    return response.data;
+  });
+}

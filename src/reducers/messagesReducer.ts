@@ -1,7 +1,11 @@
 import * as Immutable from 'immutable';
 import {IMessage} from '../models/IMessage';
 import {combineReducers} from 'redux';
-import {MESSAGES_RETRIEVING_ENDED} from '../actions/messageActions';
+import {
+  MESSAGE_DOWN_VOTE_ENDED,
+  MESSAGE_UP_VOTE_ENDED,
+  MESSAGES_RETRIEVING_ENDED
+} from '../actions/messageActions';
 import {MESSAGE_SENDING_ENDED} from '../actions/messageActions';
 
 const asMap = (prevState = Immutable.Map<Uuid, IMessage>(), action: Action): Immutable.Map<Uuid, IMessage> => {
@@ -10,6 +14,10 @@ const asMap = (prevState = Immutable.Map<Uuid, IMessage>(), action: Action): Imm
       return Immutable.Map(action.payload.messages.map((message: IMessage) => [message.id, message]));
 
     case MESSAGE_SENDING_ENDED:
+      return prevState.set(action.payload.message.id, action.payload.message);
+
+    case MESSAGE_UP_VOTE_ENDED:
+    case MESSAGE_DOWN_VOTE_ENDED:
       return prevState.set(action.payload.message.id, action.payload.message);
 
     default:
