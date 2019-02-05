@@ -3,10 +3,11 @@ import {ChannelList, IChannelListDispatchProps, IChannelListStateProps} from '..
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {createNewChannel} from '../actions/channelActions';
+import {getChannelsForUser} from '../selectors/channelsSelector';
 
 const mapStateToProps = (state: IMessageAppState): IChannelListStateProps => {
   return {
-    channelsList: state.channels!.asList,
+    channelsList: getChannelsForUser(state),
     asyncAddingChannel: state.spinners.addingNewChannel,
     currentUser: state.users.currentUser!
   };
