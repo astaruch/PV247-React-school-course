@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Button, Form, Grid, Icon, Input, Modal} from 'semantic-ui-react';
+import {Button, Form, Grid, Icon, Modal} from 'semantic-ui-react';
 import {IUser} from '../models/IUser';
+import {ChangeEvent} from 'react';
 
 export interface IUserHeaderStateProps {
   user: IUser;
@@ -16,18 +17,23 @@ interface IUserState {
   password: string;
   username: string;
   modalOpened: boolean;
+  avatarPreview: string;
+  avatar: File;
 }
 
 type IProps = IUserHeaderStateProps & IUserHeaderDispatchProps;
 
 export class UserHeader extends React.PureComponent<IProps, IUserState> {
+  private fileInputRef = React.createRef<HTMLInputElement>();
+
   constructor(props) {
     super(props);
     this.state = {
+      ...this.state,
       username: this.props.user.customData.username,
       password: this.props.user.customData.password,
       email: this.props.user.email,
-      modalOpened: false
+      modalOpened: false,
     };
   }
 
@@ -73,10 +79,32 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
   };
 
   onCloseModal = () => {
-    this.setState(prevState => ({
+    this.setState((prevState): IUserState => ({
       ...prevState,
       modalOpened: false
     }));
+  };
+
+  onFileUpload = (event: ChangeEvent<HTMLInputElement>): void => {
+    const avatar = event.target!.files![0];
+    console.log(avatar);
+    this.setState((prevState): IUserState => {
+      return {...prevState, avatar};
+    });
+    const fileReader = new FileReader();
+    fileReader.onload = () => this.updateAvatar(fileReader.result);
+    fileReader.readAsDataURL(avatar);
+  };
+
+  updateAvatar = (avatar: string | ArrayBuffer | null): void => {
+    console.log(avatar);
+    this.setState((prevState): IUserState => {
+      if (typeof avatar === 'string') {
+        return {...prevState, avatarPreview: avatar};
+      } else {
+        return prevState;
+      }
+    });
   };
 
   render(): JSX.Element {
@@ -136,12 +164,22 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
                       onChange={this.onPasswordChange}
                     />
                   </Form.Group>
-
                 </Form>
               </Grid.Column>
               <Grid.Column width={5}>
-                {/*<input type="file" accept="image/*" onChange={this.onFileChange} id="file" ref={this.fileInputRef} style={{display: 'none'}}/>*/}
-                <Input type={'file'}/>
+                <div className="user-header-avatar"
+                     onClick={() => this.fileInputRef.current!.click()}
+                >
+                  <img className="user-header-avatar-img"
+                       src={this.state.avatarPreview}/>
+                  <div className="user-header-avatar-overlay">UPLOAD</div>
+                </div>
+                <input type={'file'}
+                       accept={'image/*'}
+                       onChange={this.onFileUpload}
+                       id={'file'}
+                       ref={this.fileInputRef}
+                       className="user-header-avatar-input"/>
               </Grid.Column>
             </Grid>
           </Modal.Content>
