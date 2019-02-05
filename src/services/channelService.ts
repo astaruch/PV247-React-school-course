@@ -14,6 +14,7 @@ export async function getChannels(): Promise<Immutable.List<IChannel>> {
       return Immutable.List();
     }
     const channels = Immutable.List(responseChannels.map((channel) => {
+      console.log(channel);
       const {id, name, customData} = channel;
       return {
         id,
@@ -74,3 +75,33 @@ export async function deleteChannel(channelId: Uuid): Promise<void> {
   ).then(response => console.log(response));
 }
 
+export async function joinChannel(channelId: Uuid, name: string, newCustomData: object): Promise<IChannel> {
+  return axios.put<ResponseChannel>(
+    `${CHANNEL_PATH}/${channelId}`,
+    {
+      name,
+      customData: newCustomData
+      },
+    getAuthorizationHeader()
+  ).then((response) => {
+    console.log('response joining', response);
+    return Promise.resolve(response.data);
+  });
+}
+
+export async function leaveChannel(channelId: Uuid, userId: Uuid, channel: IChannel): Promise<IChannel> {
+  return axios.put<ResponseChannel>(
+    `${CHANNEL_PATH}/${channelId}`,
+    {
+      name: channel.name,
+      customData: {
+        ...channel.customData,
+        usersId: channel.customData.usersId.filter((_userId) => { return userId !== _userId; })
+      }
+    },
+    getAuthorizationHeader()
+  ).then((response) => {
+    console.log(response);
+    return Promise.resolve(response.data);
+  });
+}

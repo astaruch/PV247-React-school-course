@@ -4,9 +4,10 @@ export interface IChannelCustomData {
   readonly numberOfNewMessages: number;
   readonly selected?: boolean;
   order: number;
-  readonly usersId: Immutable.List<Uuid>;
+  usersId: Immutable.List<Uuid>;
   readonly editing: boolean;
   readonly asyncRenaming: boolean;
+  readonly joining: boolean;
 }
 
 export interface IChannel {

@@ -8,24 +8,24 @@ export interface IBrowseChannelItemStateProps {
 }
 
 export interface IBrowseChannelItemDispatchProps {
-  onChannelJoin(channelId: Uuid, userId: Uuid): void;
-  onChannelLeave(channelId: Uuid, userId: Uuid): void;
+  onChannelJoin(channelId: Uuid, userId: Uuid, channel: IChannel): void;
+  onChannelLeave(channelId: Uuid, userId: Uuid, channel: IChannel): void;
 }
 
 type IProps = IBrowseChannelItemStateProps & IBrowseChannelItemDispatchProps;
 
 export class BrowseChannelItem extends React.PureComponent<IProps> {
   readonly onChannelJoin = () => {
-    this.props.onChannelJoin(this.props.channel.id, this.props.loggedUserId);
+    this.props.onChannelJoin(this.props.channel.id, this.props.loggedUserId, this.props.channel);
   };
 
   readonly onChannelLeave = () => {
-    this.props.onChannelLeave(this.props.channel.id, this.props.loggedUserId);
+    this.props.onChannelLeave(this.props.channel.id, this.props.loggedUserId, this.props.channel);
   };
 
   render(): JSX.Element {
     console.log(this.props.channel);
-    const inThisChannel = this.props.channel.customData.usersId.contains(this.props.loggedUserId);
+    const inThisChannel = this.props.channel.customData.usersId.includes(this.props.loggedUserId);
 
     return (
       <div className="channel-item-row">

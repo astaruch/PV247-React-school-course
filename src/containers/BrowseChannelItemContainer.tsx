@@ -8,6 +8,7 @@ import {
 import {IChannelItemOwnProps} from '../components/ChannelItem';
 import {Dispatch} from 'redux';
 import {joinChannel, leaveChannel} from '../actions/channelActions';
+import {IChannel} from '../models/IChannel';
 
 const mapStateToProps = (state: IMessageAppState, channelProps: IChannelItemOwnProps): IBrowseChannelItemStateProps => {
   return {
@@ -18,8 +19,10 @@ const mapStateToProps = (state: IMessageAppState, channelProps: IChannelItemOwnP
 
 const mapDispatchToProps = (dispatch: Dispatch): IBrowseChannelItemDispatchProps => {
   return {
-    onChannelJoin: (channelId: Uuid, userId: Uuid) => dispatch(joinChannel(channelId, userId)),
-    onChannelLeave: (channelId: Uuid, userId: Uuid) => dispatch(leaveChannel(channelId, userId)),
+    onChannelJoin: (channelId: Uuid, userId: Uuid, channel: IChannel) =>
+      dispatch(joinChannel(channelId, userId, channel)),
+    onChannelLeave: (channelId: Uuid, userId: Uuid, channel: IChannel) =>
+      dispatch(leaveChannel(channelId, userId, channel)),
   };
 };
 export const BrowseChannelItemContainer = connect<IBrowseChannelItemStateProps,

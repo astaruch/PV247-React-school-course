@@ -3,15 +3,17 @@ import * as Immutable from 'immutable';
 import {ChannelItemContainer} from '../containers/ChannelItemContainer';
 import {Header, Icon, Input} from 'semantic-ui-react';
 import {ChangeEvent} from 'react';
+import {IUser} from '../models/IUser';
 
 
 export interface IChannelListStateProps {
   readonly channelsList: Immutable.List<Uuid>;
   asyncAddingChannel: boolean;
+  currentUser: IUser;
 }
 
 export interface IChannelListDispatchProps {
-  onCreateNewChannel(name: string, order: number): void;
+  onCreateNewChannel(name: string, order: number, userId: Uuid): void;
 }
 
 type IProps = IChannelListStateProps & IChannelListDispatchProps;
@@ -30,7 +32,10 @@ export class ChannelList extends React.PureComponent<IProps, IState> {
   }
 
   readonly onSavingNewChannel = () => {
-    this.props.onCreateNewChannel(this.state.newName, this.props.channelsList.size + 1);
+    this.props.onCreateNewChannel(
+      this.state.newName,
+      this.props.channelsList.size + 1,
+      this.props.currentUser.customData.id);
     this.setState(prevState => ({...prevState, newName: ''}));
   };
 

@@ -1,5 +1,6 @@
 import {Dispatch} from 'redux';
 import {IChannel, IChannelCustomData} from '../models/IChannel';
+import * as Immutable from 'immutable';
 import * as channelService from '../services/channelService';
 import * as messageService from '../services/messageService';
 import {messagesRetrievingStarted} from './messageActions';
@@ -92,18 +93,18 @@ const joinChannelStarted = () => ({
   type: JOIN_CHANNEL_STARTED
 });
 
-const joinChannelEnded = (channelId: Uuid, userId: Uuid) => ({
+const joinChannelEnded = (channelId: Uuid, userId: Uuid, channel: IChannel) => ({
   type: JOIN_CHANNEL_ENDED,
-  payload: {channelId, userId}
+  payload: {channelId, userId, channel}
 });
 
 const leaveChannelStarted = () => ({
   type: LEAVE_CHANNEL_STARTED
 });
 
-const leaveChannelEnded = (channelId: Uuid, userId: Uuid) => ({
+const leaveChannelEnded = (channelId: Uuid, userId: Uuid, channel: IChannel) => ({
   type: LEAVE_CHANNEL_ENDED,
-  payload: {channelId, userId}
+  payload: {channelId, userId, channel}
 });
 
 export const changeChannel = (channelId: Uuid): any => {
@@ -126,12 +127,17 @@ export const changeChannelName = (channel: IChannel, newName: string): any => {
   };
 };
 
-export const createNewChannel = (name: string, order: number): any => {
+export const createNewChannel = (name: string, order: number, userId: Uuid): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(creatingNewChannelStarted());
-    const customData = {} as IChannelCustomData;
-    customData.order = order;
+    console.log('userId', userId);
+    const customData = {
+      order,
+      usersId: Immutable.List<Uuid>([userId])
+    } as IChannelCustomData;
+    console.log('customdata', customData);
     const newChannel = await channelService.createChannel(name, customData);
+    console.log('newChannel', newChannel);
     dispatch(creatingNewChannelEnded(newChannel));
   };
 };
@@ -156,18 +162,24 @@ export const stopEditing = (id: Uuid): any => {
   };
 };
 
-export const joinChannel = (channelId: Uuid, userId: Uuid): any => {
+export const joinChannel = (channelId: Uuid, userId: Uuid, channel: IChannel): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(joinChannelStarted());
-    await channelService.joinChannel(channelId, userId);
-    dispatch(joinChannelEnded(channelId, userId));
+    const customData = {
+      ...channel.customData,
+      userIds: channel.customData.usersId.push(userId),
+    };
+    console.log('customData', customData);
+    const joinedChannel = await channelService.joinChannel(channelId, name, customData);
+    console.log('joined channel', joinedChannel);
+    dispatch(joinChannelEnded(channelId, userId, joinedChannel));
   };
 };
 
-export const leaveChannel = (channelId: Uuid, userId: Uuid): any => {
+export const leaveChannel = (channelId: Uuid, userId: Uuid, channel: IChannel): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(leaveChannelStarted());
-    await channelService.leaveChannel(channelId, userId);
-    dispatch(leaveChannelEnded(channelId, userId));
+    const leftChannel = await channelService.leaveChannel(channelId, userId, channel);
+    dispatch(leaveChannelEnded(channelId, userId, leftChannel));
   };
 };

@@ -7,7 +7,11 @@ import {
   CHANGING_CHANNEL_NAME_ENDED,
   CHANGING_CHANNEL_NAME_STARTED,
   CREATE_NEW_CHANNEL_ENDED,
-  DELETE_CHANNEL_ENDED, EDIT_CHANNEL_STARTED, EDIT_CHANNEL_ENDED
+  DELETE_CHANNEL_ENDED,
+  EDIT_CHANNEL_STARTED,
+  EDIT_CHANNEL_ENDED,
+  JOIN_CHANNEL_ENDED,
+  LEAVE_CHANNEL_ENDED
 } from '../actions/channelActions';
 
 // Used in ChannelItemContainer as data-source
@@ -69,6 +73,32 @@ const asMap = (prevState = Immutable.Map<Uuid, IChannel>(), action: Action): Imm
     case DELETE_CHANNEL_ENDED:
       return prevState.delete(action.payload.id);
 
+    case JOIN_CHANNEL_ENDED:
+      const joined = prevState.get(action.payload.channelId)!;
+      joined.customData.usersId.push(action.payload.userId);
+      return prevState.set(action.payload.channelId,
+        {
+          ...joined,
+          customData: {
+            ...joined.customData,
+            joining: false
+          }
+        });
+
+    case LEAVE_CHANNEL_ENDED:
+      const left = prevState.get(action.payload.channelId)!;
+      console.log('left', left);
+      return prevState.set(action.payload.channelId,
+        {
+          ...left,
+          customData: {
+            ...left.customData,
+            usersId: left.customData.usersId.filter((_userId) => {
+              return _userId !== action.payload.userId;
+            }),
+            joining: false
+          }
+        });
     default:
       return prevState;
   }
