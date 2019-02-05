@@ -2,7 +2,7 @@ import {Dispatch} from 'redux';
 import {IUser} from '../models/IUser';
 import {connect} from 'react-redux';
 import {IMessageAppState} from '../models/IMessageApp';
-import {updateUser} from '../actions/userActions';
+import {logOutUser, updateUser} from '../actions/userActions';
 import {IUserHeaderDispatchProps, IUserHeaderStateProps, UserHeader} from '../components/UserHeader';
 
 const mapStateToProps = (state: IMessageAppState): IUserHeaderStateProps => {
@@ -13,7 +13,8 @@ const mapStateToProps = (state: IMessageAppState): IUserHeaderStateProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch): IUserHeaderDispatchProps => {
   return {
-    onSave: (user: IUser) => dispatch(updateUser(user))
+    onSave: (user: IUser) => dispatch(updateUser(user)),
+    onLogout: () => dispatch(logOutUser()),
   };
 };
 

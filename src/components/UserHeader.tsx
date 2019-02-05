@@ -8,6 +8,7 @@ export interface IUserHeaderStateProps {
 
 export interface IUserHeaderDispatchProps {
   onSave: ((user: IUser) => any);
+  onLogout: () => any;
 }
 
 interface IUserState {
@@ -28,8 +29,6 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
       email: this.props.user.email,
       modalOpened: false
     };
-
-    this.onLogOut = this.onLogOut.bind(this);
   }
 
   onUsernameChange = (event) => {
@@ -80,14 +79,10 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
     }));
   };
 
-  onLogOut = () => {
-    // TODO
-    console.log('Logging out.. TODO');
-  };
-
   render(): JSX.Element {
     return (
       <div className="user-header-icon">
+        <span>{this.props.user.customData.username || this.props.user.email}</span>
         <div className="user-header-icon">
           <Icon link
                 size={'large'}
@@ -99,7 +94,7 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
           <Icon link
                 size={'large'}
                 circular
-                onClick={this.onLogOut}
+                onClick={this.props.onLogout}
                 name={'log out'}/>
         </div>
 

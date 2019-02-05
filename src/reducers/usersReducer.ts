@@ -2,7 +2,7 @@ import * as Immutable from 'immutable';
 import {combineReducers} from 'redux';
 import {IUser} from '../models/IUser';
 import {USERS_RETRIEVING_ENDED} from '../actions/globalActions';
-import {UPDATE_USER_ENDED} from '../actions/userActions';
+import {UPDATE_USER_ENDED, USER_LOGGED_OUT} from '../actions/userActions';
 import {LOGIN_FAILED, LOGIN_SUCCEEDED} from '../actions/loginActions';
 import {REGISTRATION_FAILED, REGISTRATION_SUCCEEDED} from '../actions/signUpActions';
 
@@ -37,6 +37,7 @@ const currentUser = (prevState: IUser | null = null, action: Action): IUser | nu
 
     case LOGIN_FAILED:
     case REGISTRATION_FAILED:
+    case USER_LOGGED_OUT:
       return null;
 
     case UPDATE_USER_ENDED:
