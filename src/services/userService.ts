@@ -8,7 +8,6 @@ export async function getUsers(): Promise<Immutable.List<IUser>> {
   return axios.get<ResponseUser[]>(USER_PATH, getAuthorizationHeader())
     .then((response) => {
       const responseUsers = response.data;
-      console.log(responseUsers);
       if (!responseUsers || responseUsers.length === 0) {
         // this should never happen :-). Remove this statement before deadline
         return Immutable.List();

@@ -67,7 +67,6 @@ const messageDownVoteEnded = (message: IMessage, channelId: Uuid) => ({
 export const sendMessage = (value: string, channelId: Uuid, userId: Uuid): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(messageSendingStarted());
-    console.log(value, channelId, userId);
     const customData = {
       likes: Immutable.Set<Uuid>(),
       dislikes: Immutable.Set<Uuid>(),
@@ -90,7 +89,6 @@ export const messageUpVote = (message: IMessage, userId: Uuid): any => {
     };
     const updatedMessage = await messageService.updateMessage(
       value, customData.channelId, updatedCustomData, message.id);
-    console.log('Like :)');
     dispatch(messageUpVoteEnded(updatedMessage, customData.channelId));
   };
 };
@@ -106,7 +104,6 @@ export const messageDownVote = (message: IMessage, userId: Uuid): any => {
     };
     const updatedMessage = await messageService.updateMessage(
       value, customData.channelId, updatedCustomData, message.id);
-    console.log('Dislike :(');
     dispatch(messageDownVoteEnded(updatedMessage, customData.channelId));
   };
 };

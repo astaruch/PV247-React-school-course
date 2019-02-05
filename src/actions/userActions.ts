@@ -25,7 +25,6 @@ const loggingOut = (): Action => ({
 
 export const updateUser = (user: IUser): any => {
   return async (dispatch: Dispatch): Promise<void> => {
-    console.log('Updating user...', user);
     dispatch(updatingUserStarted());
     const updatedUser = await userService.updateUser(user.email, user.customData);
     dispatch(updatingUserEnded(updatedUser));

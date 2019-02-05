@@ -14,7 +14,6 @@ export async function getChannels(): Promise<Immutable.List<IChannel>> {
       return Immutable.List();
     }
     const channels = Immutable.List(responseChannels.map((channel) => {
-      console.log(channel);
       const {id, name, customData} = channel;
       return {
         id,

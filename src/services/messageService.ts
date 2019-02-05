@@ -9,7 +9,6 @@ export async function getMessages(channelId: Uuid): Promise<Immutable.List<IMess
     `${CHANNEL_PATH}/${channelId}/message`,
     getAuthorizationHeader()
   ).then((response) => {
-    console.log('Messages:', response.data);
     const responseMessages = response.data;
     if (!responseMessages || responseMessages.length === 0) {
       return Immutable.List();
@@ -31,9 +30,7 @@ export async function sendMessage(value: string,
     },
     getAuthorizationHeader()
   ).then((response) => {
-    const newMessage = response.data;
-    console.log('Sended message:', newMessage);
-    return newMessage;
+    return response.data;
   });
 }
 
@@ -49,7 +46,6 @@ export async function updateMessage(value: string,
     },
     getAuthorizationHeader()
   ).then(response => {
-    console.log('Response PUT:', response.data);
     return response.data;
   });
 }

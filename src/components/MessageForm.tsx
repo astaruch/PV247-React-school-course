@@ -29,7 +29,6 @@ export class MessageForm extends React.PureComponent<IMessageFormProps, IMessage
 
   onSubmit = (event) => {
     event.preventDefault();
-    console.log('Sending message ', this.state.message);
     const value = this.state.message;
     this.props.onMessageSubmit(value, this.props.channelId, this.props.userId);
     this.setState(() => ({

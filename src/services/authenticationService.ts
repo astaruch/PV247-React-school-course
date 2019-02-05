@@ -31,7 +31,6 @@ export async function getBearerTokenForExistingUser(email: string): Promise<Bear
     };
     return Promise.resolve(bearerToken);
   }).catch(() => {
-    console.log('User e-mail doesn\'t exist in this app.');
     localStorage.removeItem('BEARER_TOKEN');
     return null;
   });
@@ -58,7 +57,6 @@ export async function registerNewUser(email: string, password: string): Promise<
       pictureUrl: ''
     }
   }).then((response) => {
-    console.log(response);
     return Promise.resolve(response.data);
   });
 }
