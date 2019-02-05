@@ -24,7 +24,6 @@ export class BrowseChannelItem extends React.PureComponent<IProps> {
   };
 
   render(): JSX.Element {
-    console.log(this.props.channel);
     const inThisChannel = this.props.channel.customData.usersId.includes(this.props.loggedUserId);
 
     return (

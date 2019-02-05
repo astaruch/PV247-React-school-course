@@ -130,14 +130,11 @@ export const changeChannelName = (channel: IChannel, newName: string): any => {
 export const createNewChannel = (name: string, order: number, userId: Uuid): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(creatingNewChannelStarted());
-    console.log('userId', userId);
     const customData = {
       order,
       usersId: Immutable.List<Uuid>([userId])
     } as IChannelCustomData;
-    console.log('customdata', customData);
-    const newChannel = await channelService.createChannel(name, customData);
-    console.log('newChannel', newChannel);
+    const newChannel = await channelService.createChannel(name || `Channel #${order}`, customData);
     dispatch(creatingNewChannelEnded(newChannel));
   };
 };
@@ -169,9 +166,7 @@ export const joinChannel = (channelId: Uuid, userId: Uuid, channel: IChannel): a
       ...channel.customData,
       userIds: channel.customData.usersId.push(userId),
     };
-    console.log('customData', customData);
     const joinedChannel = await channelService.joinChannel(channelId, name, customData);
-    console.log('joined channel', joinedChannel);
     dispatch(joinChannelEnded(channelId, userId, joinedChannel));
   };
 };

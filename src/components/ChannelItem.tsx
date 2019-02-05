@@ -6,6 +6,7 @@ import {ChangeEvent} from 'react';
 export interface IChannelItemStateProps {
   readonly channel: IChannel;
   readonly selected: boolean;
+  readonly loggedUserId: Uuid;
 }
 
 export interface IChannelItemOwnProps {
@@ -21,7 +22,7 @@ export interface IChannelItemDispatchProps {
 
   onStartEditing(id: Uuid): void;
 
-  onStopEditing(id: Uuid): void;
+  onChannelLeave(channelId: Uuid, userId: Uuid, channel: IChannel): void;
 }
 
 interface IState {
@@ -52,13 +53,12 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
   };
 
   readonly onDeleteChannel = () => {
-    console.log('Deleting');
     this.props.onDeleteChannel(this.props.channel.id);
   };
 
-  readonly cancelEditing = () => {
-    this.props.onStopEditing(this.props.channel.id);
-  }
+  readonly onChannelLeave = () => {
+    this.props.onChannelLeave(this.props.channel.id, this.props.loggedUserId, this.props.channel);
+  };
 
   public render(): JSX.Element {
     const {editing, asyncRenaming} = this.props.channel.customData;
@@ -106,7 +106,10 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
                     link
                     onClick={this.onDeleteChannel}
               />
-              <Icon name={'sign out'}/>
+              <Icon name={'sign out'}
+                    link
+                    onClick={this.onChannelLeave}
+              />
             </Popup>
           </div>
         </div>
