@@ -125,8 +125,15 @@ const selected = (prevState: Uuid | null = null, action: Action): Uuid | null =>
     // On first load set it to 1st channel
     case MESSAGE_APP_DATA_LOADING_ENDED:
       return action.payload.channels.get(0).id;
+
     case CHANGING_CHANNEL_ENDED:
       return action.payload.id;
+
+    case JOIN_CHANNEL_ENDED:
+      return action.payload.channelId;
+
+    case LEAVE_CHANNEL_ENDED:
+      return null;
     default:
       return prevState;
   }
