@@ -4,11 +4,7 @@ import {ChannelListContainer} from '../containers/ChannelListContainer';
 import {BrowseChannelContainer} from '../containers/BrowseChannelsContainer';
 import {ChannelHeaderContainer} from '../containers/ChannelHeaderContainer';
 import {UserListContainer} from '../containers/UserListContainer';
-//import {ChatWindow} from './ChatWindow';
-//import {Segment} from 'semantic-ui-react';
-//import {ChannelListContainer} from '../containers/ChannelListContainer';
-//import {MessageAppHeader} from './MessageAppHeader';
-
+import {UserHeaderContainer} from '../containers/UserHeaderContainer';
 
 export interface IMessageAppDispatchProps {
   loadDataFromServer(): void;
@@ -27,16 +23,18 @@ export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
     return (
       <div className={'message-app'}>
         <div className="app-header">
-          <Header as={'h2'}>
-            Messenger
-            <Header.Subheader>React & Redux school project</Header.Subheader>
-          </Header>
+          <div className="app-header-text">
+            <Header as={'h2'}>
+              Messenger
+              <Header.Subheader>React & Redux school project</Header.Subheader>
+            </Header>
+          </div>
         </div>
         <div className="channel-header">
           <ChannelHeaderContainer/>
         </div>
         <div className="user-header">
-          User Header
+          <UserHeaderContainer/>
         </div>
 
         <div className="channel-list">

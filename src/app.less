@@ -40,12 +40,16 @@
           "channel-list     message-list    channel-attachments"
           "browse-channels  message-form    channel-attachments";
 
-  justify-items: center;
-  align-items: center;
+  justify-items: stretch;
+  align-items: stretch;
 
   .app-header {
     grid-area: app-header;
     border: 1px solid black;
+    background: azure;
+
+    .app-header-text {
+    }
   }
 
   .channel-header {
@@ -56,6 +60,13 @@
   .user-header {
     grid-area: user-header;
     border: 1px solid black;
+
+    display: flex;
+
+    .user-header-icon {
+      display: flex;
+      flex-direction: row;
+    }
   }
 
   .channel-list {
@@ -207,40 +218,5 @@
     grid-area: channel-attachments;
     border: 1px solid black;
   }
-
-  //.message-app-header {
-  //  margin-bottom: 0px;
-  //}
-  //
-  //.message-app-content {
-  //  height: 100%;
-  //
-  //  .channel-list {
-  //    width: 30em !important;
-  //
-  //    .channel-list-header-text {
-  //      position: relative;
-  //      .channel-list-header-button {
-  //        position: absolute;
-  //        right: 0px;
-  //        top: 0px;
-  //      }
-  //    }
-  //    .channel-item {
-  //
-  //      .channel-editing-buttons {
-  //        float: right;
-  //      }
-  //    }
-  //  }
-  //
-  //  .chat-window {
-  //    width: 90%;
-  //
-  //    .message-form {
-  //      width: 90%;
-  //    }
-  //  }
-  //}
 }
 
