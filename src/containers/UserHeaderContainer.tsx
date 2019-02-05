@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {IMessageAppState} from '../models/IMessageApp';
 import {logOutUser, updateUser} from '../actions/userActions';
 import {IUserHeaderDispatchProps, IUserHeaderStateProps, UserHeader} from '../components/UserHeader';
+import {uploadFile} from '../actions/fileActions';
 
 const mapStateToProps = (state: IMessageAppState): IUserHeaderStateProps => {
   return {
@@ -15,6 +16,7 @@ const mapDispatchToProps = (dispatch: Dispatch): IUserHeaderDispatchProps => {
   return {
     onSave: (user: IUser) => dispatch(updateUser(user)),
     onLogout: () => dispatch(logOutUser()),
+    onUploadAvatar: (formData: FormData) => dispatch(uploadFile(formData)),
   };
 };
 

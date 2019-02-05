@@ -10,6 +10,7 @@ export interface IUserHeaderStateProps {
 export interface IUserHeaderDispatchProps {
   onSave: ((user: IUser) => any);
   onLogout: () => any;
+  onUploadAvatar: (formData: FormData) => void;
 }
 
 interface IUserState {
@@ -18,7 +19,7 @@ interface IUserState {
   username: string;
   modalOpened: boolean;
   avatarPreview: string;
-  avatar: File;
+  avatarFile: File;
 }
 
 type IProps = IUserHeaderStateProps & IUserHeaderDispatchProps;
@@ -68,6 +69,12 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
         username: this.state.username,
       }
     });
+    console.log(this.state.avatarFile);
+    console.log(this.state.avatarPreview);
+    const formData = new FormData();
+    formData.append('Files', this.state.avatarFile);
+    console.log(formData);
+    this.props.onUploadAvatar(formData);
     this.onCloseModal();
   };
 
@@ -89,7 +96,7 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
     const avatar = event.target!.files![0];
     console.log(avatar);
     this.setState((prevState): IUserState => {
-      return {...prevState, avatar};
+      return {...prevState, avatarFile: avatar};
     });
     const fileReader = new FileReader();
     fileReader.onload = () => this.updateAvatar(fileReader.result);
