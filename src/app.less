@@ -10,7 +10,6 @@
 
   @auth-page-form-width: 400px;
 
-
   .auth-page-switch-buttons {
     width: @auth-page-form-width;
   }
@@ -34,30 +33,25 @@
   @bottom-row-2-height: 200px;
 
   grid-template-columns: @sidebar-width auto @sidebar-width;
-  grid-template-rows: @header-height auto  @bottom-row-1-height @bottom-row-2-height;
-  grid-template-areas:
-    "app-header       channel-header  user-header"
-    "channel-list     message-list    user-list"
-    "channel-list     message-list    channel-attachments"
-    "browse-channels  message-form    channel-attachments";
-
+  grid-template-rows: @header-height auto @bottom-row-1-height @bottom-row-2-height;
+  grid-template-areas: "app-header       channel-header  user-header" "channel-list     message-list    user-list" "channel-list     message-list    channel-attachments" "browse-channels  message-form    channel-attachments";
 
   justify-items: center;
   align-items: center;
 
   .app-header {
     grid-area: app-header;
-    border:1px solid black;
+    border: 1px solid black;
   }
 
   .channel-header {
     grid-area: channel-header;
-    border:1px solid black;
+    border: 1px solid black;
   }
 
   .user-header {
     grid-area: user-header;
-    border:1px solid black;
+    border: 1px solid black;
   }
 
   .channel-list {
@@ -118,45 +112,69 @@
       }
     }
 
-
-    border:1px solid black;
+    border: 1px solid black;
   }
 
   .browse-channels {
     grid-area: browse-channels;
-    justify-self: start;
+
+    border: 1px solid black;
+    justify-self: stretch;
     align-self: start;
 
-    padding-top: @header-height;
-    padding-left: 20px;
+    @channel-padding: 20px;
+    padding: @channel-padding;
 
-    border:1px solid black;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: @bottom-row-2-height;
+    overflow-y: scroll;
+    flex-grow: 1;
+    align-items: center;
+
+    .browse-channels-list {
+      align-self: stretch;
+
+      .channel-item-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 2px;
+      }
+
+      .channel-item-text {
+        width: 80%;
+      }
+
+      .channel-item-label {
+        width: 45px;
+        text-align: center;
+      }
+    }
+
   }
 
   .message-list {
     grid-area: message-list;
-    border:1px solid black;
+    border: 1px solid black;
   }
   .message-form {
     grid-area: message-form;
-    border:1px solid black;
+    border: 1px solid black;
   }
 
   .user-list {
     grid-area: user-list;
-    border:1px solid black;
+    border: 1px solid black;
     min-width: 150px;
   }
 
   .channel-attachments {
     grid-area: channel-attachments;
-    border:1px solid black;
+    border: 1px solid black;
   }
-
-
-
-
-
 
   //.message-app-header {
   //  margin-bottom: 0px;

@@ -20,7 +20,7 @@ export async function getChannels(): Promise<Immutable.List<IChannel>> {
         name,
         customData: {
           ...customData,
-          waitingForAsyncRenaming: false
+          editing: false,
         }
       };
     }));
@@ -44,7 +44,7 @@ export async function renameChannel(channelId: Uuid, newName: string, oldCustomD
       name,
       customData: {
         ...customData,
-        waitingForAsyncRenaming: false,
+        editing: false
       }
     };
     return Promise.resolve(channel);
@@ -61,7 +61,6 @@ export async function createChannel(newName: string, newCustomData: object): Pro
       name,
       customData: {
         ...customData,
-        waitingForAsyncRenaming: false
       }
     };
     return Promise.resolve(channel);

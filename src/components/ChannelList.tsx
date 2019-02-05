@@ -43,7 +43,7 @@ export class ChannelList extends React.PureComponent<IProps, IState> {
     return (
       <div>
         <Header as={'h3'}>
-          <Header.Content>Channels</Header.Content>
+          <Header.Content>My Channels</Header.Content>
         </Header>
         <div className="channel-list-header">
           <Input value={this.state.newName}

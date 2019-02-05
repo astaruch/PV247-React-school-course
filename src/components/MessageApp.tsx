@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Header from 'semantic-ui-react/dist/commonjs/elements/Header/Header';
 import {ChannelListContainer} from '../containers/ChannelListContainer';
+import {BrowseChannelContainer} from '../containers/BrowseChannelsContainer';
 //import {ChatWindow} from './ChatWindow';
 //import {Segment} from 'semantic-ui-react';
 //import {ChannelListContainer} from '../containers/ChannelListContainer';
@@ -23,11 +24,6 @@ export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
   public render(): JSX.Element {
     return (
       <div className={'message-app'}>
-        {/*<MessageAppHeader/>*/}
-        {/*<Segment.Group className={'message-app-content'} horizontal>*/}
-          {/*<ChannelListContainer/>*/}
-          {/*<ChatWindow/>*/}
-        {/*</Segment.Group>*/}
         <div className="app-header">
           <Header as={'h2'}>
             Messenger
@@ -45,7 +41,7 @@ export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
           <ChannelListContainer/>
         </div>
         <div className="browse-channels">
-          Browse Channels
+          <BrowseChannelContainer/>
         </div>
 
         <div className="message-list">

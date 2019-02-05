@@ -86,7 +86,7 @@ export class ChannelItem extends React.PureComponent<IProps, IState> {
                        value={this.state.newName}
                        onChange={this.onNewNameChange}
                        loading={asyncRenaming}
-                       onBlur={this.cancelEditing}
+                       onBlur={this.onSaveNewName}
                 />
             </div>
             }
