@@ -174,7 +174,17 @@
   .message-list {
     grid-area: message-list;
     border: 1px solid black;
+
+    justify-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: calc(100vh - @header-height - @bottom-row-2-height);
+    overflow-y: scroll;
+    flex-grow: 1;
   }
+
   .message-form {
     grid-area: message-form;
     height: @bottom-row-2-height;
