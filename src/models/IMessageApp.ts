@@ -12,6 +12,6 @@ export interface IMessageAppState {
   spinners: {
     authPageCount: number;
     addingNewChannel: boolean;
-    renamingChannel: boolean;
+    asyncSendingMessage: boolean;
   };
 }

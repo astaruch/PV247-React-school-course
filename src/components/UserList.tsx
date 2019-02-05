@@ -15,9 +15,7 @@ type IProps = IUserListStateProps & IUserListDispatchProps;
 
 export class UserList extends React.PureComponent<IProps> {
   render() {
-    console.log('user list', this.props.userList);
     const userIds = [...new Set(this.props.userList)];
-    console.log(userIds);
     return (
       <div className="user-list-items">
         <Header as={'h3'}>User List</Header>

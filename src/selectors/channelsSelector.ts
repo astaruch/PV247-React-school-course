@@ -11,7 +11,6 @@ export const getChannelsForUser = createSelector(
   (allChannels, userId): Immutable.List<Uuid> => {
     const {asList, asMap} = allChannels;
     const userChannels = asMap.filter((channel) => {
-      console.log(channel.customData.usersId);
       return channel.customData.usersId.includes(userId);
     });
     return asList.filter(channelId => userChannels.has(channelId));

@@ -7,7 +7,8 @@ import {sendMessage} from '../actions/messageActions';
 const mapStateToProps = (state: IMessageAppState): IMessageFormStateProps => {
   return {
     channelId: state.channels.selected!,
-    userId: state.users.currentUser!.customData.id
+    userId: state.users.currentUser!.customData.id,
+    asyncSendingMessage: state.spinners.asyncSendingMessage,
   };
 };
 

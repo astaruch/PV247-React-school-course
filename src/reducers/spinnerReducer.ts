@@ -5,6 +5,7 @@ import {
   CREATE_NEW_CHANNEL_ENDED,
   CREATE_NEW_CHANNEL_STARTED
 } from '../actions/channelActions';
+import {MESSAGE_SENDING_ENDED, MESSAGE_SENDING_STARTED} from '../actions/messageActions';
 
 const authPageCount = (prevState: number = 0, action: Action): number => {
   switch (action.type) {
@@ -32,7 +33,19 @@ const addingNewChannel = (prevState: boolean = false, action: Action): boolean =
   }
 };
 
+const asyncSendingMessage = (prevstate: boolean = false, action: Action): boolean => {
+  switch (action.type) {
+    case MESSAGE_SENDING_STARTED:
+      return true;
+    case MESSAGE_SENDING_ENDED:
+      return false;
+    default:
+      return prevstate;
+  }
+};
+
 export const spinners = combineReducers({
   authPageCount,
   addingNewChannel,
+  asyncSendingMessage,
 });

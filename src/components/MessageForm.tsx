@@ -4,6 +4,7 @@ import {Form} from 'semantic-ui-react';
 export interface IMessageFormStateProps {
   readonly channelId: Uuid;
   readonly userId: Uuid;
+  readonly asyncSendingMessage: boolean;
 }
 
 export interface IMessageFormDispatchProps {
@@ -21,7 +22,6 @@ type IMessageFormProps = IMessageFormStateProps & IMessageFormDispatchProps;
 export class MessageForm extends React.PureComponent<IMessageFormProps, IMessageFormState> {
   constructor(props) {
     super(props);
-
     this.state = {
       message: ''
     };
@@ -46,14 +46,18 @@ export class MessageForm extends React.PureComponent<IMessageFormProps, IMessage
 
   render(): JSX.Element {
     return (
-      <Form className={'message-form'} onSubmit={this.onSubmit}>
-        <Form.TextArea label={'Message'}
-                       placeholder={'Write your message...'}
-                       value={this.state.message}
-                       onChange={this.setMessage}/>
-        <Form.Button>Send</Form.Button>
-      </Form>
-
+      <div className="message-form">
+        <Form onSubmit={this.onSubmit}
+              loading={this.props.asyncSendingMessage}>
+          <Form.TextArea placeholder={'Write your message...'}
+                         value={this.state.message}
+                         autoHeight
+                         className="message-form-text-area"
+                         rows={6}
+                         onChange={this.setMessage}/>
+          <Form.Button>Send</Form.Button>
+        </Form>
+      </div>
     );
   }
 }

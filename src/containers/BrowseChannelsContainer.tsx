@@ -1,7 +1,6 @@
 import {IMessageAppState} from '../models/IMessageApp';
 import {connect} from 'react-redux';
-//import {Dispatch} from 'redux';
-import {BrowseChannels, IBrowseChannelsDispatchProps, IBrowseChannelsStateProps} from '../components/BrowseChannels';
+import {BrowseChannels, IBrowseChannelsStateProps} from '../components/BrowseChannels';
 
 const mapStateToProps = (state: IMessageAppState): IBrowseChannelsStateProps => {
   return {
@@ -9,8 +8,4 @@ const mapStateToProps = (state: IMessageAppState): IBrowseChannelsStateProps => 
   };
 };
 
-const mapDispatchToProps = (/*dispatch: Dispatch*/): IBrowseChannelsDispatchProps => {
-  return {
-  };
-};
-export const BrowseChannelContainer = connect<IBrowseChannelsStateProps, IBrowseChannelsDispatchProps>(mapStateToProps, mapDispatchToProps)(BrowseChannels);
+export const BrowseChannelContainer = connect<IBrowseChannelsStateProps, void>(mapStateToProps)(BrowseChannels);

@@ -48,7 +48,6 @@ export const registerNewUser = (email: string, password: string): any => {
     }
 
     const newUser = await authenticationService.registerNewUser(email, password);
-    console.log(newUser);
 
     localStorage.setItem('LOGGED_USER', JSON.stringify(newUser));
     dispatch(registrationSucceeded(newUser));

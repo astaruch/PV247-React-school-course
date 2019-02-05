@@ -1,7 +1,6 @@
 import {IMessageAppState} from '../models/IMessageApp';
 import {connect} from 'react-redux';
 import {IUserListDispatchProps, IUserListStateProps, UserList} from '../components/UserList';
-//import {Dispatch} from 'redux';
 
 const mapStateToProps = (state: IMessageAppState): IUserListStateProps => {
   return {
@@ -11,10 +10,5 @@ const mapStateToProps = (state: IMessageAppState): IUserListStateProps => {
   };
 };
 
-const mapDispatchToProps = (/*dispatch: Dispatch*/): IUserListDispatchProps => {
-  return {
-
-  };
-};
 export const UserListContainer =
-  connect<IUserListStateProps, IUserListDispatchProps>(mapStateToProps, mapDispatchToProps)(UserList);
+  connect<IUserListStateProps, IUserListDispatchProps>(mapStateToProps)(UserList);

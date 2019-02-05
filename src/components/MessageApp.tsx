@@ -5,6 +5,7 @@ import {BrowseChannelContainer} from '../containers/BrowseChannelsContainer';
 import {ChannelHeaderContainer} from '../containers/ChannelHeaderContainer';
 import {UserListContainer} from '../containers/UserListContainer';
 import {UserHeaderContainer} from '../containers/UserHeaderContainer';
+import {MessageFormContainer} from '../containers/MessageFormContainer';
 
 export interface IMessageAppDispatchProps {
   loadDataFromServer(): void;
@@ -48,7 +49,7 @@ export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
           Message List
         </div>
         <div className="message-form">
-          Message Form
+          <MessageFormContainer/>
         </div>
 
         <div className="user-list">

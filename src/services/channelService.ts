@@ -40,7 +40,6 @@ export async function renameChannel(channelId: Uuid, newName: string, oldCustomD
     },
     getAuthorizationHeader()
   ).then((response) => {
-    console.log(response);
     const {id, name, customData} = response.data;
     const channel = {
       id,
@@ -57,7 +56,6 @@ export async function renameChannel(channelId: Uuid, newName: string, oldCustomD
 export async function createChannel(newName: string, newCustomData: object): Promise<IChannel> {
   return axios.post<ResponseChannel>(CHANNEL_PATH, {name: newName, customData: newCustomData}, getAuthorizationHeader()
   ).then((response) => {
-    console.log(response);
     const {id, name, customData} = response.data;
     const channel = {
       id,
@@ -84,7 +82,6 @@ export async function joinChannel(channelId: Uuid, name: string, newCustomData: 
       },
     getAuthorizationHeader()
   ).then((response) => {
-    console.log('response joining', response);
     return Promise.resolve(response.data);
   });
 }
@@ -98,7 +95,6 @@ export async function leaveChannel(channelId: Uuid, name: string, newCustomData:
     },
     getAuthorizationHeader()
   ).then((response) => {
-    console.log('response leaving', response);
     return Promise.resolve(response.data);
   });
 }

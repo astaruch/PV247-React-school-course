@@ -23,7 +23,6 @@ export async function updateUser(email: string, customData: object): Promise<IUs
     {customData},
     getAuthorizationHeader()
   ).then((response) => {
-    console.log('UpdateUser() response:', response);
     return Promise.resolve(response.data);
   });
 }
