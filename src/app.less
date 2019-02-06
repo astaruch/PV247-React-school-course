@@ -8,6 +8,17 @@
   justify-content: center;
   align-items: center;
 
+  background:
+          radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0,
+          radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0,
+          radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px,
+            radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px,
+          radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px,
+          radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0,
+          linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%);
+  background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;
+  background-color: #840b2a;
+
   @auth-page-form-width: 400px;
 
   .auth-page-switch-buttons {
@@ -41,7 +52,7 @@
 
   .app-header {
     grid-area: app-header;
-    border: 1px solid black;
+    // border: 1px solid black;
     background: azure;
 
     .app-header-text {
@@ -50,12 +61,12 @@
 
   .channel-header {
     grid-area: channel-header;
-    border: 1px solid black;
+    // border: 1px solid black;
   }
 
   .user-header {
     grid-area: user-header;
-    border: 1px solid black;
+    // border: 1px solid black;
 
     display: flex;
 
@@ -126,13 +137,13 @@
       }
     }
 
-    border: 1px solid black;
+    // border: 1px solid black;
   }
 
   .browse-channels {
     grid-area: browse-channels;
 
-    border: 1px solid black;
+    // border: 1px solid black;
     justify-self: stretch;
     align-self: start;
 
@@ -172,7 +183,7 @@
 
   .message-list {
     grid-area: message-list;
-    border: 1px solid black;
+    // border: 1px solid black;
 
     justify-self: stretch;
 
@@ -201,7 +212,7 @@
 
   .user-list {
     grid-area: user-list;
-    border: 1px solid black;
+    // border: 1px solid black;
     //min-width: 150px;
     background: aqua;
 
@@ -235,7 +246,7 @@
 
   .channel-attachments {
     grid-area: channel-attachments;
-    border: 1px solid black;
+    // border: 1px solid black;
   }
 }
 
@@ -250,10 +261,10 @@
 .user-header-avatar-img {
   width: 150px;
   height: 150px;
-  -webkit-border-radius: 150px;
-  -moz-border-radius: 150px;
+  -webkit-// border-radius: 150px;
+  -moz-// border-radius: 150px;
   box-shadow: 0 10px 6px -6px #777;
-  border-radius: 150px;
+  // border-radius: 150px;
   object-fit: cover;
   position: absolute;
   left: 0;
@@ -265,7 +276,7 @@
   height: 100%;
   text-align: center;
   line-height: 150px;
-  border-radius: 150px;
+  // border-radius: 150px;
   background: #07070785;
   font-size: 2em;
   color: #e7e7e7;

@@ -57,7 +57,7 @@ export class MessageApp extends React.PureComponent<IMessageAppDispatchProps> {
           <UserListContainer/>
         </div>
         <div className="channel-attachments">
-          Channel Attachments
+          {/*Channel Attachments*/}
         </div>
       </div>
     );
