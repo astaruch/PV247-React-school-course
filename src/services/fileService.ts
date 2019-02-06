@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {IFile} from '../models/IFile';
-import {ResponseFile} from '../@types/api';
+import {ResponseDownloadLink, ResponseFile} from '../@types/api';
 import {FILE_PATH, getAuthorizationHeader} from './authenticationService';
 
 export async function uploadFile(formData: FormData): Promise<IFile> {
@@ -14,10 +14,10 @@ export async function uploadFile(formData: FormData): Promise<IFile> {
 }
 
 export async function getFileUri(fileId: string): Promise<string> {
-  return axios.get<string>(
+  return axios.get<ResponseDownloadLink>(
     `${FILE_PATH}/${fileId}/download-link`,
     getAuthorizationHeader()
   ).then((response) => {
-    return response.data;
+    return response.data.fileUri;
   });
 }

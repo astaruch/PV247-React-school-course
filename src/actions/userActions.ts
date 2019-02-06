@@ -27,11 +27,12 @@ const loggingOut = (): Action => ({
 export const updateUser = (user: IUser, formData: FormData): any => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch(updatingUserStarted());
-    const avatarUrl = await uploadFile(user, formData);
+    const avatarUrl = await dispatch(uploadFile(user, formData));
+    console.log('avatarUrl:', avatarUrl);
     const customData = {
       ...user.customData,
       pictureUrl: avatarUrl
-    }
+    };
     const updatedUser = await userService.updateUser(user.email, customData);
     console.log(updatedUser);
     dispatch(updatingUserEnded(updatedUser));
