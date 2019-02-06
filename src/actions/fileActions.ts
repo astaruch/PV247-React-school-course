@@ -23,7 +23,6 @@ export const uploadFile = (user: IUser, formData: FormData): any => {
   return async (dispatch: Dispatch): Promise<string> => {
     dispatch(fileUploadStarted());
     const uploadedFile = await fileService.uploadFile(formData);
-    console.log(uploadedFile);
     const avatarUrl = await fileService.getFileUri(uploadedFile.id);
     dispatch(fileUploadEnded(user, avatarUrl, uploadedFile.id));
     return avatarUrl;
