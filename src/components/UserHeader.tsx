@@ -8,9 +8,9 @@ export interface IUserHeaderStateProps {
 }
 
 export interface IUserHeaderDispatchProps {
-  onSave: ((user: IUser) => any);
+  onSave: ((user: IUser, formData: FormData) => any);
   onLogout: () => any;
-  onUploadAvatar: (formData: FormData) => void;
+//  onUploadAvatar: (formData: FormData, user: IUser) => void;
 }
 
 interface IUserState {
@@ -61,20 +61,17 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
 
   onSave = (event) => {
     event.preventDefault();
-    this.props.onSave({
+    const formData = new FormData();
+    formData.append('Files', this.state.avatarFile);
+    const user = {
       email: this.state.email,
       customData: {
         ...this.props.user.customData,
         password: this.state.password,
-        username: this.state.username,
+        username: this.state.username
       }
-    });
-    console.log(this.state.avatarFile);
-    console.log(this.state.avatarPreview);
-    const formData = new FormData();
-    formData.append('Files', this.state.avatarFile);
-    console.log(formData);
-    this.props.onUploadAvatar(formData);
+    };
+    this.props.onSave(user, formData);
     this.onCloseModal();
   };
 
@@ -94,7 +91,6 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
 
   onFileUpload = (event: ChangeEvent<HTMLInputElement>): void => {
     const avatar = event.target!.files![0];
-    console.log(avatar);
     this.setState((prevState): IUserState => {
       return {...prevState, avatarFile: avatar};
     });
@@ -104,7 +100,6 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
   };
 
   updateAvatar = (avatar: string | ArrayBuffer | null): void => {
-    console.log(avatar);
     this.setState((prevState): IUserState => {
       if (typeof avatar === 'string') {
         return {...prevState, avatarPreview: avatar};

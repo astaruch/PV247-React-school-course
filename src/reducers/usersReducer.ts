@@ -7,17 +7,18 @@ import {LOGIN_FAILED, LOGIN_SUCCEEDED} from '../actions/loginActions';
 import {REGISTRATION_FAILED, REGISTRATION_SUCCEEDED} from '../actions/signUpActions';
 
 const asMap = (prevState = Immutable.Map<Uuid, IUser>(), action: Action): Immutable.Map<Uuid, IUser> => {
-  switch (action.type) {
-    case USERS_RETRIEVING_ENDED:
-      return Immutable.Map(action.payload.users.map((user: IUser) => [user.customData.id, user]));
+    switch (action.type) {
+      case USERS_RETRIEVING_ENDED:
+        return Immutable.Map(action.payload.users.map((user: IUser) => [user.customData.id, user]));
 
-    case UPDATE_USER_ENDED:
-      return prevState.set(action.payload.user.customData.id, action.payload.user);
+      case UPDATE_USER_ENDED:
+        return prevState.set(action.payload.user.customData.id, action.payload.user);
 
-    default:
-      return prevState;
+      default:
+        return prevState;
+    }
   }
-};
+;
 
 const asList = (prevState = Immutable.List<Uuid>(), action: Action): Immutable.List<Uuid> => {
   switch (action.type) {

@@ -47,6 +47,7 @@ export class MessageItem extends React.PureComponent<IProps> {
     const downVoteColor = Immutable.Set<Uuid>(this.props.dislikes).contains(this.props.currentUserId) ? 'red' : 'grey' as SemanticCOLORS;
     const likesCount = Immutable.Set<Uuid>(this.props.likes).size;
     const dislikesCount = Immutable.Set<Uuid>(this.props.dislikes).size;
+    console.log(this.props.author.customData.pictureUrl);
     return (
       <div>
         <Comment key={this.props.id}>

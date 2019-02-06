@@ -10,8 +10,8 @@ export interface IFileDownloadLink {
   readonly fileUri: string;
 }
 
-export interface IFileMap {
-  readonly file: IFile;
+export interface IFileMapping {
+  readonly fileId: Uuid;
   readonly fileUri: IFileDownloadLink;
 }
 

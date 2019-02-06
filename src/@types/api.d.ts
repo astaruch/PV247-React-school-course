@@ -2,6 +2,7 @@
 import {IMessageCustomData} from '../models/IMessage';
 import {IUserCustomData} from '../models/IUser';
 import {IChannelCustomData} from '../models/IChannel';
+import {IFile} from '../models/IFile';
 
 export type ResponseUser = {
   readonly email: string;
@@ -23,6 +24,8 @@ export type ResponseMessage = {
   readonly updatedBy: Email;
   readonly customData: IMessageCustomData
 };
+
+export type ResponseFile = IFile;
 
 export type BearerToken = {
   readonly token: string,

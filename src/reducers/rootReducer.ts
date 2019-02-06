@@ -6,7 +6,8 @@ import {spinners} from './spinnerReducer';
 import {users} from './usersReducer';
 
 import {authPageError} from './authenticationReducer';
+import {files} from './filesReducer';
 
 export const rootReducer = combineReducers({
-  channels, users, messages, spinners, authPageError
+  channels, users, messages, spinners, authPageError, files
 });
