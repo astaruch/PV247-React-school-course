@@ -18,4 +18,5 @@ const mapDispatchToProps = (dispatch: Dispatch): IUserHeaderDispatchProps => {
   };
 };
 
-export const UserHeaderContainer = connect<IUserHeaderStateProps, IUserHeaderDispatchProps>(mapStateToProps, mapDispatchToProps)(UserHeader);
+export const UserHeaderContainer =
+  connect<IUserHeaderStateProps, IUserHeaderDispatchProps>(mapStateToProps, mapDispatchToProps)(UserHeader);

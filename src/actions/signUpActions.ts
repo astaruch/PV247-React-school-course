@@ -49,9 +49,13 @@ export const registerNewUser = (email: string, password: string): any => {
 
     const newUser = await authenticationService.registerNewUser(email, password);
 
+    bearerToken = await authenticationService.getBearerTokenForExistingUser(email);
+    if (!bearerToken) {
+      console.log('some error occured', bearerToken);
+      return;
+    }
+    localStorage.setItem('BEARER_TOKEN', JSON.stringify(bearerToken));
     localStorage.setItem('LOGGED_USER', JSON.stringify(newUser));
     dispatch(registrationSucceeded(newUser));
-    bearerToken = await authenticationService.getBearerTokenForExistingUser(email);
-    localStorage.setItem('BEARER_TOKEN', JSON.stringify(bearerToken));
   };
 };

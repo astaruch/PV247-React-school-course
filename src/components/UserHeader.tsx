@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Form, Grid, Header, Icon, Modal, Image} from 'semantic-ui-react';
+import {Button, Form, Grid, Icon, Modal} from 'semantic-ui-react';
 import {IUser} from '../models/IUser';
 import {ChangeEvent} from 'react';
 
@@ -109,20 +109,14 @@ export class UserHeader extends React.PureComponent<IProps, IUserState> {
   };
 
   render(): JSX.Element {
-    const pictureUrl = this.props.user.customData.pictureUrl;
-
     return (
       <div className="user-header-icon">
         <div className="user-header-icon">
-          <Header as={'h4'}>{this.props.user.customData.username || this.props.user.email}</Header>
-          {pictureUrl && <Image src={pictureUrl} avatar/>}
-          {!pictureUrl &&
           <Icon link
                 size={'large'}
                 circular
                 onClick={this.onShowModal}
                 name={'user'}/>
-          }
         </div>
         <div className="user-header-icon">
           <Icon link
